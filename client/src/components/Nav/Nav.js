@@ -17,21 +17,21 @@ const Nav = () =>
   //   </div>
   // </nav>;
 
-  <nav class="navbar-inverse  navbar navbar-expand-lg">
-    <a class="navbar-brand text-white" href="/">Tour Finder</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <nav className="navbar-inverse  navbar navbar-expand-lg">
+    <a className="navbar-brand text-white" href="/">Tour Finder</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link text-white" href="/tours">Availiable Tours</a>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item active">
+          <a className="nav-link text-white" href="/tours">Availiable Tours</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link text-white float-right" href="/login">Login | Sign Up</a>
+        <li className="nav-item active">
+          <a className="nav-link text-white float-right" href="/login">Login | Sign Up</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link text-white" href="/operator">Tour Operator</a>
+        <li className="nav-item active">
+          <a className="nav-link text-white" href="/operator">Tour Operator</a>
         </li>
       </ul>
     </div>
