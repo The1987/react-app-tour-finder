@@ -104,7 +104,7 @@ class Tours extends React.Component {
 
                         </strong>
                         </a> 
-                        <button class="float-right">Book Now</button>
+                        <button className="float-right">Book Now</button>
                         {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                         </ListItem>      
                     );
