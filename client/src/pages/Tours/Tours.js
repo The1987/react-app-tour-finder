@@ -100,15 +100,16 @@ class Tours extends React.Component {
                          <strong> 
 
            {book.name} | {book.address} | $ {book.price} per person
-           <button>Book Now</button>
+           
 
                         </strong>
                         </a> 
+                        <button class="float-right">Book Now</button>
                         {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                         </ListItem>      
                     );
                 
-            
+                    
                    })} 
                  </List>
              ) : (

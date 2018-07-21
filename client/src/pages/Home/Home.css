@@ -1,0 +1,10 @@
+body {
+    background-image: url('../../assets/images/greece_001.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search-bar {
+    width: 80%;
+    border-radius: 50%;
+}

@@ -1,4 +1,6 @@
 import React from "react";
+import "./Home.css";
+import SearchBar from "../../components/SearchBar";
 // import Jumbotron from "../../components/Jumbotron";
 // import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
@@ -76,9 +78,7 @@ class Home extends React.Component {
         <Row>
           <Col size="md-12 sm-12">
 
-            <h1>tour finder</h1>
-            <h2><a href="/tours">find your happy place</a></h2>
-
+          <SearchBar />
 
           </Col>
         </Row>

@@ -4,6 +4,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import GoogleMaps from "../../components/GoogleMaps";
+import BookBtn from "../../components/BookBtn";
 
 class Detail extends React.Component {
   constructor(props) {
@@ -60,17 +62,20 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-10 md-offset-1">
           <article>
-          <p>Tour Cost Per Person: $ {this.state.book.price} per person</p> <br />
+          <p>Cost: $ {this.state.book.price} per person</p> <br />
           <p>About This Tour: {this.state.book.description} </p>
           </article>
         </Col>
+        <BookBtn />
       </Row>
       <Row>
+      <GoogleMaps/>
         <button onClick={() => this.handleUpdate(true)}>Update</button>
         <Col size="md-2">
           <Link to="/operator">← Back to Tour Operator Screen</Link>
         </Col>
       </Row>
+     
     </Container>
   );
 
