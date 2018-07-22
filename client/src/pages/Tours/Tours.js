@@ -55,10 +55,10 @@ class Tours extends React.Component {
     event.preventDefault();
     if (this.state.name && this.state.address) {
       API.saveBook({
-        title: this.state.name,
-        author: this.state.address,
-        location: this.state.price,
-        synopsis: this.state.location
+        name: this.state.name,
+        address: this.state.address,
+        price: this.state.price,
+        description: this.state.description
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -99,7 +99,7 @@ class Tours extends React.Component {
                          an update or delete button when you are a customer*/}
                          <strong> 
 
-           {book.name} | {book.address} | $ {book.price} per person
+           {this.state.books.name} | {this.state.books.address} | $ {this.state.books.price} per person
            
 
                         </strong>
