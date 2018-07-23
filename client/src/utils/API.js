@@ -6,7 +6,7 @@ export default {
     return axios.get("/api/books");
   },
   // Deletes the book with the given id
-  deleteTour: function (id) {
+  deleteBook: function (id) {
     return axios.delete("/api/books/" + id);
   },
   // Saves a book to the database
@@ -21,7 +21,7 @@ export default {
     return axios.patch("/api/books/" + id, bookData);
   },
 
-  // uploadHandler: function () {
-  //   return axios.post('/api/books', this.state.selectedFile)
-  // }
+  uploadHandler: function () {
+    return axios.post('/api/books', this.state.selectedFile)
+  }
 };

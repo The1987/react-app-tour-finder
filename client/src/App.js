@@ -7,12 +7,13 @@ import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-
+// import DropDown from "./components/DropDown";
 
 const App = () =>
   <Router>
     <div>
       <Nav />
+      {/* <DropDown /> */}      
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/operator" component={Operator} />
