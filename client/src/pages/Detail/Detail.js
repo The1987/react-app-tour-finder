@@ -69,7 +69,7 @@ class Detail extends React.Component {
         <BookBtn />
       </Row>
       <Row>
-      <GoogleMaps/>
+      {/* <GoogleMaps/> */}
         <button onClick={() => this.handleUpdate(true)}>Update</button>
         <Col size="md-2">
           <Link to="/operator">← Back to Tour Operator Screen</Link>
