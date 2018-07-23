@@ -38,29 +38,30 @@ deleteBook = id => {
     .catch(err => console.log(err));
 };
 
-// Handles updating component state when the user types into the input field
-handleInputChange = event => {
-  const { name, value } = event.target;
-  this.setState({
-    [name]: value
-  });
-};
+  // Handles updating component state when the user types into the input field
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-// When the form is submitted, use the API.saveBook method to save the book data
-// Then reload books from the database
-handleFormSubmit = event => {
-  event.preventDefault();
-  if (this.state.name && this.state.address) {
-    API.saveBook({
-      title: this.state.name,
-      author: this.state.address,
-      location: this.state.price,
-      synopsis: this.state.location
-    })
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  }
-};
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.name && this.state.address) {
+      API.saveBook({
+        name: this.state.name,
+        address: this.state.address,
+        price: this.state.price,
+        description: this.state.location
+      })
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+
 
 
   render() {

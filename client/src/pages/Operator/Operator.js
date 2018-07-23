@@ -151,12 +151,11 @@ class Operator extends React.Component {
                       <a href={"/operator/" + book._id}>
                         <strong>
 
-                          {book.name} | {book.address} | $ {book.price} per person
+                          {this.state.book.name} | {this.state.book.address} | $ {this.state.book.price} per person
 
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                      {/* <button onClick={() => this.handleUpdate(true)}>Update</button> */}
                     </ListItem>
                   );
                 })}
