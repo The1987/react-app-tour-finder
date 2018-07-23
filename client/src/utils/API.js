@@ -21,7 +21,7 @@ export default {
     return axios.patch("/api/books/" + id, bookData);
   },
 
-  uploadHandler: function () {
-    return axios.post('/api/books', this.state.selectedFile)
-  }
+  // uploadHandler: function () {
+  //   return axios.post('/api/books', this.state.selectedFile)
+  // }
 };

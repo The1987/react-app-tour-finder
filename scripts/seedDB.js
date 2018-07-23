@@ -24,7 +24,6 @@ const bookSeed = [
       address: "Near Central Park",
       price: 20,
       description:'You’ll cover much more of Central Park’s 843 acres of meadows, woods and ponds on a bike than you ever could on foot. Meet up with the guide from Central Park Tours Inc. to pick out your wheels for the day, then set off from the south end of the park. You’ll spy iconic landmarks, plus a few lesser-known gems. And since the tour is always capped at just eight people, you’ll have plenty of opportunities to ask questions along the way.',
-      date: new Date(Date.now())
     },
     {
       name: "Small Group Walking Tour of New York City Architecture",
