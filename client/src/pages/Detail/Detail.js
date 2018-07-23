@@ -1,10 +1,10 @@
 import React from "react";
+import "./Detail.css";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import GoogleMaps from "../../components/GoogleMaps";
 import BookBtn from "../../components/BookBtn";
 
 class Detail extends React.Component {
@@ -50,6 +50,7 @@ class Detail extends React.Component {
 
   getReadOnly = () => (
     <Container fluid>
+
       <Row>
         <Col size="md-12">
           <Jumbotron>
@@ -59,20 +60,28 @@ class Detail extends React.Component {
           </Jumbotron>
         </Col>
       </Row>
+
       <Row>
-        <Col size="md-10 md-offset-1">
-          <article>
+        <Col size="md-8 sm-4">
+          <article className="tour-details">
           <p>Cost: $ {this.state.book.price} per person</p> <br />
           <p>About This Tour: {this.state.book.description} </p>
           </article>
         </Col>
-        <BookBtn />
+
+        <Col size="md-4 sm-4">
+        <article className="map-details">
+        <p>This is where Google Maps component will go </p>
+        </article>
+        </Col>
+
+        <BookBtn size="md-10" />
       </Row>
+
       <Row>
-      {/* <GoogleMaps/> */}
-        <button onClick={() => this.handleUpdate(true)}>Update</button>
         <Col size="md-2">
           <Link to="/operator">← Back to Tour Operator Screen</Link>
+          <button onClick={() => this.handleUpdate(true)}>Update</button>
         </Col>
       </Row>
      

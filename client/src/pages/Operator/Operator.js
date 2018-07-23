@@ -75,10 +75,10 @@ class Operator extends React.Component {
     event.preventDefault();
     if (this.state.name && this.state.address) {
       API.saveBook({
-        title: this.state.name,
-        author: this.state.address,
-        location: this.state.price,
-        synopsis: this.state.description
+        name: this.state.name,
+        address: this.state.address,
+        price: this.state.price,
+        description: this.state.description
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
