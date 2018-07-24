@@ -6,7 +6,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import BookBtn from "../../components/BookBtn";
-// import GoogleMaps from "../../components/GoogleMaps";
+import PresentGoogleMap from "../../components/PresentGoogleMap";
 
 class Detail extends React.Component {
   constructor(props) {
@@ -85,6 +85,7 @@ class Detail extends React.Component {
           <button onClick={() => this.handleUpdate(true)}>Update</button>
         </Col>
       </Row>
+      <PresentGoogleMap />
     </Container>
   );
 

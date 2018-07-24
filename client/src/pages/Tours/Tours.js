@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import PresentGoogleMaps from "../../components/PresentGoogleMap";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import Card from "../../components/Card";
 
@@ -72,6 +73,7 @@ class Tours extends React.Component {
           <Col size="md-12 sm-12">
             <Jumbotron>
               <h1>Tours In Your Area</h1>
+              
             </Jumbotron>
       
             {this.state.books.length ? (
@@ -117,6 +119,7 @@ class Tours extends React.Component {
               )}
                
           </Col>
+          <PresentGoogleMaps/>
         </Row>
       </Container>
     );
