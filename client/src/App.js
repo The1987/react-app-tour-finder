@@ -12,8 +12,7 @@ import Nav from "./components/Nav";
 const App = () =>
   <Router>
     <div>
-      <Nav />
-      {/* <DropDown /> */}      
+      <Nav/>    
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/operator" component={Operator} />

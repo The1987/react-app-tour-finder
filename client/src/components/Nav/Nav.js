@@ -37,6 +37,9 @@ const Nav = () =>
                 <li className="nav-item">
                     <a className="nav-link text-white" href="/login">Register</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link text-white" href="/operator">Dashboard</a>
+                </li>
             </ul>
         </div>
     </nav>;
