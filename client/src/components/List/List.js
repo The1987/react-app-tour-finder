@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 class List extends React.Component {
 
-  render () {
+  render() {
 
     return (
       <div className="list-overflow-container">
         <div className="list-group">
           {this.props.children}
         </div>
-        </div>
+      </div>
     );
   }
 }

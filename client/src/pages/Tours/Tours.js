@@ -1,5 +1,6 @@
 import React from "react";
 import Jumbotron from "../../components/Jumbotron";
+import { Link } from "react-router-dom";
 // import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -110,7 +111,7 @@ class Tours extends React.Component {
 
                         </strong>
                         </a> 
-                        <button className="float-right">Book Now</button>
+                        <Link to="/BookNow" className="float-right" >Book Now</Link>
                         {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                         </ListItem>      
                     );

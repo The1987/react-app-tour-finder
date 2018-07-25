@@ -20,8 +20,10 @@ export default {
   patchBook: function (id, bookData) {
     return axios.patch("/api/books/" + id, bookData);
   },
-
   uploadHandler: function () {
     return axios.post('/api/books', this.state.selectedFile)
+  },
+  purchaseBook: function(id,bookData)  {
+    return axios.get("/api/BookNow/" + id, bookData);
   }
 };
