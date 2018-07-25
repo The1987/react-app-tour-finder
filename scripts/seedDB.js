@@ -13,6 +13,13 @@ mongoose.connect(
 
 const bookSeed = [
   {
+    name: "Andrew Hatfield's Food Tour Of Jersey City",
+    address: "70 Sip Ave, Jersey City, NJ 07306",
+    price: 10,
+    description:'A delightfully educational and delicious tour of Jersey Citys journal square food establishments.',
+    // date: new Date(Date.now())
+  },
+  {
       name: "Small Group Central Park Bike Tour",
       address: "Near Central Park",
       price: 20,
@@ -46,3 +53,14 @@ db.Book
     console.error(err);
     process.exit(1);
   });
+
+  // const userSeed = [
+  //   {
+  //     username: "andrewmflak",
+  //     password: "12345"
+  //   },
+  //   {
+  //     username: "TheDonaldTrump",
+  //     password: "GoldenShowers"
+  //   }
+  // ];

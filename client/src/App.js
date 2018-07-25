@@ -1,11 +1,12 @@
 // import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Operator from "./pages/Operator";
 import Tours from "./pages/Tours";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
+import BookNow from "./pages/BookNow";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -96,6 +97,7 @@ class App extends Component {
          <Route exact path="/operator/:id" component={Detail} />
         <Route exact path="/tours/:id" component={Detail} />
          <Route exact path="/tours" component={Tours} />
+         <Route exact path="/BookNow" component={BookNow} />
          <Route exact path="/login" component={Login} />
          <Route component={NoMatch} />
        </Switch>
