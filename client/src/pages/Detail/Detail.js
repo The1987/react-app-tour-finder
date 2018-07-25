@@ -8,6 +8,7 @@ import API from "../../utils/API";
 import BookBtn from "../../components/BookBtn";
 import PresentGoogleMap from "../../components/PresentGoogleMap";
 
+
 class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,8 @@ class Detail extends React.Component {
   }
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+
+  
   componentDidMount() {
     API.getBook(this.props.match.params.id)
       .then(res => this.setState({ books: res.data }))
@@ -63,20 +66,22 @@ class Detail extends React.Component {
       </Row>
 
       <Row>
-        <Col size="md-8 sm-4">
+        <Col size="md-8 sm-12">
           <article className="tour-details">
           <p>Cost: $ {this.state.books.price} per person</p> <br />
           <p>About This Tour: {this.state.books.description} </p>
           </article>
         </Col>
 
-        <Col size="md-4 sm-4">
+        <Col size="md-4 sm-12">
         <article className="map-details">
-        {/* <GoogleMaps/> */}
+        <PresentGoogleMap />
         </article>
-        </Col>
+        </Col >
 
-        <BookBtn size="md-10" />
+        <Col size="md-12">
+        <BookBtn />
+        </Col>
       </Row>
 
       <Row>
@@ -85,7 +90,6 @@ class Detail extends React.Component {
           <button onClick={() => this.handleUpdate(true)}>Update</button>
         </Col>
       </Row>
-      <PresentGoogleMap />
     </Container>
   );
 

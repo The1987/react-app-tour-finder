@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { withScriptjs,withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+const { StandaloneSearchBox } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
+// import API from "../../utils/API";
 
-
-// const MapWithAMarker = withScriptjs(withGoogleMap(props =>
-//   <GoogleMap
-//     defaultZoom={8}
-//     defaultCenter={{ lat: -34.397, lng: 150.644 }}
-//   >
-//     <Marker
-//       position={{ lat: -34.397, lng: 150.644 }}
-//     />
-//   </GoogleMap>
-// ));
-
-// <MapWithAMarker
-//   googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
-//   loadingElement={<div style={{ height: `100%` }} />}
-//   containerElement={<div style={{ height: `400px` }} />}
-//   mapElement={<div style={{ height: `100%` }} />}
-// />
 
 class CreateGoogleMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: {},
+      isUpdate: false
+    };
+  }
+
+  // componentDidMount() {
+  //   API.getBook(this.props.match.params.id)
+  //     .then(res => this.setState({ books: res.data }))
+  //     .catch(err => console.log(err));
+  // }
+
   renderGoogleMap() {
     const key = "Rutgers Coding Bootcamp";
+    // const formattedAddress = {this.state.address};
     const lat = 40.731843;
     const lng = -74.062608; 
     const markers = [{
       position: {
         lat,
         lng,
+        // formatted_address
       },
       key,
       defaultAnimation: 2,

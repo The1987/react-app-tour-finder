@@ -6,7 +6,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import PresentGoogleMaps from "../../components/PresentGoogleMap";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-// import Card from "../../components/Card";
+
 
 
 class Tours extends React.Component {
@@ -59,7 +59,7 @@ class Tours extends React.Component {
         name: this.state.name,
         address: this.state.address,
         price: this.state.price,
-        description: this.state.description
+        description: this.state.description  
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -70,12 +70,16 @@ class Tours extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-12 sm-12">
+        <Col size="md-12">
             <Jumbotron>
               <h1>Tours In Your Area</h1>
               
             </Jumbotron>
-      
+            </Col>
+            </Row>
+
+      <Row>
+      <Col size="lg-8 md-6 sm-12 pb-6">
             {this.state.books.length ? (
                  <List>
                 
@@ -101,7 +105,7 @@ class Tours extends React.Component {
                          an update or delete button when you are a customer*/}
                          <strong> 
 
-           {this.state.books.name} | {this.state.books.address} | $ {this.state.books.price} per person
+           {book.name} | {book.address} | $ {book.price} per person
            
 
                         </strong>
@@ -115,11 +119,13 @@ class Tours extends React.Component {
                    })} 
                  </List>
              ) : (
-                <h3>No Results to Display</h3> 
+                <h3 className="text-white">No Results to Display</h3> 
               )}
                
           </Col>
-          <PresentGoogleMaps/>
+          <Col size="lg-4 md-4 sm-12">
+      <PresentGoogleMaps />
+      </Col>
         </Row>
       </Container>
     );

@@ -7,7 +7,7 @@ const bookSchema = new Schema({
   price: { type: Number, required: true },
   description: String,
   // selectedFile: { type: FormData},
-  date: { type: Date, default: Date.now }
+  // date: { type: Date, default: Date.now }
 
 });
 
