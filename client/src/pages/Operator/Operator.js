@@ -151,7 +151,7 @@ class Operator extends React.Component {
                       <a href={"/operator/" + book._id}>
                         <strong>
 
-                          {this.state.book.name} | {this.state.book.address} | $ {this.state.book.price} per person
+                          {book.name} | {book.address} | $ {book.price} per person
 
                         </strong>
                       </a>

@@ -6,20 +6,24 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import BookBtn from "../../components/BookBtn";
+import PresentGoogleMap from "../../components/PresentGoogleMap";
+
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: {},
+      books: {},
       isUpdate: false
     };
   }
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
+
+  
   componentDidMount() {
     API.getBook(this.props.match.params.id)
-      .then(res => this.setState({ book: res.data }))
+      .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -31,18 +35,18 @@ class Detail extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
 
-    const updatedBook = { ...this.state.book }
+    const updatedBook = { ...this.state.books }
     updatedBook[name] = value
 
     this.setState({
-      book: updatedBook
+      books: updatedBook
     });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.book.name && this.state.book.address) {
-      API.patchBook(this.props.match.params.id, this.state.book)
+    if (this.state.books.name && this.state.books.address) {
+      API.patchBook(this.props.match.params.id, this.state.books)
         .then(res => this.setState({ isUpdate: false }))
         .catch(err => console.log(err));
     }
@@ -55,27 +59,29 @@ class Detail extends React.Component {
         <Col size="md-12">
           <Jumbotron>
             <h1>
-              {this.state.book.name} by {this.state.book.address}
+              {this.state.books.name} by {this.state.books.address}
             </h1>
           </Jumbotron>
         </Col>
       </Row>
 
       <Row>
-        <Col size="md-8 sm-4">
+        <Col size="md-8 sm-12">
           <article className="tour-details">
-          <p>Cost: $ {this.state.book.price} per person</p> <br />
-          <p>About This Tour: {this.state.book.description} </p>
+          <p>Cost: $ {this.state.books.price} per person</p> <br />
+          <p>About This Tour: {this.state.books.description} </p>
           </article>
         </Col>
 
-        <Col size="md-4 sm-4">
+        <Col size="md-4 sm-12">
         <article className="map-details">
-        <p>This is where Google Maps component will go </p>
+        <PresentGoogleMap />
         </article>
-        </Col>
+        </Col >
 
-        <BookBtn size="md-10" />
+        <Col size="md-12">
+        <BookBtn />
+        </Col>
       </Row>
 
       <Row>
@@ -84,7 +90,6 @@ class Detail extends React.Component {
           <button onClick={() => this.handleUpdate(true)}>Update</button>
         </Col>
       </Row>
-     
     </Container>
   );
 
@@ -101,32 +106,32 @@ class Detail extends React.Component {
         <Col size="md-10 md-offset-1">
           <form>
             <Input
-              value={this.state.book.name}
+              value={this.state.books.name}
               onChange={this.handleInputChange}
               name="name"
               placeholder="Tour Name (required)"
             />
             <Input
-              value={this.state.book.address}
+              value={this.state.books.address}
               onChange={this.handleInputChange}
               name="address"
               placeholder="Meet Up Location (required)"
             />
             <Input
-              value={this.state.book.price}
+              value={this.state.books.price}
               onChange={this.handleInputChange}
               name="price"
               placeholder="Price ($)"
             />
             <TextArea
-              value={this.state.book.description}
+              value={this.state.books.description}
               onChange={this.handleInputChange}
               name="description"
               placeholder="Tour Description"
             />
             <button onClick={() => this.handleUpdate(false)}>Cancel</button>
             <FormBtn
-              disabled={!(this.state.book.name && this.state.book.address)}
+              disabled={!(this.state.books.name && this.state.books.address)}
               onClick={this.handleFormSubmit}
             >
               Save Tour
