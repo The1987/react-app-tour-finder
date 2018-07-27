@@ -24,6 +24,6 @@ export default {
     return axios.post('/api/books', this.state.selectedFile)
   },
   purchaseBook: function(id,bookData)  {
-    return axios.get("/api/BookNow/" + id, bookData);
+    return axios.get("/api/books/" + id, bookData);
   }
 };

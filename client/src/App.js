@@ -97,7 +97,7 @@ class App extends Component {
          <Route exact path="/operator/:id" component={Detail} />
         <Route exact path="/tours/:id" component={Detail} />
          <Route exact path="/tours" component={Tours} />
-         <Route exact path="/BookNow" component={BookNow} />
+         <Route exact path="/tours/book-now/:id" component={BookNow} />
          <Route exact path="/login" component={Login} />
          <Route component={NoMatch} />
        </Switch>

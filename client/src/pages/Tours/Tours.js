@@ -21,6 +21,10 @@ class Tours extends React.Component {
       description: ""
     };
   }
+// manage state accross file changes
+  fileChangedHandler = (event) => {
+    this.setState({ selectedFile: event.target.files[0] })
+  }
 
   // When the component mounts, load all books and save them to this.state.books
   componentDidMount() {
@@ -111,7 +115,7 @@ class Tours extends React.Component {
 
                         </strong>
                         </a> 
-                        <Link to="/BookNow" className="float-right" >Book Now</Link>
+                        <Link to={`/tours/book-now/${book._id}` }className="float-right" >Book Now</Link>
                         {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                         </ListItem>      
                     );
