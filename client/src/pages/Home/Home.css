@@ -1,7 +1,10 @@
 body {
-    background-image: url('../../assets/images/greece_001.jpg');
+    background-image: url('../../assets/images/greece_002.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-position: center; */
+    margin: 0;
+    height: 100%;
 }
 
 .search-bar {

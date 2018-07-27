@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("../database/models"); 
 mongoose.Promise = global.Promise;
 
 // This file empties the Books collection and inserts the books below
