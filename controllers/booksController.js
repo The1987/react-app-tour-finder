@@ -2,6 +2,8 @@ const path = require("path");
 const router = require("express").Router();
 const db = require("../database/models");
 
+// all tour api get, post, update, deletes
+
 const bookFunctions = {
   findAll: function (req, res) {
     db.Book
@@ -46,6 +48,56 @@ router.delete("/api/books/:id", bookFunctions.remove)
 router.get("/api/books/:id", bookFunctions.findById)
 
 router.patch("/api/books/:id", bookFunctions.update)
+
+// Purchase transaction functions create, update, get, delete
+const purchaseFunctions = {
+  findAll: function (req, res) {
+    db.Purchase
+      .find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function (req, res) {
+    db.Purchase
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  create: function (req, res) {
+    db.Purchase
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  update: function (req, res) {
+    db.Purchase
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  remove: function (req, res) {
+    db.Purchase
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
+};
+
+// Transaction api routes
+router.get("/api/books/purchase", purchaseFunctions.findAll)
+
+router.post("/api/books/purchase", purchaseFunctions.create)
+
+router.delete("/api/books/purchase/:id", purchaseFunctions.remove)
+
+router.get("/api/books/purchase/:id", purchaseFunctions.findById)
+
+router.patch("/api/books/purchase/:id", purchaseFunctions.update)
+
+
+
 
 // If no API routes are hit, send the React app
 router.use(function (req, res) {

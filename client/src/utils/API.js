@@ -25,5 +25,23 @@ export default {
   },
   purchaseBook: function(id,bookData)  {
     return axios.get("/api/books/" + id, bookData);
+  },
+
+
+  // PURCHASE API paths
+  getPurchases: function() {
+    return axios.get("/api/books/purchase")
+  },
+  getPurchase: function(id) {
+    return axios.get("/api/books/purchase/" + id);
+  },
+  purchasePost: function(purchaseData)  {
+    return axios.post("/api/books/purchase", purchaseData);
+  },
+  patchPurchase: function (id, purchaseData) {
+    return axios.patch("/api/books/purchase/" + id, purchaseData);
+  },
+  deletePurchase: function (id) {
+    return axios.delete("/api/books/purchase/" + id);
   }
 };

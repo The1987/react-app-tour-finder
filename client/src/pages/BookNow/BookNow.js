@@ -1,11 +1,12 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
 import PresentGoogleMap from "../../components/PresentGoogleMap";
 import { List, ListItem } from "../../components/List";
+import { Link } from "react-router-dom";
 // import Math from "./Match";
 
 var divStyle = {
@@ -23,13 +24,25 @@ var colStyle = {
     borderBottom: '1px solid grey'
 }
 
-
 class BookNow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: {}
+            books: {},
+            purchase: {},
+            name: "",
+            operator: "",
+            address: "",
+            price: "",
+            qty: "",
+            date: "",
+            time: "",
         };
+    }
+
+
+    fileChangeHandler = (event) => {
+        this.setState({ selectedFile: event.target.files[0] })
     }
 
     // default function to populate content
@@ -41,27 +54,27 @@ class BookNow extends React.Component {
         console.log("BookPrice:" + typeof this.state.books.price)
     }
 
-    handleInputChange = event => {
-        const { Qty, value } = event.target;
-        const purchasedBook = { ...this.state.books }
-        purchasedBook[Qty] = value;
-        this.setState({
-            [Qty]: value
-        });
-
-    }
-
-    // handleTotalCalc = event => {
-    //     const {Total, value}  = parseInt(this.state.Qty.value) * parseInt(this.state.books.price.value);
-    //     const purchasedTotal = { ...this.state.books }
-    //     purchasedTotal[Total] = value;
+    // handleInputChange = event => {
+    //     const { Qty, value } = event.target;
+    //     const purchasedBook = { ...this.state.books }
+    //     purchasedBook[Qty] = value;
     //     this.setState({
-    //         [Total]: value
+    //         [Qty]: value
     //     });
 
     // }
 
-    // onChange={e => onChange(i, parseInt(e.target.value) || 0)}
+    handleInputChange = event => {
+        const { name, value } = event.target;
+
+        const updatedBook = { ...this.state.books }
+        updatedBook[name] = value
+
+        this.setState({
+            books: updatedBook
+        });
+    };
+
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -73,75 +86,99 @@ class BookNow extends React.Component {
         }
     };
 
-    render() {
-        return (
-            <Container fluid>
+    handleUpdate(isUpdate) {
+        this.setState({ isUpdate: isUpdate })
+    };
 
-                <Row>
-                    <Col size="md-12">
-                        <Jumbotron>
-                            <h1>Almost Done!!!<br />
-                                Please Confirm Your Purchase below....</h1>
-                        </Jumbotron>
-                    </Col>
-                </Row>
+    handleConfirmBook = event => {
+        this.setState({ isConfirmed: true })
+    };
 
-                <Row>
-                    <Col size="md-8 sm-12">
+    handleBackBook = event => {
+        this.setState({ isConfirmed: false })
+    };
 
-                        <div style={divStyle}>
-                            <strong>Name:</strong> John Doe
-                            <br />
+    handlePurchaseSubmit = event => {
+        event.preventDefault();
+        if (this.state.name && this.state.address && this.state.price) {
+            API.purchasePost({
+                name: this.state.name,
+                address: this.state.address,
+                price: this.state.price
+            })
+                .then(res => this.setState({
+                    isConfirmed: true, isPurchased: true
+                }))
+                .catch(err => console.log(err));
+        }
+    };
 
-                            <strong>Billing Address:</strong> {this.state.books.address}
-                            <br />
+    // Step 1. Booking Confirmation
+    getConfirmationForm = () => (
+        <Container fluid>
+            <Row>
+                <Col size="md-12">
+                    <h4 className="text-white">
+                        1. Confirm Tour Selection
+                    <span color="grey">
+                            2. Purchase Tour
+                            3. Thank You For Your Purchase
+                    </span>
+                    </h4>
+                </Col>
+            </Row>
 
-                            <strong>You Are Purchasing</strong> 2 Tickets
-                            <br />
-                            <br />
+            <Row>
+                <Col size="md-12 sm-12">
 
-                            {/* <strong>Tour Stops:</strong>
-                        <ul>
-                            <li>Marvin's Wonderful House of Pancakes</li>
-                            <li>Marvin's Wonderful House of Pancakes</li>
-                            <li>Marvin's Wonderful House of Pancakes</li>
-                        </ul> */}
+                    <div style={divStyle}>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Tour Name:</strong> {this.state.books.name}</td>
+                                    <td><strong>Tour Date:</strong> {this.state.books.date}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Start Location:</strong> {this.state.books.address}</td>
+                                    <td><strong>Start Time:</strong> {this.state.books.time}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <table>
+                        <br />
 
+                        <table>
+                            <tbody>
                                 <tr>
                                     <th style={colStyle}>Admission</th>
                                     <th style={colStyle}>Price</th>
                                     <th style={colStyle}>Qty</th>
                                     <th style={colStyle}> Amount</th>
                                 </tr>
-
-                                <tr>
-                                    <td style={colStyle}>Senior (65+)</td>
-                                    <td style={colStyle}> $ {this.state.books.price} </td>
-                                    <td style={colStyle}><button>-</button>4<button>+</button></td>
-                                    <td style={colStyle}>$ <span>{this.state.books.price * 4}</span></td>
-                                </tr>
-
                                 <tr>
                                     <td style={colStyle}>Adult (18+)</td>
-                                    <td style={colStyle}> $ {this.state.books.price} </td>
-                                    <td style={colStyle}><button>-</button>2<button>+</button></td>
-                                    <td style={colStyle}>$ <span>{this.state.books.price * 2}</span></td>
-                                </tr>
+                                    <td style={colStyle}>$ {this.state.books.price} </td>
+                                    <td style={colStyle}>
+                                        <Input
+                                            type="number"
+                                            onChange={this.handleInputChange}
+                                            name="qty"
+                                            placeholder="Qty"
+                                            pattern="[0-9]*"
+                                        />
+                                    </td>
+                                    <td style={colStyle}>$
 
-                                <tr>
-                                    <td style={colStyle}>Kids (Under 18)</td>
-                                    <td style={colStyle}> $ {this.state.books.price} </td>
-                                    <td style={colStyle}><button>-</button>1<button>+</button></td>
-                                    <td style={colStyle}>$ <span>{this.state.books.price * 1}</span></td>
+                                  {/* <span>{this.state.books.price * this.state.books.qty}</span> */}
+
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td>Ticket Total</td>
-                                    <td>$ XX.XX</td>
+                                    <td>$ </td>
                                 </tr>
 
                                 <tr>
@@ -157,30 +194,129 @@ class BookNow extends React.Component {
                                     <td><strong>Total</strong></td>
                                     <td><strong>$ XX.XX</strong></td>
                                 </tr>
-
-                            </table >
-                            
-
-                            {console.log("BookPrice:" + typeof this.state.books.price)}
-                            {console.log("Qty:" + typeof this.state.Qty)}
+                            </tbody>
+                        </table >
+                        <br />
 
 
+                        <button className="btn-danger btn-block" onClick={this.handleConfirmBook}>Continue to Purchase</button>
+                        <Link to="./pages/tours" className="btn-danger btn-block" onClick={this.onClick}>
+                            Back </Link>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
+
+    // Step 2. Checkout
+    getPurchaseForm = () => (
+        <Container fluid>
+            <Row>
+                <Col size="md-12">
+                    <h4 className="text-white">
+                        <span color="grey">
+                            1. Confirm Tour Selection </span>
+                        2. Purchase Tour
+                        <span color="grey">
+                            3. Thank You For Your Purchase
+                    </span>
+                    </h4>
+              </Col>
+            </Row>
+
+            <Row>
+                <Col size="md-12">
+                    <List>
+                        <ListItem>
+                            <h2>
+                                <strong>
+                                    Name:
+                                </strong>
+                                <br />
+                                {this.state.books.name}
+                                <br />
+                            </h2>
+                            <h4>
+                                <strong>
+                                    Operator:
+                                </strong>
+                                <br />
+                            </h4>
                             <br />
-                            <button className="btn-danger btn-block" onClick={this.props.onClick}>
-                                Confirm Purchase
+                            <h4>
+                                <strong>
+                                    Address:
+                                </strong>
+                                <br />
+                                {this.state.books.address}
+                                <br />
+                            </h4>
+                            <h4>
+                                <strong>
+                                    Price:
+                                </strong>
+                                <br />
+                                $ {this.state.books.price}
+                                <br />
+                            </h4>
+                            <h4>
+                                Quantity:
+                                <br />
+                                {this.state.books.Qty}
+                                <br />
+                            </h4>
+                            <h3>
+                                <br />
+                                <strong>
+                                    Total:
+                                </strong>
+                                <br />
+                            </h3>
+                        </ListItem>
+                    </List>
+           </Col>
+        </Row>
+
+        <Row>
+           <Col size="md-12">
+                <form> 
+                    <Input
+                            type="number"
+                            value={this.state.qty}
+                            onChange={this.handleInputChange}
+                            name="qty"
+                            placeholder="Number of Available Tickets"
+                            pattern="[0-9]*"
+                        />
+                         <Input 
+                             type="number"
+                            value={this.state.qty}
+                            onChange={this.handleInputChange}
+                            name="qty"
+                            placeholder="Number of Available Tickets"
+                            pattern="[0-9]*"
+                        />
+                         <Input
+                             value={this.state.date}
+                            onChange={this.handleInputChange}
+                            name="date"
+                            placeholder="Date"
+                        />
+                        <button className="btn-danger btn-block" onClick={this.handlePurchaseSubmit}>
+                            Purchase
                             </button>
+                            <Link to="#" className="btn-danger btn-block" onClick={this.handleBackBook}> Back </Link>
 
-                        </div>
+                 </form>
+                </Col>
+            </Row>
+        </Container>
+    );
 
-                    </Col>
-
-                    <Col size="sm-12 md-4">
-                        <PresentGoogleMap />
-                    </Col >
-
-                </Row>
-            </Container>
-        );
+    render() {
+        if (this.state.isConfirmed === true) return this.getPurchaseForm();
+        else return this.getConfirmationForm();
     }
 }
+
 export default BookNow;

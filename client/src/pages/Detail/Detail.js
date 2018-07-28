@@ -22,7 +22,7 @@ class Detail extends React.Component {
   fileChangedHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] })
   }
-  
+
   componentDidMount() {
     API.getBook(this.props.match.params.id)
       .then(res => this.setState({ books: res.data }))
@@ -61,7 +61,8 @@ class Detail extends React.Component {
         <Col size="md-12">
           <Jumbotron>
             <h1>
-              {this.state.books.name} by {this.state.books.address}
+              {this.state.books.name} <br />
+              {this.state.books.address}
             </h1>
           </Jumbotron>
         </Col>
@@ -70,20 +71,28 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-8 sm-12">
           <article className="tour-details">
-          <p>Cost: $ {this.state.books.price} per person</p> <br />
-          <p>About This Tour: {this.state.books.description} </p>
+          <p>
+            Tour Name: {this.state.books.name} <br />
+            Starting Location: {this.state.books.address} <br />
+            Ticket Price: $ {this.state.books.price} per person <br />
+            Tickets Available: {this.state.books.qty} <br />
+            Date: {this.state.books.date} <br />
+            Time: {this.state.books.time} AM <br />
+
+            About This Tour: {this.state.books.description} <br />
+          </p>
           </article>
         </Col>
 
         <Col size="md-4 sm-12">
-        <article className="map-details">
-        <PresentGoogleMap />
-        </article>
+          <article className="map-details">
+            <PresentGoogleMap />
+          </article>
         </Col >
 
         <Col size="md-12">
-        <Link className="book-btn btn btn-success btn-block" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
-        {/* <BookBtn /> */}
+          <Link className="book-btn btn btn-success btn-block" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+          {/* <BookBtn /> */}
         </Col>
       </Row>
 
