@@ -1,9 +1,13 @@
 .footer {
-    background-color: orange;
+    background-color: #F7931E;
     width: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
     color: white;
     text-align: center;
+
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 100;
+    font-size: 10px;
 }

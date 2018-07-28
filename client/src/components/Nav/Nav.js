@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 // import { Redirect } from 'react-router-dom'
 import { Link} from 'react-router-dom'
 import axios from 'axios'
+import MainLogo from '../../assets/images/main-logo.png'
+import MainModal from '../../assets/images/main-modal.png'
+import "./Nav.css";
 
 class Nav extends Component {
     constructor() {
@@ -33,13 +36,14 @@ class Nav extends Component {
         return (
   
             <nav className="navbar navbar-expand-sm navbar-inverse">
-                <a className="navbar-brand text-white" href="/">Tour Booker</a>
+            <img id="main-modal" src={MainModal} />
+                <a className="navbar-brand text-white" href="/"><img id="main-logo" src={MainLogo} /></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarNavDropdown" className="navbar-collapse collapse">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
+                        <li className="nav-item active" id="available-tours" >
                             <a href="/tours" className="nav-link text-white" >Available Tours <span className="sr-only">(current)</span></a>
                         </li>
 
