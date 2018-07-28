@@ -1,5 +1,5 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import { Link } from "react-router-dom";
 // import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
@@ -18,7 +18,10 @@ class Tours extends React.Component {
       name: "",
       address: "",
       price: "",
-      description: ""
+      qty: "",
+      date: "",
+      time: "",
+      description: "",
     };
   }
 
@@ -38,7 +41,7 @@ class Tours extends React.Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, name: "", address: "", price: "", description: "" })
+        this.setState({ books: res.data, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" })
       )
       .catch(err => console.log(err));
   };
@@ -67,6 +70,9 @@ class Tours extends React.Component {
         name: this.state.name,
         address: this.state.address,
         price: this.state.price,
+        qty: this.state.qty,
+        date: this.state.date,
+        time: this.state.time,
         description: this.state.description  
       })
         .then(res => this.loadBooks())
@@ -79,15 +85,12 @@ class Tours extends React.Component {
       <Container fluid>
         <Row>
         <Col size="md-12">
-            <Jumbotron>
-              <h1>Tours In Your Area</h1>
-              
-            </Jumbotron>
+              <h2 className="text-white">Tours In Your Area</h2>
             </Col>
             </Row>
 
       <Row>
-      <Col size="lg-8 md-6 sm-12 pb-6">
+      <Col size="md-8 sm-12 pb-6">
             {this.state.books.length ? (
                  <List>
                 
@@ -107,17 +110,21 @@ class Tours extends React.Component {
                    
                 // } 
                       <ListItem key={book._id} >
-                        <a href={"/tours/" + book._id}>  
+                         
                         {/* Seperate out Detail page or put switch statement in place 
                          so that when you go to the /tours/ + book_id page you do not see
                          an update or delete button when you are a customer*/}
                          <strong> 
 
-           {book.name} | {book.address} | $ {book.price} per person
-           
+                          Tour Name: {book.name} <br />
+                          Starting Location: {book.address} <br />
+                          Ticket Price: $ {book.price} per person <br />
+                          Tickets Available: {book.qty} <br />
+                          Date: {book.date} <br />
+                          Time: {book.time} AM <br />
 
                         </strong>
-                        </a> 
+                        <a href={"/tours/" + book._id}>More Details</a> 
                         <Link to={`/tours/book-now/${book._id}` }className="float-right" >Book Now</Link>
                         {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                         </ListItem>      

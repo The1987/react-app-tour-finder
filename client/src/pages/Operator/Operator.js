@@ -1,5 +1,5 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -15,6 +15,9 @@ class Operator extends React.Component {
       name: "",
       address: "",
       price: "",
+      qty: "",
+      date: "",
+      time: "",
       description: "",
       // selectedFile: ""
       // isUpdate: false
@@ -45,7 +48,7 @@ class Operator extends React.Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, name: "", address: "", price: "", description: "" })
+        this.setState({ books: res.data, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" })
       )
       .catch(err => console.log(err));
   };
@@ -78,6 +81,9 @@ class Operator extends React.Component {
         name: this.state.name,
         address: this.state.address,
         price: this.state.price,
+        qty: this.state.qty,
+        date: this.state.date,
+        time: this.state.time,
         description: this.state.description
       })
         .then(res => this.loadBooks())
@@ -92,9 +98,7 @@ class Operator extends React.Component {
       <Container fluid>
         <Row>
           <Col size="md-4 sm-12">
-            <Jumbotron>
-              <h1>Add Tour</h1>
-            </Jumbotron>
+              <h2 className="text-white">Add Tour</h2>
             <form>
 
               {/* Adding functionality to upload image to rEact.js
@@ -117,19 +121,46 @@ class Operator extends React.Component {
                 placeholder="Meet Up Address(required)"
               />
 
-              {/* Chris - I would like to make so only a number can be entered for the price.*/}
               <Input
+                type="number"
                 value={this.state.price}
                 onChange={this.handleInputChange}
                 name="price"
                 placeholder="Price ($ USD)"
+                pattern="[0-9]*"
               />
+
+              <Input
+                type="number"
+                value={this.state.qty}
+                onChange={this.handleInputChange}
+                name="qty"
+                placeholder="Number of Available Tickets"
+                pattern="[0-9]*"
+              />
+
+              <Input
+                value={this.state.date}
+                onChange={this.handleInputChange}
+                name="date"
+                placeholder="Date"
+              />
+
+              <Input
+                type="number"
+                value={this.state.time}
+                onChange={this.handleInputChange}
+                name="time"
+                placeholder="Time"
+              />
+
               <TextArea
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
                 placeholder="Tour Description"
               />
+
               <FormBtn
                 disabled={!(this.state.name && this.state.address)}
                 onClick={this.handleFormSubmit}
@@ -139,9 +170,7 @@ class Operator extends React.Component {
             </form>
           </Col>
           <Col size="md-8 sm-12">
-            <Jumbotron>
-              <h1>Preview Tour</h1>
-            </Jumbotron>
+              <h2 className="text-white">Preview Tour</h2>
             {this.state.books.length ? (
 
               <List>
@@ -153,7 +182,13 @@ class Operator extends React.Component {
                       <a href={"/operator/" + book._id}>
                         <strong>
 
-                          {book.name} | {book.address} | $ {book.price} per person
+                          Tour Name: {book.name} <br />
+                          Starting Location: {book.address} <br />
+                          Ticket Price: $ {book.price} per person <br />
+                          Tickets Available: {book.qty} <br />
+                          Date: {book.date} <br />
+                          Time: {book.time} AM <br />
+                          
 
                         </strong>
                       </a>
