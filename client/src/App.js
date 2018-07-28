@@ -5,8 +5,8 @@ import Operator from "./pages/Operator";
 import Tours from "./pages/Tours";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
-import BookNow from "./pages/BookNow";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -15,9 +15,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 // import { Route, Link } from 'react-router-dom' // might conflict
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
+// import Signup from './components/sign-up'
+// import LoginForm from './components/login-form'
+// import Navbar from './components/navbar'
 // import Home from './components/home'
 
 
@@ -59,7 +59,7 @@ class App extends Component {
     this.getUser()
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
   }
 
@@ -88,44 +88,53 @@ class App extends Component {
     return (
       <div className="App">
 
-         <Router>
-    <div>
-       <Nav/>    
-       <Switch>
-         <Route exact path="/" component={Home} />
-         <Route exact path="/operator" component={Operator} />
-         <Route exact path="/operator/:id" component={Detail} />
-        <Route exact path="/tours/:id" component={Detail} />
-         <Route exact path="/tours" component={Tours} />
-         <Route exact path="/tours/book-now/:id" component={BookNow} />
-         <Route exact path="/login" component={Login} />
-         <Route component={NoMatch} />
-       </Switch>
-       <Footer/>
-     </div>
-   </Router>;
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Join the party, {this.state.username}!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/"
-          component={Home} />
-        <Route
-          path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          path="/signup"
-          render={() =>
-            <Signup/>}
-        />
+        <Router>
+          <div>
+            <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+
+
+
+            {/* greet user if logged in: */}
+            {this.state.loggedIn &&
+              <p>Join the party, {this.state.username}!</p>
+            }
+
+
+
+            <Switch>
+              {/* Routes to different components */}
+
+              <Route exact path="/" component={Home} />
+              <Route exact path="/operator" component={Operator} />
+              <Route exact path="/operator/:id" component={Detail} />
+              <Route exact path="/tours/:id" component={Detail} />
+              <Route exact path="/tours" component={Tours} />
+              <Route exact path="/tours/book-now/:id" component={BookNow} />
+              <Route exact path="/login" component={Login} />
+
+              <Route
+                path="/login"
+                component={Login}
+              // render={() =>
+              //   <Login
+              //     updateUser={this.updateUser}
+              //   />}
+              />
+              <Route
+                path="/signup"
+                component={Signup}
+              // render={() =>
+              // <Signup />}
+
+              />
+
+              {/* <Route exact path="/login"  /> */}
+              {/* <Route exact path="/signup"  /> */}
+              <Route component={NoMatch} />
+            </Switch>
+            <Footer />
+          </div>
+        </Router>;
 
       </div>
     );

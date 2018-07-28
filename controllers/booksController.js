@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
-const db = require("../models");
+const db = require("../database/models");
 
 const bookFunctions = {
   findAll: function (req, res) {
