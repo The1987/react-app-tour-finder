@@ -21,15 +21,18 @@ class Tours extends React.Component {
       description: ""
     };
   }
+
+    // When the component mounts, load all books and save them to this.state.books
+    componentDidMount() {
+      this.loadBooks();
+    }
+    
 // manage state accross file changes
   fileChangedHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] })
   }
 
-  // When the component mounts, load all books and save them to this.state.books
-  componentDidMount() {
-    this.loadBooks();
-  }
+
 
   // Loads all books  and sets them to this.state.books
   loadBooks = () => {
