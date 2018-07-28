@@ -1,6 +1,7 @@
 .search-all {
   width: 100%;
-  
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 100;
   margin-top: 10%;
 }
 
@@ -8,6 +9,7 @@
   align-content: center;
   min-width: 50%;
   margin: auto;
+  opacity: 0.85;
 }
 
 .search-bar h2 {
@@ -23,15 +25,24 @@
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   border: 0px;
+  height: 50px;
 }
 
 .submit {
   width: 20%;
   min-width: 20%;
   /* height: 100%; */
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
   color: white;
-  background-color: rgb(6,101,217);
+  background-color: #3E609C;
   border-color: transparent;
+  height: 50px;
+}
+
+
+h2{
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 46px;
 }

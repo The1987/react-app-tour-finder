@@ -11,3 +11,27 @@
 li {
   list-style-type: none;
 }
+
+#main-logo {
+  height: 30px;
+  position: relative;
+  top: -5px;
+
+
+}
+
+#available-tours {
+  position: relative;
+  left: -20px;
+}
+
+.nav-link {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
+
+#main-modal {
+  height: 25px;
+  padding-right: 10px;
+  pointer: cursor;
+}
