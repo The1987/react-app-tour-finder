@@ -116,11 +116,13 @@ class Operator extends React.Component {
                 name="address"
                 placeholder="Meet Up Address(required)"
               />
+
+              {/* Chris - I would like to make so only a number can be entered for the price.*/}
               <Input
                 value={this.state.price}
                 onChange={this.handleInputChange}
                 name="price"
-                placeholder="Price ($)"
+                placeholder="Price ($ USD)"
               />
               <TextArea
                 value={this.state.description}

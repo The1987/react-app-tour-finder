@@ -8,6 +8,20 @@ import PresentGoogleMap from "../../components/PresentGoogleMap";
 import { List, ListItem } from "../../components/List";
 // import Math from "./Match";
 
+var divStyle = {
+    backgroundColor: 'white',
+    paddingTop: '10px',
+    marginBottom: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    height: '100%'
+};
+
+var colStyle = {
+    width: '180px',
+    padding: '2px',
+    borderBottom: '1px solid grey'
+}
 
 
 class BookNow extends React.Component {
@@ -59,62 +73,114 @@ class BookNow extends React.Component {
         }
     };
 
-    getPurchaseform = () => (
-        <Container fluid>
-            <Row>
-                <Col size="md-10">
-                    <Jumbotron>
-                        <h1>Almost Done!!!<br />
-                            Please Confirm Your Purchase below....</h1>
-                    </Jumbotron>
-                </Col>
-            </Row>
-            <article>
+    render() {
+        return (
+            <Container fluid>
+
                 <Row>
-                    <Col size="md-8 sm-12">
-                        <List>
-                            <ListItem>
-                                Name: {this.state.books.name}
-                                <br />
-                                Address: {this.state.books.address}
-                                <br />
-                                Price: {this.state.books.price}
-                                <br />
-                                <Input
-                                    value={this.state.Qty}
-                                    onChange={this.handleInputChange}
-                                    name="Qty"
-                                    Placeholder="Qty of tickets (required)"
-                                />
-                                <br />
-                                --------------------------------------
-                                <br />
-                                Your Total*: {this.state.books.price * this.state.Qty}
-                                {console.log("BookPrice:" + typeof this.state.books.price)}
-                                {console.log("Qty:" + typeof this.state.Qty)}
-                                <br />
-                                --------------------------------------
-                                </ListItem>
-                            <button className="confirm-btn" onClick={this.props.onClick}>
-                                Confirm
-                            </button>
-                        </List>
+                    <Col size="md-12">
+                        <Jumbotron>
+                            <h1>Almost Done!!!<br />
+                                Please Confirm Your Purchase below....</h1>
+                        </Jumbotron>
                     </Col>
                 </Row>
 
-            </article>
-            <Row>
-            </Row>
-            <PresentGoogleMap />
-        </Container>
-    );
+                <Row>
+                    <Col size="md-8 sm-12">
 
-    render() {
-        return (
-            this.getPurchaseform()
+                        <div style={divStyle}>
+                            <strong>Name:</strong> John Doe
+                            <br />
+
+                            <strong>Billing Address:</strong> {this.state.books.address}
+                            <br />
+
+                            <strong>You Are Purchasing</strong> 2 Tickets
+                            <br />
+                            <br />
+
+                            {/* <strong>Tour Stops:</strong>
+                        <ul>
+                            <li>Marvin's Wonderful House of Pancakes</li>
+                            <li>Marvin's Wonderful House of Pancakes</li>
+                            <li>Marvin's Wonderful House of Pancakes</li>
+                        </ul> */}
+
+                            <table>
+
+                                <tr>
+                                    <th style={colStyle}>Admission</th>
+                                    <th style={colStyle}>Price</th>
+                                    <th style={colStyle}>Qty</th>
+                                    <th style={colStyle}> Amount</th>
+                                </tr>
+
+                                <tr>
+                                    <td style={colStyle}>Senior (65+)</td>
+                                    <td style={colStyle}> $ {this.state.books.price} </td>
+                                    <td style={colStyle}><button>-</button>4<button>+</button></td>
+                                    <td style={colStyle}>$ <span>{this.state.books.price * 4}</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td style={colStyle}>Adult (18+)</td>
+                                    <td style={colStyle}> $ {this.state.books.price} </td>
+                                    <td style={colStyle}><button>-</button>2<button>+</button></td>
+                                    <td style={colStyle}>$ <span>{this.state.books.price * 2}</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td style={colStyle}>Kids (Under 18)</td>
+                                    <td style={colStyle}> $ {this.state.books.price} </td>
+                                    <td style={colStyle}><button>-</button>1<button>+</button></td>
+                                    <td style={colStyle}>$ <span>{this.state.books.price * 1}</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Ticket Total</td>
+                                    <td>$ XX.XX</td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Tax</td>
+                                    <td>$ XX.XX</td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>$ XX.XX</strong></td>
+                                </tr>
+
+                            </table >
+                            
+
+                            {console.log("BookPrice:" + typeof this.state.books.price)}
+                            {console.log("Qty:" + typeof this.state.Qty)}
+
+
+                            <br />
+                            <button className="btn-danger btn-block" onClick={this.props.onClick}>
+                                Confirm Purchase
+                            </button>
+
+                        </div>
+
+                    </Col>
+
+                    <Col size="sm-12 md-4">
+                        <PresentGoogleMap />
+                    </Col >
+
+                </Row>
+            </Container>
         );
     }
 }
-
 export default BookNow;
-

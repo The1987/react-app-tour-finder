@@ -37,7 +37,7 @@ class Signup extends Component {
 				if (!response.data.errmsg) {
 					console.log('successful signup')
 					this.setState({ //redirect to login page
-						redirectTo: '/login'
+						redirectTo: '/operator'
 					})
 				} else {
 					console.log('username already taken')
@@ -55,7 +55,7 @@ render() {
 
 		<Container fluid>
 		<Row>
-			<Col size="md-12">
+			<Col size="sm-12 md-6">
 				<Jumbotron>
 					<h1>Sign Up</h1>
 				</Jumbotron>
@@ -63,8 +63,8 @@ render() {
 		<div className="SignupForm">
 			<form className="form-horizontal">
 				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="username"></label>
+					<div className="col-1">
+						<label className="form-label text-white" htmlFor="username">Username</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
@@ -79,7 +79,7 @@ render() {
 				</div>
 				<div className="form-group">
 					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password"></label>
+						<label className="form-label text-white" htmlFor="password">Password</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
@@ -94,7 +94,7 @@ render() {
 				<div className="form-group ">
 					<div className="col-7"></div>
 					<button
-						className="btn btn-primary col-1 col-mr-auto"
+						className="btn btn-primary btn-block col-mr-auto"
 						onClick={this.handleSubmit}
 						type="submit"
 					>Sign up</button>

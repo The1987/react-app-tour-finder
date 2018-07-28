@@ -63,6 +63,9 @@ class Nav extends Component {
                                 <li className="nav-item">
                                     <a className="nav-link text-white" href="/signup">Sign Up</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="/operator">Dashboard</a>
+                                </li>
                                 
                             </ul>
                         )}
