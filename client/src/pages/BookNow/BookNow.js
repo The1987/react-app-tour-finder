@@ -37,15 +37,15 @@ class BookNow extends React.Component {
 
     }
 
-    handleTotalCalc = event => {
-        const {Total, value}  = parseInt(this.state.Qty.value) * parseInt(this.state.books.price.value);
-        const purchasedTotal = { ...this.state.books }
-        purchasedTotal[Total] = value;
-        this.setState({
-            [Total]: value
-        });
+    // handleTotalCalc = event => {
+    //     const {Total, value}  = parseInt(this.state.Qty.value) * parseInt(this.state.books.price.value);
+    //     const purchasedTotal = { ...this.state.books }
+    //     purchasedTotal[Total] = value;
+    //     this.setState({
+    //         [Total]: value
+    //     });
 
-    }
+    // }
 
     // onChange={e => onChange(i, parseInt(e.target.value) || 0)}
 

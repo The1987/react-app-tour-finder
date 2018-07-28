@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import BookNow from "./pages/BookNow";
 
 // PassPort
 import React, { Component } from 'react';
@@ -66,7 +67,7 @@ class App extends Component {
   getUser() {
     axios.get('/user/').then(response => {
       console.log('Get user response: ')
-      console.log(response.data)
+      // console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
