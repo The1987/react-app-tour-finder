@@ -83,7 +83,7 @@ const purchaseFunctions = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
-};
+}
 
 // Transaction api routes
 router.get("/api/books/purchase", purchaseFunctions.findAll)
