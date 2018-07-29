@@ -10,11 +10,14 @@ class ThankYou extends React.Component {
                     <Col>
                         <Jumbotron>
                             <h1>
-                                Thank you for your purchase
+                                Thank you for your purchase!!!
                             </h1>
                         </Jumbotron>
                     </Col>
                     <Col>
+                        <Link to="../../../../">Return Home</Link>
+                        <br />
+                        <Link to="../../../tours">Return to Tours</Link>
                         <PresentGoogleMaps />
                     </Col>
                 </Row>

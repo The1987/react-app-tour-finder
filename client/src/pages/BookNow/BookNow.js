@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
-import PresentGoogleMap from "../../components/PresentGoogleMap";
+// import PresentGoogleMap from "../../components/PresentGoogleMap";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 // import Math from "./Match";
@@ -99,17 +99,20 @@ class BookNow extends React.Component {
     };
 
     handlePurchaseSubmit = event => {
+        console.log("test-name: " + this.state.books.name);
+        console.log("test-address: " + this.state.books.address);
         event.preventDefault();
-        if (this.state.name && this.state.address && this.state.price) {
+        if (this.state.books.name && this.state.books.address) {
             API.purchasePost({
-                name: this.state.name,
-                address: this.state.address,
-                price: this.state.price
+                name: this.state.books.name,
+                address: this.state.books.address,
+                price: this.state.books.price
             })
                 .then(res => this.setState({
                     isConfirmed: true, isPurchased: true
                 }))
                 .catch(err => console.log(err));
+
         }
     };
 
@@ -199,8 +202,8 @@ class BookNow extends React.Component {
                         <br />
 
 
-                        <button className="btn-danger btn-block" onClick={this.handleConfirmBook}>Continue to Purchase</button>
-                        <Link to="./pages/tours" className="btn-danger btn-block" onClick={this.onClick}>
+                        <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}>Continue to Purchase</button>
+                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.onClick}>
                             Back </Link>
                     </div>
                 </Col>
@@ -221,7 +224,7 @@ class BookNow extends React.Component {
                             3. Thank You For Your Purchase
                     </span>
                     </h4>
-              </Col>
+                </Col>
             </Row>
 
             <Row>
@@ -274,13 +277,13 @@ class BookNow extends React.Component {
                             </h3>
                         </ListItem>
                     </List>
-           </Col>
-        </Row>
+                </Col>
+            </Row>
 
-        <Row>
-           <Col size="md-12">
-                <form> 
-                    <Input
+            <Row>
+                <Col size="md-12">
+                    <form>
+                        <Input
                             type="number"
                             value={this.state.qty}
                             onChange={this.handleInputChange}
@@ -288,26 +291,26 @@ class BookNow extends React.Component {
                             placeholder="Number of Available Tickets"
                             pattern="[0-9]*"
                         />
-                         <Input 
-                             type="number"
+                        <Input
+                            type="number"
                             value={this.state.qty}
                             onChange={this.handleInputChange}
                             name="qty"
                             placeholder="Number of Available Tickets"
                             pattern="[0-9]*"
                         />
-                         <Input
-                             value={this.state.date}
+                        <Input
+                            value={this.state.date}
                             onChange={this.handleInputChange}
                             name="date"
                             placeholder="Date"
                         />
-                        <button className="btn-danger btn-block" onClick={this.handlePurchaseSubmit}>
+                        <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
                             Purchase
                             </button>
-                            <Link to="#" className="btn-danger btn-block" onClick={this.handleBackBook}> Back </Link>
+                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Back </Link>
 
-                 </form>
+                    </form>
                 </Col>
             </Row>
         </Container>

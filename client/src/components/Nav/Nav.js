@@ -36,8 +36,8 @@ class Nav extends Component {
         return (
   
             <nav className="navbar navbar-expand-sm navbar-inverse">
-            <img id="main-modal" src={MainModal} />
-                <a className="navbar-brand text-white" href="/"><img id="main-logo" src={MainLogo} /></a>
+            <img id="main-modal" src={MainModal} alt="MainModal" />
+                <a className="navbar-brand text-white"  href="/"><img id="main-logo" src={MainLogo} alt="Tour Finder Logo"/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
