@@ -1,11 +1,13 @@
 import React from "react";
-// import Jumbotron from "../../components/Jumbotron";
+import NavDash from "../../components/NavDash";
 import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, PhotoInput, TextArea, FormBtn } from "../../components/Form";
+import { Link } from "react-router-dom";
+import "./Operator.css";
 
 class Operator extends React.Component {
   constructor(props) {
@@ -97,6 +99,7 @@ class Operator extends React.Component {
     return (
       <Container fluid>
         <Row>
+          <NavDash/>
           <Col size="md-4 sm-12">
               <h2 className="text-white">Add Tour</h2>
             <form>
@@ -162,6 +165,7 @@ class Operator extends React.Component {
               />
 
               <FormBtn
+                className="form-btn"
                 disabled={!(this.state.name && this.state.address)}
                 onClick={this.handleFormSubmit}
               >
@@ -179,20 +183,34 @@ class Operator extends React.Component {
                   return (
 
                     <ListItem key={book._id}>
-                      <a href={"/operator/" + book._id}>
-                        <strong>
+                      <Row>
+                        <Col size="sm-2 md-2" >
+                          <div className="image">
+                            <p>Image</p>
+                          </div>
+                        </Col>
 
-                          Tour Name: {book.name} <br />
-                          Starting Location: {book.address} <br />
-                          Ticket Price: $ {book.price} per person <br />
-                          Tickets Available: {book.qty} <br />
-                          Date: {book.date} <br />
-                          Time: {book.time} AM <br />
+                        <Col size="sm-7 md-7">
+                          <strong>Tour Name:</strong> {book.name} <br />
+                          <strong> Starting Location:</strong>  {book.address} <br />
+                          <a href={"/tours/" + book._id}>More Details</a>
+
+                        </Col>
+
+                        <Col size="sm-3 md-3" >
+                        <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                         <div className="price">
+                            <span className="ad-price">
+                              <strong> $ {book.price} </strong>
+                            </span>
+                            <br />
+                            <span className="per-price"> per person </span>
+                          </div>
+                            <br />
+                            <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
                           
-
-                        </strong>
-                      </a>
-                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                        </Col>
+                      </Row>
                     </ListItem>
                   );
                 })}

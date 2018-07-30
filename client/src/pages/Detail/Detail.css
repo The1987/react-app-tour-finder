@@ -1,4 +1,8 @@
-.tour-details, .map-details {
+.tour-details {
    background-color: white; 
    width: 100%;
+   border-radius: 1%;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 20px;
 }

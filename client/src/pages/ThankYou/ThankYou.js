@@ -19,6 +19,7 @@ class ThankYou extends React.Component {
                     </Col>
                 </Row>
                 <Row>
+                    
                 </Row>
             </Container>
         );

@@ -1,0 +1,23 @@
+.navbar {
+  /* background-color: #ff5e0e; */
+  background-color: #ccc;
+  width: 100%;
+  /* border: 0;
+  border-radius: 0; */
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  margin-bottom: 10px;
+}
+
+a.nav-link:hover {
+  background-color: rgb(221, 50, 50);
+  height: 100%;
+}
+
+li {
+  list-style-type: none;
+}
+
+.nav-item {
+  font-size: 16px;
+}

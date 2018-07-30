@@ -11,3 +11,7 @@
 li {
   list-style-type: none;
 }
+
+.nav-item {
+  font-size: 16px;
+}

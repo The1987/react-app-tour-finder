@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
-import PresentGoogleMap from "../../components/PresentGoogleMap";
+// import PresentGoogleMap from "../../components/PresentGoogleMap";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 // import Math from "./Match";

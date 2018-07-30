@@ -7,6 +7,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import PresentGoogleMaps from "../../components/PresentGoogleMap";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
+import "./Tours.css";
 
 
 
@@ -25,12 +26,12 @@ class Tours extends React.Component {
     };
   }
 
-    // When the component mounts, load all books and save them to this.state.books
-    componentDidMount() {
-      this.loadBooks();
-    }
-    
-// manage state accross file changes
+  // When the component mounts, load all books and save them to this.state.books
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  // manage state accross file changes
   fileChangedHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] })
   }
@@ -73,7 +74,7 @@ class Tours extends React.Component {
         qty: this.state.qty,
         date: this.state.date,
         time: this.state.time,
-        description: this.state.description  
+        description: this.state.description
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -84,63 +85,61 @@ class Tours extends React.Component {
     return (
       <Container fluid>
         <Row>
-        <Col size="md-12">
-              <h2 className="text-white">Tours In Your Area</h2>
-            </Col>
-            </Row>
-
-      <Row>
-      <Col size="md-8 sm-12 pb-6">
-            {this.state.books.length ? (
-                 <List>
-                
-                  {this.state.books.map(book => {
-                    
-                    return (
-
-                  //     <div key={book._id}>
-                  //     <h1></h1>
-                  //     <a href={"/tours/" + book._id}> 
-
-                  //     <p>{book.title} <br /> {book.author} <br /> {book.location} </p></a>
-                  //     <button>Book Now</button>
-                  //     </div>
-                     
-                  //  );
-                   
-                // } 
-                      <ListItem key={book._id} >
-                         
-                        {/* Seperate out Detail page or put switch statement in place 
-                         so that when you go to the /tours/ + book_id page you do not see
-                         an update or delete button when you are a customer*/}
-                         <strong> 
-
-                          Tour Name: {book.name} <br />
-                          Starting Location: {book.address} <br />
-                          Ticket Price: $ {book.price} per person <br />
-                          Tickets Available: {book.qty} <br />
-                          Date: {book.date} <br />
-                          Time: {book.time} AM <br />
-
-                        </strong>
-                        <a href={"/tours/" + book._id}>More Details</a> 
-                        <Link to={`/tours/book-now/${book._id}` }className="float-right" >Book Now</Link>
-                        {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-                        </ListItem>      
-                    );
-                
-                    
-                   })} 
-                 </List>
-             ) : (
-                <h3 className="text-white">No Results to Display</h3> 
-              )}
-               
+          <Col size="md-12">
+            <h2 className="text-white">Tours In Your Area</h2>
           </Col>
-          <Col size="lg-4 md-4 sm-12">
-      <PresentGoogleMaps />
-      </Col>
+        </Row>
+
+        <Row className="tour-list">
+          <Col size="md-8 sm-12 pb-6" >
+
+            {this.state.books.length ? (
+              <List>
+                {this.state.books.map(book => {
+                  return (
+                    <ListItem key={book._id} >
+                      <Row>
+                        <Col size="sm-2 md-2" >
+                          <div className="image">
+                            <p>Image</p>
+                          </div>
+                        </Col>
+
+                        <Col size="sm-7 md-7">
+                          <strong>Tour Name:</strong> {book.name} <br />
+                          <strong> Starting Location:</strong>  {book.address} <br />
+                          <a href={"/tours/" + book._id}>More Details</a>
+
+                        </Col>
+
+                        <Col size="sm-3 md-3" >
+                         <div className="price">
+                            <span className="ad-price">
+                              <strong> $ {book.price} </strong>
+                            </span>
+                            <br />
+                            <span className="per-price"> per person </span>
+                          </div>
+                            <br />
+                            <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
+                          
+                        </Col>
+                      </Row>
+                    </ListItem>
+                  );
+
+
+                })}
+              </List>
+
+            ) : (
+                <h3 className="text-white">No Results to Display</h3>
+              )}
+          </Col>
+
+          <Col size="lg-4 md-4 sm-12" >
+            <PresentGoogleMaps />
+          </Col>
         </Row>
       </Container>
     );

@@ -3,7 +3,7 @@ import "./Detail.css";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 // import BookBtn from "../../components/BookBtn";
 import PresentGoogleMap from "../../components/PresentGoogleMap";
@@ -59,12 +59,12 @@ class Detail extends React.Component {
 
       <Row>
         <Col size="md-12">
-          <Jumbotron>
+         
             <h1>
               {this.state.books.name} <br />
               {this.state.books.address}
             </h1>
-          </Jumbotron>
+          
         </Col>
       </Row>
 
@@ -82,18 +82,13 @@ class Detail extends React.Component {
             About This Tour: {this.state.books.description} <br />
           </p>
           </article>
+          <Link className="book-btn btn btn-success btn-block" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+
         </Col>
 
         <Col size="md-4 sm-12">
-          <article className="map-details">
             <PresentGoogleMap />
-          </article>
         </Col >
-
-        <Col size="md-12">
-          <Link className="book-btn btn btn-success btn-block" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
-          {/* <BookBtn /> */}
-        </Col>
       </Row>
 
       <Row>
@@ -109,9 +104,9 @@ class Detail extends React.Component {
     <Container fluid>
       <Row>
         <Col size="md-12">
-          <Jumbotron>
+          
             <h1>Update Your Tour</h1>
-          </Jumbotron>
+          
         </Col>
       </Row>
       <Row>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 // import { Redirect } from 'react-router-dom'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import "./Nav.css";
 
 class Nav extends Component {
     constructor() {
@@ -31,16 +32,25 @@ class Nav extends Component {
         console.log(this.props);
 
         return (
-  
+
             <nav className="navbar navbar-expand-sm navbar-inverse">
-                <a className="navbar-brand text-white" href="/">Tour Booker</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <a className="navbar-brand text-white" href="/">Book This Tour</a>
+                {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
-                </button>
-                <div id="navbarNavDropdown" className="navbar-collapse collapse">
+                </button> */}
+                <div id="navbarNavDropdown" className="navbar-collapse collapse ">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a href="/tours" className="nav-link text-white" >Available Tours <span className="sr-only">(current)</span></a>
+                            <a href="/tours" className="nav-link text-white" >
+                            <i className="fas fa-search"> </i> Local Favorites <span className="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item active">
+                            <a href="/tours" className="nav-link text-white" >
+                            <i className="fas fa-utensils"></i> Food <span className="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item active">
+                            <a href="/tours" className="nav-link text-white" >
+                            <i className="fas fa-cocktail"></i> Beer & Wine<span className="sr-only">(current)</span></a>
                         </li>
 
                     </ul>
@@ -49,9 +59,9 @@ class Nav extends Component {
                         <section className="navbar-section">
                             <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                 <span className="text-secondary">Logout</span></Link>
-                                <li className="nav-item">
-                                    <a className="nav-link text-white" href="/operator">Dashboard</a>
-                                </li>
+                            <li className="nav-item">
+                                <a className="nav-link text-white" href="/operator">Dashboard</a>
+                            </li>
                         </section>
 
                     ) : (
@@ -59,14 +69,14 @@ class Nav extends Component {
                                 <li className="nav-item">
                                     <a className="nav-link text-white" href="/login">Login</a>
                                 </li>
-                                
+
                                 <li className="nav-item">
                                     <a className="nav-link text-white" href="/signup">Sign Up</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-white" href="/operator">Dashboard</a>
+                                    <a className="nav-link text-white" href="/operator">-></a>
                                 </li>
-                                
+
                             </ul>
                         )}
                 </div>
@@ -74,4 +84,4 @@ class Nav extends Component {
         );
     }
 }
-        export default Nav;
+export default Nav;
