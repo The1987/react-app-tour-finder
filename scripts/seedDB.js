@@ -13,6 +13,7 @@ mongoose.connect(
 
 const bookSeed = [
   {
+    pictures: [],
     name: "Andrew Hatfield's Food Tour Of Jersey City",
     address: "70 Sip Ave, Jersey City, NJ 07306",
     price: 10,
@@ -23,6 +24,7 @@ const bookSeed = [
     // date: new Date(Date.now())
   },
   {
+      pictures: [],
       name: "Small Group Central Park Bike Tour",
       address: "Near Central Park",
       price: 20,
@@ -33,6 +35,7 @@ const bookSeed = [
       // date: new Date(Date.now())
     },
     {
+      pictures: [],
       name: "Small Group Walking Tour of New York City Architecture",
       address: "Tudor City at 2nd Avenue",
       price: 35,
@@ -43,6 +46,7 @@ const bookSeed = [
       // date: new Date(Date.now())
     },
     {
+      pictures: [],
       name: "Boroughs of the Dead: Macabre New York City Walking Tour",
       address: "131 East 10th Street, New York, NY",
       price: 45,

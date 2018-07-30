@@ -40,7 +40,9 @@
     "react-devtools": "^3.2.3",
     "react-dom": "^16.0.0",
     "react-google-maps": "^9.4.5",
-    "react-router-dom": "^4.1.2"
+    "react-images-upload": "^1.2.0",
+    "react-router-dom": "^4.1.2",
+    "react-star-rating": "^1.4.2"
   },
   "proxy": {
     "/api": {

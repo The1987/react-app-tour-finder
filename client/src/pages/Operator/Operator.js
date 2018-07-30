@@ -8,11 +8,13 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, PhotoInput, TextArea, FormBtn } from "../../components/Form";
 import { Link } from "react-router-dom";
 import "./Operator.css";
+import ImageUploader from 'react-images-upload';
 
 class Operator extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
+      pictures: [],
       books: [],
       name: "",
       address: "",
@@ -80,6 +82,7 @@ class Operator extends React.Component {
     event.preventDefault();
     if (this.state.name && this.state.address) {
       API.saveBook({
+        pictures: this.state.pictures,
         name: this.state.name,
         address: this.state.address,
         price: this.state.price,
@@ -108,7 +111,8 @@ class Operator extends React.Component {
               Source: https://academind.com/learn/react/snippets/image-upload/#select-a-file*/}
               {/* <PhotoInput type="file" onChange={this.fileChangedHandler} /> */}
               {/* <button onClick={this.uploadHandler}>Upload!</button> */}
-
+              
+              <ImageUploader />
 
 
               <Input
@@ -186,7 +190,7 @@ class Operator extends React.Component {
                       <Row>
                         <Col size="sm-2 md-2" >
                           <div className="image">
-                            <p>Image</p>
+                            {book.pictures}
                           </div>
                         </Col>
 

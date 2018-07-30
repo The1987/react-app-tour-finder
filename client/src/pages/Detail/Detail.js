@@ -7,12 +7,14 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 // import BookBtn from "../../components/BookBtn";
 import PresentGoogleMap from "../../components/PresentGoogleMap";
-
+// import ImageUploader from "../../components/ImageUploader";
+import ImageUploader from 'react-images-upload';
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pictures: {},
       books: {},
       isUpdate: false,
     };
@@ -71,6 +73,11 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-8 sm-12">
           <article className="tour-details">
+          <div>
+          Tour Pictures: {this.state.books.pictures}
+          Tour Pictures: {this.state.books.picture}
+          
+          </div>
           <p>
             Tour Name: {this.state.books.name} <br />
             Starting Location: {this.state.books.address} <br />
@@ -112,6 +119,7 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-10 md-offset-1">
           <form>
+            <ImageUploader />
             <Input
               value={this.state.books.name}
               onChange={this.handleInputChange}

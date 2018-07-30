@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import BookNow from "./pages/BookNow";
 
 // PassPort
@@ -133,7 +133,7 @@ class App extends Component {
               {/* <Route exact path="/signup"  /> */}
               <Route component={NoMatch} />
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
 

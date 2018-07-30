@@ -8,7 +8,7 @@ import { List, ListItem } from "../../components/List";
 import PresentGoogleMaps from "../../components/PresentGoogleMap";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./Tours.css";
-
+import FormComponent from "../../components/Ratings";
 
 
 class Tours extends React.Component {
@@ -85,6 +85,7 @@ class Tours extends React.Component {
     return (
       <Container fluid>
         <Row>
+        <FormComponent />
           <Col size="md-12">
             <h2 className="text-white">Tours In Your Area</h2>
           </Col>
@@ -113,6 +114,7 @@ class Tours extends React.Component {
                         </Col>
 
                         <Col size="sm-3 md-3" >
+                        
                          <div className="price">
                             <span className="ad-price">
                               <strong> $ {book.price} </strong>
