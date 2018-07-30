@@ -8,12 +8,14 @@ import { Input } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 import aws from 'aws-sdk';
+
 // import AWS from "../../components/AWS";
 // import Math from "./Match";
 // Load the AWS SDK for Node.js
 
-const Amazon_accessKeyId = 'AKIAIXVDTIGVRWLMNVEQ';
-const Amazon_secretAccessKey = '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';
+const Config=require('Config')
+const Amazon_accessKeyId = fetchData(Config.Amazon_accessKeyId);
+const Amazon_secretAccessKey = fetchData(Config.Amazon_secretAccessKey);
 
 var divStyle = {
     backgroundColor: 'white',
