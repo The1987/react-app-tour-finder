@@ -7,7 +7,13 @@ import { Input } from "../../components/Form";
 // import PresentGoogleMap from "../../components/PresentGoogleMap";
 import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
+import aws from 'aws-sdk';
+// import AWS from "../../components/AWS";
 // import Math from "./Match";
+// Load the AWS SDK for Node.js
+
+const Amazon_accessKeyId = 'AKIAIXVDTIGVRWLMNVEQ';
+const Amazon_secretAccessKey = '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';
 
 var divStyle = {
     backgroundColor: 'white',
@@ -37,13 +43,15 @@ class BookNow extends React.Component {
             qty: "",
             date: "",
             time: "",
+            isConfirmed: false,
+            isPurchased: false
         };
-    }
+    };
 
 
     fileChangeHandler = (event) => {
         this.setState({ selectedFile: event.target.files[0] })
-    }
+    };
 
     // default function to populate content
     componentDidMount() {
@@ -52,7 +60,7 @@ class BookNow extends React.Component {
             .catch(err => console.log(err));
         console.log(this.state.books);
         console.log("BookPrice:" + typeof this.state.books.price)
-    }
+    };
 
     // handleInputChange = event => {
     //     const { Qty, value } = event.target;
@@ -75,16 +83,20 @@ class BookNow extends React.Component {
         });
     };
 
+    // resetOperator() {
+    //         this.setState({ books: {}, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" , isConfirmed: false, isPurchased: false})
+    //       .catch(err => console.log(err));
+    //   };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.books.Qty) {
-            API.purchaseBook(this.props.match.params.id,
-                this.state.isPurchased)
-                .then(res => this.setState({ isPurchased: true }))
-                .catch(err => console.log(err));
-        }
-    };
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     if (this.state.books.Qty) {
+    //         API.purchaseBook(this.props.match.params.id,
+    //             this.state.isPurchased)
+    //             .then(res => this.setState({ isPurchased: true }))
+    //             .catch(err => console.log(err));
+    //     }
+    // };
 
     handleUpdate(isUpdate) {
         this.setState({ isUpdate: isUpdate })
@@ -98,6 +110,69 @@ class BookNow extends React.Component {
         this.setState({ isConfirmed: false })
     };
 
+    sendEmail() {
+        aws.config.update({
+            region: 'us-east-1',
+            accessKeyId: Amazon_accessKeyId,
+            secretAccessKey: Amazon_secretAccessKey,
+        });
+        const ses = new aws.SES({ apiVersion: 'latest' });
+        return new Promise((resolve, reject) => {
+            ses.sendEmail(
+                {
+                    Source: 'developers.act@gmail.com',
+                    /* required */
+                    Destination: {
+                        CcAddresses: [
+                            'andrewmflak@gmail.com'
+
+                            /* more CC email addresses */
+                        ],
+                        ToAddresses: [
+                            'andrewmflak@gmail.com',
+
+                            /* more To email addresses */
+                        ]
+                    },
+                    Message: {
+                        Subject: {
+                            Data: 'Tour Purchase Confirmation',
+                        },
+                        Body: {
+                            Html: {
+                                Data: `
+                                <h1> 
+                                Tour Finder Purchase Confirmation
+                                </h1>
+                                <p>
+                                    Thank you for your purchase of "placeholder".
+                                    </p>
+                                    <p>
+                                    Your card has now been billed for this purchase and the operator has been notified.
+                                    </p>
+                                    <p>
+                                    Please make sure to rate your tour experience!
+                                        </p>`,
+                            },
+                        },
+                    },
+                    ReplyToAddresses: [
+                        'developers.act@gmail.com',
+                    ]
+                },
+                (err, info) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(info);
+                        console.log(info);
+                    }
+                },
+            );
+        });
+    };
+
+
     handlePurchaseSubmit = event => {
         console.log("test-name: " + this.state.books.name);
         console.log("test-address: " + this.state.books.address);
@@ -110,11 +185,15 @@ class BookNow extends React.Component {
             })
                 .then(res => this.setState({
                     isConfirmed: true, isPurchased: true
-                }))
+                }),
+                    this.sendEmail(),
+                    console.log(this),
+            )
                 .catch(err => console.log(err));
 
         }
     };
+
 
     // Step 1. Booking Confirmation
     getConfirmationForm = () => (
@@ -320,6 +399,7 @@ class BookNow extends React.Component {
         if (this.state.isConfirmed === true) return this.getPurchaseForm();
         else return this.getConfirmationForm();
     }
-}
+};
+
 
 export default BookNow;

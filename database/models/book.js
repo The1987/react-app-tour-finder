@@ -5,7 +5,12 @@ const bookSchema = new Schema({
   name: { type: String, required: true },
   address: { type: String, required: true },
   price: { type: Number, required: true },
-  description: String,
+  qty: { type: Number, required: false },
+  date: {type: Date, required: false },
+  time: {type: String, required: false },
+  description: {type: String, required: false}
+
+
   // selectedFile: { type: FormData},
   // date: { type: Date, default: Date.now }
 

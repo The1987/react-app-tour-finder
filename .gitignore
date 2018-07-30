@@ -63,3 +63,6 @@ typings/
 #vs share
 .vs.slnx.sqlite
 
+#DS_Store
+.DS_Store
+
