@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
 // import PresentGoogleMap from "../../components/PresentGoogleMap";
-import { List, ListItem } from "../../components/List";
+// import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 import aws from 'aws-sdk';
 
@@ -183,257 +183,273 @@ class BookNow extends React.Component {
         }
     };
 
-
-    // Step 1. Booking Confirmation
-    getConfirmationForm = () => (
-        <Container fluid>
-            <Row>
-
-                <Col size="md-8">
-                    <div className="divStyle">
-                        <h4>Tour Information</h4>
-                        <strong>Tour Name:</strong> {this.state.books.name} <br />
-                        <strong>Tour Date:</strong> {this.state.books.date} <br />
-                        <strong>Start Location:</strong> {this.state.books.address} <br />
-                        <strong>Start Time:</strong> {this.state.books.time}
-                    </div>
-
-                    <div className="divStyle">
-                        <h4>Billing Information</h4>
-                        <form>
-                            <Input
-                                // value={this.state.billname}
-                                onChange={this.handleInputChange}
-                                // name="billname"
-                                placeholder="Full Name"
-                            />
-                            <Input
-                                // value={this.state.billemail}
-                                onChange={this.handleInputChange}
-                                // name="billemail"
-                                placeholder="Email"
-                            />
-                            <Input
-                                type="number"
-                                // value={this.state.billphone}
-                                onChange={this.handleInputChange}
-                                // name="billphone"
-                                placeholder="Phone Number"
-                                pattern="[0-9]*"
-                            />
-                            <Input
-                                type="number"
-                                // value={this.state.billzip}
-                                onChange={this.handleInputChange}
-                                // name="billzip"
-                                placeholder="Zipcode"
-                                pattern="[0-9]*"
-                            />
-                            <Input
-                                // value={this.state.billaddress1}
-                                onChange={this.handleInputChange}
-                                name="billaddress1"
-                                placeholder="Address Line 1"
-                            />
-                            <Input
-                                // value={this.state.billaddress2}
-                                onChange={this.handleInputChange}
-                                name="billaddress2"
-                                placeholder="Address Line 2"
-                            />
-
-                            <Input
-                                // value={this.state.billcity}
-                                onChange={this.handleInputChange}
-                                name="billcity"
-                                placeholder="City"
-                            />
-                        </form>
-                    </div>
-
-                    <div className="divStyle">
-                        <h4>Payment Information</h4>
-                        <p>Stripe goes here</p>
-                    </div>
-
-                </Col>
-
-                <Col size="md-4" className="well">
-                    <div className="divStyle">
-                        <h4>Cart</h4>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>Admission</th>
-                                    <th>Price</th>
-                                    <th>Qty</th>
-                                    <th> Amount</th>
-                                </tr>
-                                <tr>
-                                    <td>Adult (18+)</td>
-                                    <td>$ {this.state.books.price} </td>
-                                    <td>
-                                        <Input
-                                            type="number"
-                                            onChange={this.handleInputChange}
-                                            name="qty"
-                                            placeholder="Qty"
-                                            pattern="[0-9]*"
-                                        />
-                                    </td>
-                                    <td>$
-
-                                  {this.state.books.price * this.state.books.qty}
-
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Ticket Total</td>
-                                    <td>$ </td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Tax</td>
-                                    <td>$ XX.XX</td>
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td><strong>Total</strong></td>
-                                    <td><strong>$ XX.XX</strong></td>
-                                </tr>
-                            </tbody>
-                        </table >
-                    </div>
-                </Col>
-
-
-
-
-                <Col size="md-8">
-                    <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}>Buy Now</button>
-                    <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.onClick}>
-                        Previous </Link>
-                </Col>
-
-            </Row>
-        </Container>
-    );
-
-    // Step 2. Checkout
-    getPurchaseForm = () => (
-        <Container fluid>
-            <Row>
-                <Col size="md-12">
-                    <h4 className="text-white">
-                        <span color="grey">
-                            1. Confirm Tour Selection </span>
-                        2. Purchase Tour
-                        <span color="grey">
-                            3. Thank You For Your Purchase
-                    </span>
-                    </h4>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col size="md-12">
-                    <List>
-                        <ListItem>
-                            <h2>
-                                <strong>
-                                    Name:
-                                </strong>
-                                <br />
-                                {this.state.books.name}
-                                <br />
-                            </h2>
-                            <h4>
-                                <strong>
-                                    Operator:
-                                </strong>
-                                <br />
-                            </h4>
-                            <br />
-                            <h4>
-                                <strong>
-                                    Address:
-                                </strong>
-                                <br />
-                                {this.state.books.address}
-                                <br />
-                            </h4>
-                            <h4>
-                                <strong>
-                                    Price:
-                                </strong>
-                                <br />
-                                $ {this.state.books.price}
-                                <br />
-                            </h4>
-                            <h4>
-                                Quantity:
-                                <br />
-                                {this.state.books.Qty}
-                                <br />
-                            </h4>
-                            <h3>
-                                <br />
-                                <strong>
-                                    Total:
-                                </strong>
-                                <br />
-                            </h3>
-                        </ListItem>
-                    </List>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col size="md-12">
-                    <form>
-                        <Input
-                            type="number"
-                            value={this.state.qty}
-                            onChange={this.handleInputChange}
-                            name="qty"
-                            placeholder="Number of Available Tickets"
-                            pattern="[0-9]*"
-                        />
-                        <Input
-                            type="number"
-                            value={this.state.qty}
-                            onChange={this.handleInputChange}
-                            name="qty"
-                            placeholder="Number of Available Tickets"
-                            pattern="[0-9]*"
-                        />
-                        <Input
-                            value={this.state.date}
-                            onChange={this.handleInputChange}
-                            name="date"
-                            placeholder="Date"
-                        />
-                        <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
-                            Purchase
-                            </button>
-                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
-
-                    </form>
-                </Col>
-            </Row>
-        </Container>
-    );
-
     render() {
-        if (this.state.isConfirmed === true) return this.getPurchaseForm();
-        else return this.getConfirmationForm();
+        return (
+            // getConfirmationForm = () => (
+            <Container fluid>
+                <Row>
+                    <Col size="md-7">
+                        <div className="divStyle tour-info">
+                            <h4>Tour Information</h4>
+                            <strong>Tour Name:</strong> {this.state.books.name} <br />
+                            <strong>Tour Date:</strong> {this.state.books.date} <br />
+                            <strong>Start Location:</strong> {this.state.books.address} <br />
+                            <strong>Start Time:</strong> {this.state.books.time}
+                        </div>
+
+                        <div className="divStyle bill-info">
+                            <h4>Billing Information</h4>
+                            <form>
+                                <Input size="sm-2"
+                                    // value={this.state.billname}
+                                    onChange={this.handleInputChange}
+                                    // name="billname"
+                                    placeholder="Full Name"
+                                />
+                                <Input
+                                    type="email"
+                                    // value={this.state.billemail}
+                                    onChange={this.handleInputChange}
+                                    // name="billemail"
+                                    placeholder="Email"
+                                />
+                                <Input
+                                    type="tel"
+                                    // value={this.state.billphone}
+                                    onChange={this.handleInputChange}
+                                    // name="billphone"
+                                    placeholder="Phone Number"
+                                    pattern="[0-9]*"
+                                />
+
+                                <Input
+                                    // value={this.state.billaddress1}
+                                    onChange={this.handleInputChange}
+                                    name="billaddress1"
+                                    placeholder="Address Line 1"
+                                />
+                                <Input
+                                    // value={this.state.billaddress2}
+                                    onChange={this.handleInputChange}
+                                    name="billaddress2"
+                                    placeholder="Address Line 2"
+                                />
+
+                                <Row>
+                                    <Col size="sm-12 md-4">
+                                <Input
+                                    // value={this.state.billcity}
+                                    onChange={this.handleInputChange}
+                                    name="billcity"
+                                    placeholder="City"
+                                />
+                                </Col>
+
+                                <Col size="sm-12 md-4">
+
+                                <Input
+                                    type="number"
+                                    // value={this.state.billzip}
+                                    onChange={this.handleInputChange}
+                                    // name="billzip"
+                                    placeholder="Zipcode"
+                                    pattern="[0-9]*"
+                                />
+                                </Col>
+                                <Col size="sm-12 md-4">
+                                {/* <Input
+                                type="select" 
+                                name="select" ></Input
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            > */}
+                            </Col>
+                            </Row>
+                            </form>
+                        </div>
+
+                        <div className="divStyle pay-info">
+                            <h4>Payment Information</h4>
+                            <p>Stripe goes here</p>
+                        </div>
+
+                    </Col>
+
+                    <Col size="md-5">
+                        <div className="divStyle cart-info">
+                            <h4>Cart</h4>
+                            <table>
+                                <tbody>
+                                    <tr className="line">
+                                        <th>Admission</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
+                                        <th> Amount</th>
+                                    </tr>
+                                    <tr className="line">
+                                        <td>General</td>
+                                        <td>$ {this.state.books.price} </td>
+                                        <td>
+                                            <Input
+                                                className="qty"
+                                                type="number"
+                                                onChange={this.handleInputChange}
+                                                name="qty"
+                                                pattern="[0-9]*"
+                                            />
+                                        </td>
+                                        <td>$ {this.state.books.price * this.state.books.qty}</td>
+                                    </tr>
+
+                                    <tr className="total">
+                                        <td></td>
+                                        <td></td>
+                                        <td>Ticket Total</td>
+                                        <td>$ </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Tax</td>
+                                        <td>$ XX.XX</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <th>Total</th>
+                                        <th>$ XX.XX</th>
+                                    </tr>
+                                </tbody>
+                            </table >
+                        </div>
+                    </Col>
+
+
+
+
+                    <Col size="md-7">
+                        <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
+                        <Link to="../../tours" className="book-btn btn btn-danger btn-block previous-btn" onClick={this.onClick}>
+                            Previous </Link>
+                    </Col>
+
+                </Row>
+            </Container>
+        );
+
+
+        //     getPurchaseForm = () => (
+        // <Container fluid>
+        //         <Row>
+        //             <Col size="md-12">
+        //                 <h4 className="text-white">
+        //                     <span color="grey">
+        //                         1. Confirm Tour Selection </span>
+        //                     2. Purchase Tour
+        //                 <span color="grey">
+        //                         3. Thank You For Your Purchase
+        //             </span>
+        //                 </h4>
+        //             </Col>
+        //         </Row>
+
+        //         <Row>
+        //             <Col size="md-12">
+        //                 <List>
+        //                     <ListItem>
+        //                         <h2>
+        //                             <strong>
+        //                                 Name:
+        //                         </strong>
+        //                             <br />
+        //                             {this.state.books.name}
+        //                             <br />
+        //                         </h2>
+        //                         <h4>
+        //                             <strong>
+        //                                 Operator:
+        //                         </strong>
+        //                             <br />
+        //                         </h4>
+        //                         <br />
+        //                         <h4>
+        //                             <strong>
+        //                                 Address:
+        //                         </strong>
+        //                             <br />
+        //                             {this.state.books.address}
+        //                             <br />
+        //                         </h4>
+        //                         <h4>
+        //                             <strong>
+        //                                 Price:
+        //                         </strong>
+        //                             <br />
+        //                             $ {this.state.books.price}
+        //                             <br />
+        //                         </h4>
+        //                         <h4>
+        //                             Quantity:
+        //                         <br />
+        //                             {this.state.books.Qty}
+        //                             <br />
+        //                         </h4>
+        //                         <h3>
+        //                             <br />
+        //                             <strong>
+        //                                 Total:
+        //                         </strong>
+        //                             <br />
+        //                         </h3>
+        //                     </ListItem>
+        //                 </List>
+        //             </Col>
+        //         </Row>
+
+        //         <Row>
+        //             <Col size="md-12">
+        //                 <form>
+        //                     <Input
+        //                         type="number"
+        //                         value={this.state.qty}
+        //                         onChange={this.handleInputChange}
+        //                         name="qty"
+        //                         placeholder="Number of Available Tickets"
+        //                         pattern="[0-9]*"
+        //                     />
+        //                     <Input
+        //                         type="number"
+        //                         value={this.state.qty}
+        //                         onChange={this.handleInputChange}
+        //                         name="qty"
+        //                         placeholder="Number of Available Tickets"
+        //                         pattern="[0-9]*"
+        //                     />
+        //                     <Input
+        //                         value={this.state.date}
+        //                         onChange={this.handleInputChange}
+        //                         name="date"
+        //                         placeholder="Date"
+        //                     />
+        //                     <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
+        //                         Purchase
+        //                     </button>
+        //                     <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
+
+        //                 </form>
+        //             </Col>
+        //         </Row>
+        //     </Container>
+        //     );
+
+        // render() {
+        //     if (this.state.isConfirmed === true) return this.getPurchaseForm();
+        //         else return this.getConfirmationForm();
     }
 };
 
