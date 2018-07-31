@@ -53,9 +53,6 @@ class Nav extends Component {
                         <section className="navbar-section">
                             <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                 <span className="text-secondary">Logout</span></Link>
-                                <li className="nav-item">
-                                    <a className="nav-link text-white" href="/operator">Dashboard</a>
-                                </li>
                         </section>
 
                     ) : (
@@ -68,7 +65,7 @@ class Nav extends Component {
                                     <a className="nav-link text-white" href="/signup">Sign Up</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-white" href="/operator">Dashboard</a>
+                                    <a className="nav-link text-white" href="/dashboard">Dashboard</a>
                                 </li>
                                 
                             </ul>

@@ -10,6 +10,7 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import BookNow from "./pages/BookNow";
+import Dashboard from "./pages/Dashboard";
 
 // PassPort
 import React, { Component } from 'react';
@@ -111,6 +112,7 @@ class App extends Component {
               <Route exact path="/tours/:id" component={Detail} />
               <Route exact path="/tours" component={Tours} />
               <Route exact path="/tours/book-now/:id" component={BookNow} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/login" component={Login} />
 
               <Route
