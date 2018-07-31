@@ -54,11 +54,11 @@ class CreateGoogleMap extends Component {
         <GettingStartedGoogleMap
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPXkPNnkgMPqpYXUfGcTXcyyuKEjYnn8A&v=3.exp&libraries=geometry,drawing,places"
           containerElement={
-           <div style={{ height: "400px", width: "345px" }} />
+           <div style={{ height: "600px", width: "345px" }} />
           }
           loadingElement={<div style={{ height: `100%` }} />}
           mapElement={
-            <div style={{ height: '100%' }} />
+            <div style={{ height: '100%', borderRadius: "1%" }} />
           }
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}
