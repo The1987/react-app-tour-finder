@@ -287,7 +287,7 @@ class BookNow extends React.Component {
 
                         <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}>Continue to Purchase</button>
                         <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.onClick}>
-                            Back </Link>
+                            Previous </Link>
                     </div>
                 </Col>
             </Row>
@@ -391,7 +391,7 @@ class BookNow extends React.Component {
                         <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
                             Purchase
                             </button>
-                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Back </Link>
+                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
 
                     </form>
                 </Col>

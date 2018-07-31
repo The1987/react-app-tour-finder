@@ -96,7 +96,7 @@ class Tours extends React.Component {
                 {this.state.books.map(book => {
                   return (
                     <ListItem key={book._id} >
-                         <Row>
+                      <Row>
                         <Col size="sm-2 md-2" >
                           <div className="image">
                             <p>Image</p>
@@ -107,21 +107,20 @@ class Tours extends React.Component {
                           <strong>Tour Name:</strong> {book.name} <br />
                           <strong> Starting Location:</strong>  {book.address} <br />
                           <a href={"/tours/" + book._id}>More Details</a>
-
                         </Col>
 
                         <Col size="sm-3 md-3" >
-                        
-                         <div className="price">
+
+                          <div className="price">
                             <span className="ad-price">
                               <strong> $ {book.price} </strong>
                             </span>
                             <br />
                             <span className="per-price"> per person </span>
                           </div>
-                            <br />
-                            <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
-                          
+                          <br />
+                          <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
+
                         </Col>
                       </Row>
                     </ListItem>
