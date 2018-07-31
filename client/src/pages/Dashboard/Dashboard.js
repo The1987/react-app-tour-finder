@@ -83,6 +83,7 @@ class Dashboard extends React.Component {
                     <Col size="sm-2 md-2" >
                     <h2>Dashboard</h2>
                     <Link to={`/tours`} > Add Tours </Link>
+                    <a href=""> Settings </a>
                     </Col>
                 </Row>
             </Container>
