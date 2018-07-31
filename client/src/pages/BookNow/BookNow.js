@@ -19,21 +19,6 @@ import aws from 'aws-sdk';
 const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
 const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
 
-var divStyle = {
-    backgroundColor: 'white',
-    paddingTop: '10px',
-    marginBottom: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    height: '100%'
-};
-
-var colStyle = {
-    width: '180px',
-    padding: '2px',
-    borderBottom: '1px solid grey'
-}
-
 class BookNow extends React.Component {
     constructor(props) {
         super(props);
@@ -203,48 +188,91 @@ class BookNow extends React.Component {
     getConfirmationForm = () => (
         <Container fluid>
             <Row>
-                <Col size="md-12">
-                    <h4 className="text-white">
-                        1. Confirm Tour Selection
-                    <span color="grey">
-                            2. Purchase Tour
-                            3. Thank You For Your Purchase
-                    </span>
-                    </h4>
+
+                <Col size="md-8">
+                    <div className="divStyle">
+                        <h4>Tour Information</h4>
+                        <strong>Tour Name:</strong> {this.state.books.name} <br />
+                        <strong>Tour Date:</strong> {this.state.books.date} <br />
+                        <strong>Start Location:</strong> {this.state.books.address} <br />
+                        <strong>Start Time:</strong> {this.state.books.time}
+                    </div>
+
+                    <div className="divStyle">
+                        <h4>Billing Information</h4>
+                        <form>
+                            <Input
+                                // value={this.state.billname}
+                                onChange={this.handleInputChange}
+                                // name="billname"
+                                placeholder="Full Name"
+                            />
+                            <Input
+                                // value={this.state.billemail}
+                                onChange={this.handleInputChange}
+                                // name="billemail"
+                                placeholder="Email"
+                            />
+                            <Input
+                                type="number"
+                                // value={this.state.billphone}
+                                onChange={this.handleInputChange}
+                                // name="billphone"
+                                placeholder="Phone Number"
+                                pattern="[0-9]*"
+                            />
+                            <Input
+                                type="number"
+                                // value={this.state.billzip}
+                                onChange={this.handleInputChange}
+                                // name="billzip"
+                                placeholder="Zipcode"
+                                pattern="[0-9]*"
+                            />
+                            <Input
+                                // value={this.state.billaddress1}
+                                onChange={this.handleInputChange}
+                                name="billaddress1"
+                                placeholder="Address Line 1"
+                            />
+                            <Input
+                                // value={this.state.billaddress2}
+                                onChange={this.handleInputChange}
+                                name="billaddress2"
+                                placeholder="Address Line 2"
+                            />
+
+                            <Input
+                                // value={this.state.billcity}
+                                onChange={this.handleInputChange}
+                                name="billcity"
+                                placeholder="City"
+                            />
+                        </form>
+                    </div>
+
+                    <div className="divStyle">
+                        <h4>Payment Information</h4>
+                        <p>Stripe goes here</p>
+                    </div>
+
                 </Col>
-            </Row>
 
-            <Row>
-                <Col size="md-12 sm-12">
-
-                    <div style={divStyle}>
+                <Col size="md-4" className="well">
+                    <div className="divStyle">
+                        <h4>Cart</h4>
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><strong>Tour Name:</strong> {this.state.books.name}</td>
-                                    <td><strong>Tour Date:</strong> {this.state.books.date}</td>
+                                    <th>Admission</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th> Amount</th>
                                 </tr>
                                 <tr>
-                                    <td><strong>Start Location:</strong> {this.state.books.address}</td>
-                                    <td><strong>Start Time:</strong> {this.state.books.time}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <br />
-
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th style={colStyle}>Admission</th>
-                                    <th style={colStyle}>Price</th>
-                                    <th style={colStyle}>Qty</th>
-                                    <th style={colStyle}> Amount</th>
-                                </tr>
-                                <tr>
-                                    <td style={colStyle}>Adult (18+)</td>
-                                    <td style={colStyle}>$ {this.state.books.price} </td>
-                                    <td style={colStyle}>
+                                    <td>Adult (18+)</td>
+                                    <td>$ {this.state.books.price} </td>
+                                    <td>
                                         <Input
                                             type="number"
                                             onChange={this.handleInputChange}
@@ -253,9 +281,9 @@ class BookNow extends React.Component {
                                             pattern="[0-9]*"
                                         />
                                     </td>
-                                    <td style={colStyle}>$
+                                    <td>$
 
-                                  {/* <span>{this.state.books.price * this.state.books.qty}</span> */}
+                                  {this.state.books.price * this.state.books.qty}
 
                                     </td>
                                 </tr>
@@ -282,14 +310,18 @@ class BookNow extends React.Component {
                                 </tr>
                             </tbody>
                         </table >
-                        <br />
-
-
-                        <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}>Continue to Purchase</button>
-                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.onClick}>
-                            Previous </Link>
                     </div>
                 </Col>
+
+
+
+
+                <Col size="md-8">
+                    <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}>Buy Now</button>
+                    <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.onClick}>
+                        Previous </Link>
+                </Col>
+
             </Row>
         </Container>
     );
