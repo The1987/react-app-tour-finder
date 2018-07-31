@@ -1,13 +1,12 @@
 import React from "react";
-// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
-// import PresentGoogleMap from "../../components/PresentGoogleMap";
-// import { List, ListItem } from "../../components/List";
 import { Link } from "react-router-dom";
 import aws from 'aws-sdk';
+import CheckoutForm from "../../components/CheckoutForm";
+import {Elements, StripeProvider} from 'react-stripe-elements';
 
 
 // var fetchData = [];
@@ -237,27 +236,27 @@ class BookNow extends React.Component {
 
                                 <Row>
                                     <Col size="sm-12 md-4">
-                                <Input
-                                    // value={this.state.billcity}
-                                    onChange={this.handleInputChange}
-                                    name="billcity"
-                                    placeholder="City"
-                                />
-                                </Col>
+                                        <Input
+                                            // value={this.state.billcity}
+                                            onChange={this.handleInputChange}
+                                            name="billcity"
+                                            placeholder="City"
+                                        />
+                                    </Col>
 
-                                <Col size="sm-12 md-4">
+                                    <Col size="sm-12 md-4">
 
-                                <Input
-                                    type="number"
-                                    // value={this.state.billzip}
-                                    onChange={this.handleInputChange}
-                                    // name="billzip"
-                                    placeholder="Zipcode"
-                                    pattern="[0-9]*"
-                                />
-                                </Col>
-                                <Col size="sm-12 md-4">
-                                {/* <Input
+                                        <Input
+                                            type="number"
+                                            // value={this.state.billzip}
+                                            onChange={this.handleInputChange}
+                                            // name="billzip"
+                                            placeholder="Zipcode"
+                                            pattern="[0-9]*"
+                                        />
+                                    </Col>
+                                    <Col size="sm-12 md-4">
+                                        {/* <Input
                                 type="select" 
                                 name="select" ></Input
                                 <option>1</option>
@@ -266,14 +265,22 @@ class BookNow extends React.Component {
                                 <option>4</option>
                                 <option>5</option>
                             > */}
-                            </Col>
-                            </Row>
+                                    </Col>
+                                </Row>
                             </form>
                         </div>
 
                         <div className="divStyle pay-info">
                             <h4>Payment Information</h4>
-                            <p>Stripe goes here</p>
+                            
+
+                            <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                                <div className="example">
+                                <Elements>
+                                        <CheckoutForm />
+                                    </Elements>
+                                </div>
+                            </StripeProvider>
                         </div>
 
                     </Col>
