@@ -5,9 +5,28 @@ import "./BookNow.css";
 import { Input } from "../../components/Form";
 import { Link } from "react-router-dom";
 import aws from 'aws-sdk';
-import CheckoutForm from "../../components/CheckoutForm";
-import {Elements, StripeProvider} from 'react-stripe-elements';
+import nodemailer from 'nodemailer';
+import axios from 'axios';
+// import CheckoutForm from "../../components/CheckoutForm";
+// import { Elements, StripeProvider } from 'react-stripe-elements';
+// const nodemailer = require('nodemailer');
 
+// let transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'developers.act@gmail.com',
+//         pass: 'Fullstack123!'
+//     }
+// });
+
+// const mailOptions = {
+//     from: 'developers.act@gmail.com',
+//     to: 'andrewmflak@gmail.com',
+//     subject: 'TEST E-mail 123',
+//     text: 'Thank you for your purchase. We look forward to taking your money and providing no service what so ever to you.  Please make sure to return to review your tour experience.  Best Regards, The Tour Gurus'
+
+
+// };
 
 // var fetchData = [];
 // import AWS from "../../components/AWS";
@@ -15,8 +34,10 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 // Load the AWS SDK for Node.js
 
 // const Config = require('Config');
-const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
-const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
+// const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
+// const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
+
+let message ="Thank you for your purchase";
 
 class BookNow extends React.Component {
     constructor(props) {
@@ -32,7 +53,8 @@ class BookNow extends React.Component {
             date: "",
             time: "",
             isConfirmed: false,
-            isPurchased: false
+            isPurchased: false,
+            checkouttotal: ""
         };
     };
 
@@ -41,14 +63,29 @@ class BookNow extends React.Component {
         this.setState({ selectedFile: event.target.files[0] })
     };
 
+
+
     // default function to populate content
     componentDidMount() {
         API.getBook(this.props.match.params.id)
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
         console.log(this.state.books);
-        console.log("BookPrice:" + typeof this.state.books.price)
+        // console.log("BookPrice:" + typeof this.state.books.price)
     };
+
+
+    // componentWillMount() { 
+    //     this.this.state.books.price * this.state.books.qty 
+    // };
+
+    // checkout(){
+    //     this.setState({
+    //         checkouttotal
+    //     });
+    // }
+
+
 
     // handleInputChange = event => {
     //     const { Qty, value } = event.target;
@@ -98,67 +135,71 @@ class BookNow extends React.Component {
         this.setState({ isConfirmed: false })
     };
 
-    sendEmail() {
-        aws.config.update({
-            region: 'us-east-1',
-            accessKeyId: Amazon_accessKeyId,
-            secretAccessKey: Amazon_secretAccessKey,
-        });
-        const ses = new aws.SES({ apiVersion: 'latest' });
-        return new Promise((resolve, reject) => {
-            ses.sendEmail(
-                {
-                    Source: 'developers.act@gmail.com',
-                    /* required */
-                    Destination: {
-                        CcAddresses: [
-                            'andrewmflak@gmail.com'
+    sendEmail = event => {
+        event.preventDefault();
+        let name = this.state.books.name;
+        let email = this.state.purchase.email;
 
-                            /* more CC email addresses */
-                        ],
-                        ToAddresses: [
-                            'andrewmflak@gmail.com',
 
-                            /* more To email addresses */
-                        ]
-                    },
-                    Message: {
-                        Subject: {
-                            Data: 'Tour Purchase Confirmation',
-                        },
-                        Body: {
-                            Html: {
-                                Data: `
-                                <h1> 
-                                Tour Finder Purchase Confirmation
-                                </h1>
-                                <p>
-                                    Thank you for your purchase of "placeholder".
-                                    </p>
-                                    <p>
-                                    Your card has now been billed for this purchase and the operator has been notified.
-                                    </p>
-                                    <p>
-                                    Please make sure to rate your tour experience!
-                                        </p>`,
-                            },
-                        },
-                    },
-                    ReplyToAddresses: [
-                        'developers.act@gmail.com',
-                    ]
-                },
-                (err, info) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(info);
-                        console.log(info);
-                    }
-                },
-            );
-        });
+
+            axios({
+            method: "POST",
+            url: "http://localhost:3005/send",
+            data: {
+                name: name,
+                email: email,
+                messsage: message
+            }
+        }).then((response) => {
+            if (response.data.msg === 'success') {
+                alert("Message Sent.");
+                this.resetForm()
+            } else if (response.data.msg === 'fail') {
+                alert("Message failed to send.")
+            }
+        })
     };
+
+//     import aws from 'aws-sdk';
+// const Amazon_accessKeyId = 'xxxxxx';
+// const Amazon_secretAccessKey= 'xxxxxx';
+// export default function sendEmail(options) {
+//   aws.config.update({
+//     region: 'us-east-1',
+//     accessKeyId: Amazon_accessKeyId,
+//     secretAccessKey: Amazon_secretAccessKey,
+//   });
+//   const ses = new aws.SES({ apiVersion: 'latest' });
+//   return new Promise((resolve, reject) => {
+//     ses.sendEmail(
+//       {
+//         Source: options.from,
+//         Destination: {
+//           CcAddresses: this.state.operator.email,
+//           ToAddresses: this.state.operator.user,
+//         },
+//         Message: {
+//           Subject: {
+//             Data: Thank you for your purchase,
+//           },
+//           Body: {
+//             Html: {
+//               Data: options.body,
+//             },
+//           },
+//         },
+//         ReplyToAddresses: options.replyTo,
+//       },
+//       (err, info) => {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(info);
+//         }
+//       },
+//     );
+//   });
+// }
 
 
     handlePurchaseSubmit = event => {
@@ -235,17 +276,15 @@ class BookNow extends React.Component {
                                 />
 
                                 <Row>
-                                    <Col size="sm-12 md-4">
+                                    <Col size="md-4">
                                         <Input
                                             // value={this.state.billcity}
                                             onChange={this.handleInputChange}
                                             name="billcity"
                                             placeholder="City"
                                         />
-                                    </Col>
-
-                                    <Col size="sm-12 md-4">
-
+                                    </Col >
+                                    <Col size="md-4">
                                         <Input
                                             type="number"
                                             // value={this.state.billzip}
@@ -272,15 +311,15 @@ class BookNow extends React.Component {
 
                         <div className="divStyle pay-info">
                             <h4>Payment Information</h4>
-                            
 
-                            <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
-                                <div className="example">
-                                <Elements>
+
+                            {/* <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR"> */}
+                            {/* <div className="example">
+                                    <Elements>
                                         <CheckoutForm />
                                     </Elements>
                                 </div>
-                            </StripeProvider>
+                            </StripeProvider> */}
                         </div>
 
                     </Col>
@@ -314,7 +353,7 @@ class BookNow extends React.Component {
                                     <tr className="total">
                                         <td></td>
                                         <td></td>
-                                        <td>Ticket Total</td>
+                                        <td>Subtotal</td>
                                         <td>$ </td>
                                     </tr>
 
@@ -329,7 +368,7 @@ class BookNow extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <th>Total</th>
-                                        <th>$ XX.XX</th>
+                                        <th>$ {this.state.books.checkouttotal}</th>
                                     </tr>
                                 </tbody>
                             </table >
@@ -340,9 +379,15 @@ class BookNow extends React.Component {
 
 
                     <Col size="md-7">
-                        <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
+                        <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
+                            Buy Now
+                          </button>
+                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
+
+
+                        {/* <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
                         <Link to="../../tours" className="book-btn btn btn-danger btn-block previous-btn" onClick={this.onClick}>
-                            Previous </Link>
+                            Previous </Link> */}
                     </Col>
 
                 </Row>

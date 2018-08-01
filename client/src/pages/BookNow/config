@@ -1,0 +1,4 @@
+module.exports = {
+    USER: 'developer.act@gmail.com',
+    PASS: 'Fullstack123'
+};
