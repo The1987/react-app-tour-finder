@@ -23,27 +23,6 @@ import axios from 'axios'
 // import Home from './components/home'
 
 
-
-
-
-
-// const App = () =>
-//   <Router>
-//     <div>
-//       <Nav/>    
-//       <Switch>
-//         <Route exact path="/" component={Home} />
-//         <Route exact path="/operator" component={Operator} />
-//         <Route exact path="/operator/:id" component={Detail} />
-//         <Route exact path="/tours/:id" component={Detail} />
-//         <Route exact path="/tours" component={Tours} />
-//         <Route exact path="/login" component={Login} />
-//         <Route component={NoMatch} />
-//       </Switch>
-//       <Footer/>
-//     </div>
-//   </Router>;
-
 class App extends Component {
   constructor() {
     super()
