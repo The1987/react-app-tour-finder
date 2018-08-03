@@ -5,9 +5,8 @@ const mongoose = require("mongoose");
 const booksController = require("./controllers/booksController")
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-// Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
+const dbConnection = require('./database') 
+ 
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static("client/build"));
@@ -27,7 +26,6 @@ mongoose.connect(
 // PassPort
 const morgan = require('morgan')
 const session = require('express-session')
-const dbConnection = require('./database') 
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 // const app = express()
@@ -39,10 +37,13 @@ const user = require('./routes/user')
 // MIDDLEWARE
 app.use(morgan('dev'))
 
+// Configure body parser for AJAX requests
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // Sessions
 app.use(
 	session({
-		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
+		secret: "VANHALEN",
 		store: new MongoStore({ mongooseConnection: dbConnection }),
 		resave: false, //required
 		saveUninitialized: false //required
@@ -55,39 +56,15 @@ app.use(passport.session()) // calls the deserializeUser
 
 
 // Routes
-app.use('/user', user)
+require('./routes/user')(app)
+app.use('/user/operator', user)
 
-
-express.post('/send', (req, res, next) => {
-	var name = req.body.name
-	var email = req.body.email
-	var message = req.body.message
-	var content = `name: ${name} \n email: ${email} \n message: ${content} `
-  
-	var mail = {
-	  from: name,
-	  to: 'RECEIVING_EMAIL_ADDRESS_GOES_HERE',  //Change to email address that you want to receive messages on
-	  subject: 'New Message from Contact Form',
-	  text: content
-	}
-  
-	transporter.sendMail(mail, (err, data) => {
-	  if (err) {
-		res.json({
-		  msg: 'fail'
-		})
-	  } else {
-		res.json({
-		  msg: 'success'
-		})
-	  }
-	})
-  })
-
-
-
+// Starting Server 
+app.listen(PORT, () => {
+	console.log(`App listening on PORT: ${PORT}`)
+})
 
 // Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
+// app.listen(PORT, function() {
+//   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// });
