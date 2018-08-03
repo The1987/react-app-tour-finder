@@ -4,9 +4,9 @@ import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
 import { Link } from "react-router-dom";
-import aws from 'aws-sdk';
-import nodemailer from 'nodemailer';
-import axios from 'axios';
+// import aws from 'aws-sdk';
+// import nodemailer from 'nodemailer';
+// import axios from 'axios';
 // import CheckoutForm from "../../components/CheckoutForm";
 // import { Elements, StripeProvider } from 'react-stripe-elements';
 // const nodemailer = require('nodemailer');
@@ -37,7 +37,7 @@ import axios from 'axios';
 // const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
 // const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
 
-let message ="Thank you for your purchase";
+// let message = "Thank you for your purchase";
 
 class BookNow extends React.Component {
     constructor(props) {
@@ -135,93 +135,94 @@ class BookNow extends React.Component {
         this.setState({ isConfirmed: false })
     };
 
-    sendEmail = event => {
-        event.preventDefault();
-        let name = this.state.books.name;
-        let email = this.state.purchase.email;
+    // sendEmail = event => {
+    //     event.preventDefault();
+    //     let name = this.state.books.name;
+    //     let email = this.state.purchase.email;
 
 
 
-            axios({
-            method: "POST",
-            url: "http://localhost:3005/send",
-            data: {
-                name: name,
-                email: email,
-                messsage: message
-            }
-        }).then((response) => {
-            if (response.data.msg === 'success') {
-                alert("Message Sent.");
-                this.resetForm()
-            } else if (response.data.msg === 'fail') {
-                alert("Message failed to send.")
-            }
-        })
-    };
+    //     axios({
+    //         method: "POST",
+    //         url: "http://localhost:3001/send",
+    //         data: {
+    //             name: name,
+    //             email: email,
+    //             messsage: message
+    //         }
+    //     }).then((response) => {
+    //         if (response.data.msg === 'success') {
+    //             alert("Message Sent.");
+    //             this.resetForm()
+    //         } else if (response.data.msg === 'fail') {
+    //             alert("Message failed to send.")
+    //         }
+    //     })
+    // };
 
-//     import aws from 'aws-sdk';
-// const Amazon_accessKeyId = 'xxxxxx';
-// const Amazon_secretAccessKey= 'xxxxxx';
-// export default function sendEmail(options) {
-//   aws.config.update({
-//     region: 'us-east-1',
-//     accessKeyId: Amazon_accessKeyId,
-//     secretAccessKey: Amazon_secretAccessKey,
-//   });
-//   const ses = new aws.SES({ apiVersion: 'latest' });
-//   return new Promise((resolve, reject) => {
-//     ses.sendEmail(
-//       {
-//         Source: options.from,
-//         Destination: {
-//           CcAddresses: this.state.operator.email,
-//           ToAddresses: this.state.operator.user,
-//         },
-//         Message: {
-//           Subject: {
-//             Data: Thank you for your purchase,
-//           },
-//           Body: {
-//             Html: {
-//               Data: options.body,
-//             },
-//           },
-//         },
-//         ReplyToAddresses: options.replyTo,
-//       },
-//       (err, info) => {
-//         if (err) {
-//           reject(err);
-//         } else {
-//           resolve(info);
-//         }
-//       },
-//     );
-//   });
-// }
+    //     import aws from 'aws-sdk';
+    // const Amazon_accessKeyId = 'xxxxxx';
+    // const Amazon_secretAccessKey= 'xxxxxx';
+    // export default function sendEmail(options) {
+    //   aws.config.update({
+    //     region: 'us-east-1',
+    //     accessKeyId: Amazon_accessKeyId,
+    //     secretAccessKey: Amazon_secretAccessKey,
+    //   });
+    //   const ses = new aws.SES({ apiVersion: 'latest' });
+    //   return new Promise((resolve, reject) => {
+    //     ses.sendEmail(
+    //       {
+    //         Source: options.from,
+    //         Destination: {
+    //           CcAddresses: this.state.operator.email,
+    //           ToAddresses: this.state.operator.user,
+    //         },
+    //         Message: {
+    //           Subject: {
+    //             Data: Thank you for your purchase,
+    //           },
+    //           Body: {
+    //             Html: {
+    //               Data: options.body,
+    //             },
+    //           },
+    //         },
+    //         ReplyToAddresses: options.replyTo,
+    //       },
+    //       (err, info) => {
+    //         if (err) {
+    //           reject(err);
+    //         } else {
+    //           resolve(info);
+    //         }
+    //       },
+    //     );
+    //   });
+    // }
 
 
-    handlePurchaseSubmit = event => {
-        console.log("test-name: " + this.state.books.name);
-        console.log("test-address: " + this.state.books.address);
-        event.preventDefault();
-        if (this.state.books.name && this.state.books.address) {
-            API.purchasePost({
-                name: this.state.books.name,
-                address: this.state.books.address,
-                price: this.state.books.price
-            })
-                .then(res => this.setState({
-                    isConfirmed: true, isPurchased: true
-                }),
-                    this.sendEmail(),
-                    console.log(this),
-            )
-                .catch(err => console.log(err));
+    // handlePurchaseSubmit = event => {
+    //     console.log("test-name: " + this.state.books.name);
+    //     console.log("test-address: " + this.state.books.address);
+    //     event.preventDefault();
+    //     if (this.state.books.name && this.state.books.address) {
+    //         API.purchasePost({
+    //             name: this.state.books.name,
+    //             address: this.state.books.address,
+    //             price: this.state.books.price
+    //         })
+    //             .then(res => this.setState({
+    //                 isConfirmed: true, isPurchased: true
+    //             }),
+    //                 this.sendEmail(),
+    //                 console.log(this),
+    //             )
+    //             .catch(err => console.log(err));
 
-        }
-    };
+        //    }
+        // }
+    //  };
 
     render() {
         return (
@@ -340,6 +341,7 @@ class BookNow extends React.Component {
                                         <td>$ {this.state.books.price} </td>
                                         <td>
                                             <Input
+                                                min={0}
                                                 className="qty"
                                                 type="number"
                                                 onChange={this.handleInputChange}
@@ -393,115 +395,6 @@ class BookNow extends React.Component {
                 </Row>
             </Container>
         );
-
-
-        //     getPurchaseForm = () => (
-        // <Container fluid>
-        //         <Row>
-        //             <Col size="md-12">
-        //                 <h4 className="text-white">
-        //                     <span color="grey">
-        //                         1. Confirm Tour Selection </span>
-        //                     2. Purchase Tour
-        //                 <span color="grey">
-        //                         3. Thank You For Your Purchase
-        //             </span>
-        //                 </h4>
-        //             </Col>
-        //         </Row>
-
-        //         <Row>
-        //             <Col size="md-12">
-        //                 <List>
-        //                     <ListItem>
-        //                         <h2>
-        //                             <strong>
-        //                                 Name:
-        //                         </strong>
-        //                             <br />
-        //                             {this.state.books.name}
-        //                             <br />
-        //                         </h2>
-        //                         <h4>
-        //                             <strong>
-        //                                 Operator:
-        //                         </strong>
-        //                             <br />
-        //                         </h4>
-        //                         <br />
-        //                         <h4>
-        //                             <strong>
-        //                                 Address:
-        //                         </strong>
-        //                             <br />
-        //                             {this.state.books.address}
-        //                             <br />
-        //                         </h4>
-        //                         <h4>
-        //                             <strong>
-        //                                 Price:
-        //                         </strong>
-        //                             <br />
-        //                             $ {this.state.books.price}
-        //                             <br />
-        //                         </h4>
-        //                         <h4>
-        //                             Quantity:
-        //                         <br />
-        //                             {this.state.books.Qty}
-        //                             <br />
-        //                         </h4>
-        //                         <h3>
-        //                             <br />
-        //                             <strong>
-        //                                 Total:
-        //                         </strong>
-        //                             <br />
-        //                         </h3>
-        //                     </ListItem>
-        //                 </List>
-        //             </Col>
-        //         </Row>
-
-        //         <Row>
-        //             <Col size="md-12">
-        //                 <form>
-        //                     <Input
-        //                         type="number"
-        //                         value={this.state.qty}
-        //                         onChange={this.handleInputChange}
-        //                         name="qty"
-        //                         placeholder="Number of Available Tickets"
-        //                         pattern="[0-9]*"
-        //                     />
-        //                     <Input
-        //                         type="number"
-        //                         value={this.state.qty}
-        //                         onChange={this.handleInputChange}
-        //                         name="qty"
-        //                         placeholder="Number of Available Tickets"
-        //                         pattern="[0-9]*"
-        //                     />
-        //                     <Input
-        //                         value={this.state.date}
-        //                         onChange={this.handleInputChange}
-        //                         name="date"
-        //                         placeholder="Date"
-        //                     />
-        //                     <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
-        //                         Purchase
-        //                     </button>
-        //                     <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
-
-        //                 </form>
-        //             </Col>
-        //         </Row>
-        //     </Container>
-        //     );
-
-        // render() {
-        //     if (this.state.isConfirmed === true) return this.getPurchaseForm();
-        //         else return this.getConfirmationForm();
     }
 };
 

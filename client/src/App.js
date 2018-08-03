@@ -10,17 +10,11 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import BookNow from "./pages/BookNow";
-import Dashboard from "./pages/Dashboard";
+// import Profile from "./pages/Profile";
 
 // PassPort
 import React, { Component } from 'react';
 import axios from 'axios'
-// import { Route, Link } from 'react-router-dom' // might conflict
-// components
-// import Signup from './components/sign-up'
-// import LoginForm from './components/login-form'
-// import Navbar from './components/navbar'
-// import Home from './components/home'
 
 
 class App extends Component {
@@ -45,7 +39,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/user').then(response => {
       console.log('Get user response: ')
       // console.log(response.data)
       if (response.data.user) {
@@ -73,45 +67,21 @@ class App extends Component {
           <div>
             <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 
-
-
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
               <p>Join the party, {this.state.username}!</p>
             }
-
-
-
             <Switch>
-              {/* Routes to different components */}
-
+              {/* <Route exact path="/user" component={Home} /> */}
               <Route exact path="/" component={Home} />
               <Route exact path="/operator" component={Operator} />
               <Route exact path="/operator/:id" component={Detail} />
               <Route exact path="/tours/:id" component={Detail} />
               <Route exact path="/tours" component={Tours} />
               <Route exact path="/tours/book-now/:id" component={BookNow} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/login" component={Login} />
-
-              <Route
-                path="/login"
-                component={Login}
-              // render={() =>
-              //   <Login
-              //     updateUser={this.updateUser}
-              //   />}
-              />
-              <Route
-                path="/signup"
-                component={Signup}
-              // render={() =>
-              // <Signup />}
-
-              />
-
-              {/* <Route exact path="/login"  /> */}
-              {/* <Route exact path="/signup"  /> */}
+              <Route exact path="login" component={Login} updateUser={this.updateUser} />
+              <Route exact path="/signup" component={Signup} />
+              {/* <Route exact path="/profile" component={Profile} /> */}
               <Route component={NoMatch} />
             </Switch>
             <Footer />
