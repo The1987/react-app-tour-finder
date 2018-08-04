@@ -65,7 +65,7 @@ class Nav extends Component {
                                     <a className="nav-link text-white" href="/signup">Sign Up</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-white" href="/dashboard">Dashboard</a>
+                                    <a className="nav-link text-white" href="/operator">Op Dashboard</a>
                                 </li>
                                 
                             </ul>
