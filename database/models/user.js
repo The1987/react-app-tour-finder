@@ -50,7 +50,7 @@ const userSchema = new Schema({
 	// email: { type: String, unique: false, required: true },
 	// frontEnd: { type: String, unique: false, required: true },
 	// backEnd: { type: String, unique: false, required: true },
-	location: { type: String, unique: false, required: false }
+	// location: { type: String, unique: false, required: false }
 })
 
 // Define schema methods

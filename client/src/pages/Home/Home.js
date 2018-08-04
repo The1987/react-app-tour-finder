@@ -17,26 +17,26 @@ class Home extends React.Component {
     };
   }
 
-// When the component mounts, load all books and save them to this.state.books
-componentDidMount() {
-  this.loadBooks();
-}
+  // When the component mounts, load all books and save them to this.state.books
+  componentDidMount() {
+    this.loadBooks();
+  }
 
-// Loads all books  and sets them to this.state.books
-loadBooks = () => {
-  API.getBooks()
-    .then(res =>
-      this.setState({ books: res.data, name: "", address: "", price: "", description: "" })
-    )
-    .catch(err => console.log(err));
-};
+  // Loads all books  and sets them to this.state.books
+  loadBooks = () => {
+    API.getBooks()
+      .then(res =>
+        this.setState({ books: res.data, name: "", address: "", price: "", description: "" })
+      )
+      .catch(err => console.log(err));
+  };
 
-// Deletes a book from the database with a given id, then reloads books from the db
-deleteBook = id => {
-  API.deleteBook(id)
-    .then(res => this.loadBooks())
-    .catch(err => console.log(err));
-};
+  // Deletes a book from the database with a given id, then reloads books from the db
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
 
   // Handles updating component state when the user types into the input field
   handleInputChange = event => {
@@ -66,12 +66,10 @@ deleteBook = id => {
 
   render() {
     return (
-      <Container fluid >
+      <Container fluid>
         <Row>
           <Col size="md-12 sm-12" >
-
-          <SearchBar className="justify-content-center"/>
-
+              <SearchBar className="justify-content-center" />
           </Col>
         </Row>
       </Container>

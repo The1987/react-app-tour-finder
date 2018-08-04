@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API"
-import {Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
 import image from "../../assets/images/new-york-bike-tour.jpg";
 import calendar from "../../assets/images/calendar.png";
@@ -59,79 +59,73 @@ class Detail extends React.Component {
   };
 
   getReadOnly = () => (
-    <Container fluid >
-
-      <Row>
-        <Col size="md-12">
-          <div className="text-white">
-            <div className="price float-right">
-              <span className="ad-price mr-2">
-                <strong> $ {this.state.books.price} </strong>
-              </span>
-              <br />
-              <span className="per-price mr-2"> per person </span>
-            </div>
-            <h2 className="ml-2">
-              {this.state.books.name} <br />
-            </h2>
-            <span className="ml-2">Operated By <a href="">ACME Company</a></span>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col size="md-8 sm-12">
-
-          <Row>
-            <Col size="md-12 sm-12">
-              <div className="tour-details tour-picture">
-                <Image src={image} alt="" className="tour-image" />
+    <Container fluid  >
+      <div className="header">
+        <Row>
+          <Col size="md-12">
+            <div className="header">
+              <div className="price float-right">
+                <span className="ad-price mr-2">
+                  <strong> $ {this.state.books.price} </strong>
+                </span>
+                <br />
+                <span className="per-price mr-2"> per person </span>
               </div>
-            </Col>
+              <h2 className="ml-2">
+                {this.state.books.name} <br />
+              </h2>
+              <span className="ml-2">Operated By <a href="">ACME Company</a></span>
+            </div>
+          </Col>
+        </Row>
 
-              <Col size="md-12 sm-12">
-              <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
-            </Col>
+        <Row>
+          <Col size="md-8 sm-12">
 
-            <Col size="md-12 sm-12">
-              <p className="tour-details">
-                <strong>About This Tour:</strong> {this.state.books.description} <br />
-                {/* Tour Name: {this.state.books.name} <br /> */}
-                {/* Starting Location: {this.state.books.address} <br /> */}
-              </p>
-            </Col>
+            <Row>
+                <Col size="md-12 sm-12">
+                <div className="tour-details tour-picture">
+                  <Image src={image} alt="" className="tour-image" />
+                </div>
+                </Col>
 
-            <Col size="md-4 sm-12">
+                <Col size="md-12 sm-12">
+                  <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+                </Col>
 
-
-            </Col>
+                <Col size="md-12 sm-12">
+                <p className="tour-details">
+                  <strong>About This Tour:</strong> {this.state.books.description} <br />
+                  {/* Tour Name: {this.state.books.name} <br /> */}
+                  {/* Starting Location: {this.state.books.address} <br /> */}
+                </p>
+                </Col>
+  
+                {/* <Col size="md-12">
+                <Link to="/operator" className="text-white back-link">← Back to Tour Operator Screen</Link>
+                <button className="btn-primary float-right mb-4 pl-2 pr-2 " onClick={() => this.handleUpdate(true)}>Update Tour</button>
+                </Col> */}
           </Row>
-
-          <Row>
-            {/* <Col size="md-12 sm-12">
-              <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
-            </Col> */}
-            <Col size="md-12">
-              <Link to="/operator" className="text-white back-link">← Back to Tour Operator Screen</Link>
-              <button className="btn-primary float-right mb-4 pl-2 pr-2 " onClick={() => this.handleUpdate(true)}>Update Tour</button>
-            </Col>
-          </Row>
-
         </Col>
+          
         <Col size="md-4 sm-12" >
-          {/* className="map-details" */}
-          
-          <div className="tour-details tour-calendar">
-          <Image src={calendar} alt="" className="tour-image" />
-            {/* Tickets Available: {this.state.books.qty} */}
-          </div>
+          <Row>
+            <Col size="md-12 sm-12">
+            <div className="tour-details tour-calendar">
+              <Image src={calendar} alt="" className="tour-image" />
+              {/* Tickets Available: {this.state.books.qty} */}
+            </div>
+          </Col>
 
-          
-          <PresentGoogleMap />
-          
+          <Col size="md-12 sm-12" >
+            <PresentGoogleMap />
+          </Col>
+        </Row>
 
-        </Col>
-      </Row>
+        
+          </Col>
+        </Row>
+      </div>
     </Container>
   );
 

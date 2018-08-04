@@ -4,22 +4,16 @@ import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
 import { Link } from "react-router-dom";
-
-// import aws from 'aws-sdk';
-// import nodemailer from 'nodemailer';
+import aws from 'aws-sdk';
 // import axios from 'axios';
 // import CheckoutForm from "../../components/CheckoutForm";
 // import { Elements, StripeProvider } from 'react-stripe-elements';
-// const nodemailer = require('nodemailer');
 
-// let transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'developers.act@gmail.com',
-//         pass: 'Fullstack123!'
-//     }
-// });
-
+// 
+// ==========TEST CONFIG CONSOLE================
+// console.log("access key id:" + process.env.REACT_APP_ACCESSKEYID);
+// console.log("secret access key" + process.env.REACT_APP_SECRETACCESSKEY);
+// console.log("aws region:" + process.env.REACT_APP_REGION);
 // const mailOptions = {
 //     from: 'developers.act@gmail.com',
 //     to: 'andrewmflak@gmail.com',
@@ -37,21 +31,9 @@ import { Link } from "react-router-dom";
 // const Config = require('Config');
 // const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
 // const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
-
-// let message = "Thank you for your purchase";
-
-
-
-
-
-// Update state with -> checkoutTotal: ""
-// This goes in the checkout total in the table -> this.state.books.checkoutTotal
-
-
-
-
-
-
+// const Amazon_accessKeyId = process.env.Amazon_accessKeyId;
+// const Amazon_secretAccessKey = process.env.secretAccessKey;
+// const Amazon_region = process.env.region;
 
 class BookNow extends React.Component {
     constructor(props) {
@@ -68,7 +50,7 @@ class BookNow extends React.Component {
             time: "",
             isConfirmed: false,
             isPurchased: false,
-            checkoutTotal: "",
+            checkouttotal: ""
         };
     };
 
@@ -78,7 +60,6 @@ class BookNow extends React.Component {
     };
 
 
-    
 
     // default function to populate content
     componentDidMount() {
@@ -123,15 +104,6 @@ class BookNow extends React.Component {
         });
     };
 
-    // Trying to add calculations to the Cart
-    // componentWillMount() {
-    //     const checkoutTotal = {...this.state.books.price * this.state.books.qty}
-    //         this.setState({
-    //             checkoutTotal
-    //         });
-    //     };
-
-
     // resetOperator() {
     //         this.setState({ books: {}, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" , isConfirmed: false, isPurchased: false})
     //       .catch(err => console.log(err));
@@ -159,99 +131,172 @@ class BookNow extends React.Component {
         this.setState({ isConfirmed: false })
     };
 
-    // sendEmail = event => {
-    //     event.preventDefault();
-    //     let name = this.state.books.name;
-    //     let email = this.state.purchase.email;
+    sendEmail = event => {
+        aws.config.update({
+            region: process.env.REACT_APP_REGION,
+            accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+            secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY,
+            Placeholder: ""
+        });
+        const ses = new aws.SES({ apiVersion: 'latest' });
+        return new Promise((resolve, reject) => {
+            ses.sendEmail(
+                {
+                    Source: 'developers.act@gmail.com',
+                    Destination: {
+                        CcAddresses: ['developers.act@gmail.com'],
+                        ToAddresses: ['andrewmflak@gmail.com', 'mrchrishantis@gmail.com'],
+                    },
+                    Message: {
+                        Subject: {
+                            Data: "TourFinder: Thank you for your purchase!",
+                        },
+                        Body: {
+                            Html: {
+                                Data: "<h1>Thank you for your purchase</h1><p>Your card has been charged and your tour operator has been notified.</p><p>Please arrive promptly at the scheduled time.</p><p>Enjoy,</p><p>The tour gurus</p>"
+                            },
+                        },
+                    },
+                    ReplyToAddresses: ['developers.act@gmail.com'],
+                },
+                (err, info) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(info);
+                    }
+                },
+            );
+        });
+    };
+
+
+    // node mailer nodeJS solution
+
+    // event.preventDefault();
+    // let name = this.state.books.name;
+    // let email = this.state.purchase.email;
 
 
 
     //     axios({
-    //         method: "POST",
-    //         url: "http://localhost:3001/send",
-    //         data: {
-    //             name: name,
-    //             email: email,
-    //             messsage: message
-    //         }
-    //     }).then((response) => {
-    //         if (response.data.msg === 'success') {
-    //             alert("Message Sent.");
-    //             this.resetForm()
-    //         } else if (response.data.msg === 'fail') {
-    //             alert("Message failed to send.")
-    //         }
-    //     })
-    // };
+    //     method: "POST",
+    //     url: "http://localhost:3005/send",
+    //     data: {
+    //         name: name,
+    //         email: email,
+    //         messsage: message
+    //     }
+    // }).then((response) => {
+    //     if (response.data.msg === 'success') {
+    //         alert("Message Sent.");
+    //         this.resetForm()
+    //     } else if (response.data.msg === 'fail') {
+    //         alert("Message failed to send.")
+    //     }
+    // })
 
-    //     import aws from 'aws-sdk';
-    // const Amazon_accessKeyId = 'xxxxxx';
-    // const Amazon_secretAccessKey= 'xxxxxx';
-    // export default function sendEmail(options) {
-    //   aws.config.update({
-    //     region: 'us-east-1',
-    //     accessKeyId: Amazon_accessKeyId,
-    //     secretAccessKey: Amazon_secretAccessKey,
-    //   });
-    //   const ses = new aws.SES({ apiVersion: 'latest' });
-    //   return new Promise((resolve, reject) => {
-    //     ses.sendEmail(
-    //       {
-    //         Source: options.from,
+    // angular AWS call SES
+
+    // import * as aws from 'aws-sdk';
+    // import { SES } from 'aws-sdk'
+    // import { AwsConfig } from '../../../awsConfig';
+
+    // @Component({
+    //   selector: 'app-contact',
+    //   templateUrl: './contact.component.html',
+    //   styleUrls: ['./contact.component.scss']
+    // })
+    // export class ContactComponent {
+
+    //   private _ses: SES;
+
+    //   constructor() {
+    //     this.configureSES();
+    //   }
+
+    //   public sendMessage(): void {
+    //     let params;
+    //       params = {
     //         Destination: {
-    //           CcAddresses: this.state.operator.email,
-    //           ToAddresses: this.state.operator.user,
+    //           ToAddresses: [ 'recipient@sample.com' ]
     //         },
     //         Message: {
-    //           Subject: {
-    //             Data: Thank you for your purchase,
-    //           },
     //           Body: {
     //             Html: {
-    //               Data: options.body,
+    //               Charset: 'UTF-8',
+    //               Data: '<h1>HTML needed inside of your email</h1>'
     //             },
+    //             Text: {
+    //               Charset: 'UTF-8',
+    //               Data: 'Or you can use plain text'
+    //             }
     //           },
+    //           Subject: {
+    //             Charset: 'UTF-8',
+    //             Data: 'Sample message subject'
+    //           }
     //         },
-    //         ReplyToAddresses: options.replyTo,
-    //       },
-    //       (err, info) => {
-    //         if (err) {
-    //           reject(err);
-    //         } else {
-    //           resolve(info);
-    //         }
-    //       },
-    //     );
-    //   });
+    //         Source: 'sender@sample.com' // Must be registered with AWS
+    //       };
+    //       this.sendEmail(params);
+    //     }
+    //   }
+
+    //   private configureSES(): void {
+    //     aws.config.credentials = {
+    //       accessKeyId: AwsConfig.accessKeyId,
+    //       secretAccessKey: AwsConfig.secretAccessKey
+    //     };
+    //     aws.config.update({
+    //       region: AwsConfig.region
+    //     });
+    //     this._ses = new SES({
+    //       apiVersion: '2010-12-01'
+    //     });
+    //   }
+
+    //   private sendEmail(params): void {
+    //     this._ses.sendEmail(params, function(err, data) {
+    //       if (err) {
+    //         console.log(err, err.stack);
+    //       } else {
+    //         console.log(data);
+    //       }
+    //     });
+    //   }
     // }
 
 
-    // handlePurchaseSubmit = event => {
-    //     console.log("test-name: " + this.state.books.name);
-    //     console.log("test-address: " + this.state.books.address);
-    //     event.preventDefault();
-    //     if (this.state.books.name && this.state.books.address) {
-    //         API.purchasePost({
-    //             name: this.state.books.name,
-    //             address: this.state.books.address,
-    //             price: this.state.books.price
-    //         })
-    //             .then(res => this.setState({
-    //                 isConfirmed: true, isPurchased: true
-    //             }),
-    //                 this.sendEmail(),
-    //                 console.log(this),
-    //             )
-    //             .catch(err => console.log(err));
+    // 
 
-        //    }
-        // }
-    //  };
+
+    handlePurchaseSubmit = event => {
+        console.log("test-name: " + this.state.books.name);
+        console.log("test-address: " + this.state.books.address);
+        event.preventDefault();
+        if (this.state.books.name && this.state.books.address) {
+            API.purchasePost({
+                name: this.state.books.name,
+                address: this.state.books.address,
+                price: this.state.books.price
+            })
+                .then(res => this.setState({
+                    isConfirmed: true, isPurchased: true
+                }),
+                    this.sendEmail(),
+                    console.log(this),
+            )
+                .catch(err => console.log(err));
+
+        }
+    };
 
     render() {
         return (
             // getConfirmationForm = () => (
             <Container fluid>
+            <div className="cart">
                 <Row>
                     <Col size="md-7">
                         <div className="divStyle tour-info">
@@ -344,7 +389,7 @@ class BookNow extends React.Component {
                                         <CheckoutForm />
                                     </Elements>
                                 </div>
-                            </StripeProvider> */}
+                            </StripeProvider>  */}
                         </div>
 
                     </Col>
@@ -365,7 +410,6 @@ class BookNow extends React.Component {
                                         <td>$ {this.state.books.price} </td>
                                         <td>
                                             <Input
-                                                min={0}
                                                 className="qty"
                                                 type="number"
                                                 onChange={this.handleInputChange}
@@ -394,31 +438,32 @@ class BookNow extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <th>Total</th>
-                                        <th>$ {this.state.books.checkoutTotal}</th>
+                                        <th>$ {this.state.books.checkouttotal}</th>
                                     </tr>
                                 </tbody>
                             </table >
                         </div>
                     </Col>
 
-
-
-
                     <Col size="md-7">
-                        <button className="book-btn btn btn-success btn-block" onClick={this.handlePurchaseSubmit}>
+                        <button className="book-btn btn btn-success btn-block btn-lg" onClick={this.handlePurchaseSubmit}>
                             Buy Now
                           </button>
-                        <Link to="../../tours" className="book-btn btn btn-danger btn-block" onClick={this.handleBackBook}> Previous </Link>
+                        <Link to="../../tours" className="book-btn btn btn-block btn-sm" onClick={this.handleBackBook}> Previous </Link>
 
 
                         {/* <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
                         <Link to="../../tours" className="book-btn btn btn-danger btn-block previous-btn" onClick={this.onClick}>
                             Previous </Link> */}
                     </Col>
-
                 </Row>
+                </div>
             </Container>
         );
+
+        // render() {
+        //     if (this.state.isConfirmed === true) return this.getPurchaseForm();
+        //         else return this.getConfirmationForm();
     }
 };
 

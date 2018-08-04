@@ -8,7 +8,7 @@
     "start": "if-env NODE_ENV=production && npm run server || npm run start:dev",
     "server": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "seed": "node scripts/seedDB.js && node scripts/seedDB1.js",
+    "seed": "node scripts/seedDB.js && node scripts/seedDB1.js && node scripts/seedDB2.js",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",

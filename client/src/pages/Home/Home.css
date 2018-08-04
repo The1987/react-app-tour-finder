@@ -1,13 +1,24 @@
+.row {
+    width: 100%;
+    margin:0;
+}
+
 body {
     background-image: url('../../assets/images/croatia_001.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center; */
-    margin: 0;
-    height: 100%;
+    margin-top: 0;
+    height: 400px;
+    width: 100%;
 }
 
 .search-bar {
     width: 80%;
     border-radius: 50%;
+}
+
+.section-2, .section-3 {
+    height: 200px;
+    background-color: white;
+    border: 1px solid red;
 }
