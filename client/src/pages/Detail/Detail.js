@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-// import PresentGoogleMap from "../../components/PresentGoogleMap";
+import API from "../../utils/API"
+import {Image } from 'react-bootstrap';
+
+import image from "../../assets/images/new-york-bike-tour.jpg";
+import calendar from "../../assets/images/calendar.png";
+
+import PresentGoogleMap from "../../components/PresentGoogleMap";
 // import Calendar from "../../components/Calendar";
 
 class Detail extends React.Component {
@@ -54,17 +59,23 @@ class Detail extends React.Component {
   };
 
   getReadOnly = () => (
-    <Container fluid>
+    <Container fluid >
 
       <Row>
         <Col size="md-12">
-          <Jumbotron>
-            <h2>
+          <div className="text-white">
+            <div className="price float-right">
+              <span className="ad-price mr-2">
+                <strong> $ {this.state.books.price} </strong>
+              </span>
+              <br />
+              <span className="per-price mr-2"> per person </span>
+            </div>
+            <h2 className="ml-2">
               {this.state.books.name} <br />
-              {/* {this.state.books.address}*/}
             </h2>
-            <span>Operated By ACME Company</span>
-          </Jumbotron>
+            <span className="ml-2">Operated By <a href="">ACME Company</a></span>
+          </div>
         </Col>
       </Row>
 
@@ -73,117 +84,111 @@ class Detail extends React.Component {
 
           <Row>
             <Col size="md-12 sm-12">
-              <img src="../../assets/images/new-york-bike-tour.jpg" alt="new-york-bike-tour"/>
+              <div className="tour-details tour-picture">
+                <Image src={image} alt="" className="tour-image" />
+              </div>
             </Col>
 
-              <Col size="md-8 sm-12">
-                <p className="tour-details">
-                  <strong>About This Tour:</strong> {this.state.books.description} <br />
-                  {/* Tour Name: {this.state.books.name} <br /> */}
-                  {/* Starting Location: {this.state.books.address} <br /> */}
-                </p>
-              </Col>
-
-              <Col size="md-4 sm-12">
-                Ticket Price: $ {this.state.books.price} per person <br />
-                Tickets Available: {this.state.books.qty} <br />
-              </Col>
-
-        </Row>
-            <Row>
               <Col size="md-12 sm-12">
-                <h2 className="text-white">Select A Date & Time</h2>
-              </Col>
-              <Col size="md-4 sm-12" >
-                <div className="tour-details">
-                  Date: {this.state.books.date} <br />
-                  Time: {this.state.books.time} AM <br />
-                </div>
-              </Col>
-              <Col size="md-4 sm-12" className="tour-details">
-                <div className="tour-details">
-                  Date & Time
-              </div>
-              </Col>
-              <Col size="md-4 sm-12" className="tour-details">
-                <div className="tour-details">
-                  Date & Time
-              </div>
-              </Col>
-              <Col size="md-12 sm-12">
-                <Link className="book-btn btn btn-success btn-block " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
-              </Col>
-              <Col size="md-12">
-                <Link to="/operator">← Back to Tour Operator Screen</Link>
-                <button onClick={() => this.handleUpdate(true)}>Update</button>
-              </Col>
-            </Row>
+              <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+            </Col>
+
+            <Col size="md-12 sm-12">
+              <p className="tour-details">
+                <strong>About This Tour:</strong> {this.state.books.description} <br />
+                {/* Tour Name: {this.state.books.name} <br /> */}
+                {/* Starting Location: {this.state.books.address} <br /> */}
+              </p>
+            </Col>
+
+            <Col size="md-4 sm-12">
+
+
+            </Col>
+          </Row>
+
+          <Row>
+            {/* <Col size="md-12 sm-12">
+              <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+            </Col> */}
+            <Col size="md-12">
+              <Link to="/operator" className="text-white back-link">← Back to Tour Operator Screen</Link>
+              <button className="btn-primary float-right mb-4 pl-2 pr-2 " onClick={() => this.handleUpdate(true)}>Update Tour</button>
+            </Col>
+          </Row>
+
         </Col>
-          <Col size="md-4 sm-12" >
-            {/* className="map-details" */}
-            {/* <PresentGoogleMap /> */}
-            <div>
-              Calendar to Go Here
-         {/* <Calendar/> */}
-            </div>
-          </Col >
+        <Col size="md-4 sm-12" >
+          {/* className="map-details" */}
+          
+          <div className="tour-details tour-calendar">
+          <Image src={calendar} alt="" className="tour-image" />
+            {/* Tickets Available: {this.state.books.qty} */}
+          </div>
+
+          
+          <PresentGoogleMap />
+          
+
+        </Col>
       </Row>
     </Container>
-      );
-    
-      getUpdateform = () => (
+  );
+
+  getUpdateform = () => (
     <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>Update Your Tour</h1>
-            </Jumbotron>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <form>
-              <Input
-                value={this.state.books.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Tour Name (required)"
-              />
-              <Input
-                value={this.state.books.address}
-                onChange={this.handleInputChange}
-                name="address"
-                placeholder="Meet Up Location (required)"
-              />
-              <Input
-                value={this.state.books.price}
-                onChange={this.handleInputChange}
-                name="price"
-                placeholder="Price ($)"
-              />
-              <TextArea
-                value={this.state.books.description}
-                onChange={this.handleInputChange}
-                name="description"
-                placeholder="Tour Description"
-              />
-              <button onClick={() => this.handleUpdate(false)}>Cancel</button>
-              <FormBtn
-                disabled={!(this.state.books.name && this.state.books.address)}
-                onClick={this.handleFormSubmit}
-              >
-                Save Tour
+      <Row>
+        <Col size="md-12">
+          <Jumbotron>
+            <h1>Update Your Tour</h1>
+          </Jumbotron>
+        </Col>
+      </Row>
+      <Row>
+        <Col size="md-10 md-offset-1">
+          <form>
+            <Input
+              value={this.state.books.name}
+              onChange={this.handleInputChange}
+              name="name"
+              placeholder="Tour Name (required)"
+            />
+            <Input
+              value={this.state.books.address}
+              onChange={this.handleInputChange}
+              name="address"
+              placeholder="Meet Up Location (required)"
+            />
+            <Input
+              value={this.state.books.price}
+              onChange={this.handleInputChange}
+              name="price"
+              placeholder="Price ($)"
+            />
+            <TextArea
+              value={this.state.books.description}
+              onChange={this.handleInputChange}
+              name="description"
+              placeholder="Tour Description"
+            />
+            <button onClick={() => this.handleUpdate(false)}>Cancel</button>
+            <FormBtn
+              disabled={!(this.state.books.name && this.state.books.address)}
+              onClick={this.handleFormSubmit}
+            >
+              Save Tour
             </FormBtn>
-            </form>
-          </Col>
-        </Row>
-      </Container>
-      );
-    
+          </form>
+        </Col>
+
+      </Row>
+    </Container>
+  );
+
   render() {
     if (this.state.isUpdate) return this.getUpdateform();
-      else return this.getReadOnly();
-    }
+    else return this.getReadOnly();
   }
-  
-  export default Detail;
+}
+
+export default Detail;
