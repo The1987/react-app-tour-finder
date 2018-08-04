@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import "./BookNow.css";
 import { Input } from "../../components/Form";
 import { Link } from "react-router-dom";
+
 // import aws from 'aws-sdk';
 // import nodemailer from 'nodemailer';
 // import axios from 'axios';
@@ -39,6 +40,19 @@ import { Link } from "react-router-dom";
 
 // let message = "Thank you for your purchase";
 
+
+
+
+
+// Update state with -> checkoutTotal: ""
+// This goes in the checkout total in the table -> this.state.books.checkoutTotal
+
+
+
+
+
+
+
 class BookNow extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +68,7 @@ class BookNow extends React.Component {
             time: "",
             isConfirmed: false,
             isPurchased: false,
-            checkouttotal: ""
+            checkoutTotal: "",
         };
     };
 
@@ -64,6 +78,7 @@ class BookNow extends React.Component {
     };
 
 
+    
 
     // default function to populate content
     componentDidMount() {
@@ -107,6 +122,15 @@ class BookNow extends React.Component {
             books: updatedBook
         });
     };
+
+    // Trying to add calculations to the Cart
+    // componentWillMount() {
+    //     const checkoutTotal = {...this.state.books.price * this.state.books.qty}
+    //         this.setState({
+    //             checkoutTotal
+    //         });
+    //     };
+
 
     // resetOperator() {
     //         this.setState({ books: {}, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" , isConfirmed: false, isPurchased: false})
@@ -370,7 +394,7 @@ class BookNow extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <th>Total</th>
-                                        <th>$ {this.state.books.checkouttotal}</th>
+                                        <th>$ {this.state.books.checkoutTotal}</th>
                                     </tr>
                                 </tbody>
                             </table >

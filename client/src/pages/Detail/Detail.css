@@ -1,8 +1,60 @@
+*, h2, h3 nav, navbar, nav-link, link {
+    font-family: quicksand;
+    color: black;
+}
+
+
+/* body{
+    background-color: white;
+    background-image: none;
+    width: 100%;
+} */
+
+navbar {
+    background-color: #ccc;
+}
+
+
+
 .tour-details, .map-details {
    background-color: white; 
    width: 100%;
+   padding: 10px;
+   border-radius: 1%;
 }
 
-*, h2, h3 {
-    font-family: quicksand;
+
+.tour-image {
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tour-calendar {
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.price {
+    text-align: center;
+}
+
+.ad-price {
+    font-size: 32px;
+    color: rgb(19, 189, 19);
+    /* color: white; */
+}
+
+.per-price {
+    font-size: 14px;
+}
+
+.book-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    text-align: center;
+    color: red;
 }
