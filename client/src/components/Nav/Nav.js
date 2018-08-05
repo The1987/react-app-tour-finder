@@ -66,10 +66,10 @@ class Nav extends Component {
                                 </li>
                                 <li className="nav-item">
 
-                                    <a className="nav-link" href="/operator">Operator-Dash</a>
+                                    <a className="nav-link hvr-fade" href="/operator">Operator-Dash</a>
                                 </li>
                                 <li className="nav-item">
-                                <a className="nav-link" href="/profile">Customer-Profile</a>
+                                <a className="nav-link hvr-fade" href="/profile">Customer-Profile</a>
 
                                 </li>
                             </ul>
