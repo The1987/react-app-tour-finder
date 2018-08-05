@@ -58,7 +58,7 @@ a.book-now:hover {
     font-family: 'Josefin Slab', serif;
     font-weight: 100;
     font-size: 45px;
-    
+    color: #FFF0C9;
 }
 
 /* Grow Shadow */
@@ -94,9 +94,10 @@ a.book-now:hover {
       font-family: Quicksand, sans-serif;
   }
 
-  /* .more-details:link {
-      color: #091324;
-  } */
+  .more-details:link {
+      font-family: 'Quicksand', sans-serif;
+      /* color: #091324; */
+  }
 
   .more-details:hover {
     text-decoration: none;

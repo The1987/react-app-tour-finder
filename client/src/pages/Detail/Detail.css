@@ -5,7 +5,7 @@
 
 
 .header{
-    background-color: rgb(50, 54, 66);
+    background-color: rgb(50, 54, 66, 0.9);
     background-image: none;
     width: 100%;
     margin-top: 20px;
@@ -125,5 +125,5 @@
 .tour-details-p {
     background-color: #454954 ;
     height: 269px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }

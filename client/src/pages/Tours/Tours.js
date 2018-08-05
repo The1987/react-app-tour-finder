@@ -87,7 +87,7 @@ class Tours extends React.Component {
       
         <Row>
           <Col size="md-12">
-            <h2 className="text-white tours-h2">Tours in your Area</h2>
+            <h2 className="tours-h2">Tours in your Area</h2>
           </Col>
         </Row>
       
