@@ -1,3 +1,71 @@
+.sections {
+    text-align: center;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 80px;
+}
+
+.sections:hover {
+    background-color: #ccc;
+}
+
+.payout {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.booked-tours {
+    background-color: white;
+    height: 300px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.booked-tours h2 {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.booked-tours-table {
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.booked-tours-data td {
+    color: #ccc;
+}
+
+.cancel-refund {
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.add-tour, .preview-tour {
+    background-color: white;
+    height: auto;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+.add-tour h2, .preview-tour h2 {
+    text-align: center;
+    padding-top: 10px;
+}
+
 .form-btn {
     margin-bottom: 100px;
 }
