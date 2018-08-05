@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import PresentGoogleMaps from "../../components/PresentGoogleMap";
+// import PresentGoogleMaps from "../../components/PresentGoogleMap";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./Tours.css";
 
@@ -90,7 +90,7 @@ class Tours extends React.Component {
         </Row>
 
         <Row>
-          <Col size="md-8 sm-12 pb-6">
+          <Col size="lg-12 sm-12 pb-6">
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => {
@@ -134,9 +134,9 @@ class Tours extends React.Component {
               )}
 
           </Col>
-          <Col size="lg-4 md-4 sm-12">
+          {/* <Col size="lg-4 md-4 sm-12">
             <PresentGoogleMaps />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     );

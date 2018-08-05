@@ -65,9 +65,13 @@ class Nav extends Component {
                                     <a className="nav-link hvr-fade" href="/signup">Sign Up</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link hvr-fade" href="/operator">Op Dashboard</a>
+
+                                    <a className="nav-link" href="/operator">Operator-Dash</a>
                                 </li>
-                                
+                                <li className="nav-item">
+                                <a className="nav-link" href="/profile">Customer-Profile</a>
+
+                                </li>
                             </ul>
                         )}
                 </div>

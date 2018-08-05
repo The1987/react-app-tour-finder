@@ -99,124 +99,206 @@ class Operator extends React.Component {
       <Container fluid>
         <Row>
           <Col size="md-4 sm-12">
-              <h2 className="text-white">Add Tour</h2>
-            <form>
-
-              {/* Adding functionality to upload image to rEact.js
-              Source: https://academind.com/learn/react/snippets/image-upload/#select-a-file*/}
-              {/* <PhotoInput type="file" onChange={this.fileChangedHandler} /> */}
-              {/* <button onClick={this.uploadHandler}>Upload!</button> */}
-
-
-
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Tour Name (required)"
-              />
-              <Input
-                value={this.state.address}
-                onChange={this.handleInputChange}
-                name="address"
-                placeholder="Meet Up Address(required)"
-              />
-
-              <Input
-                type="number"
-                value={this.state.price}
-                onChange={this.handleInputChange}
-                name="price"
-                placeholder="Price ($ USD)"
-                pattern="[0-9]*"
-              />
-
-              <Input
-                type="number"
-                value={this.state.qty}
-                onChange={this.handleInputChange}
-                name="qty"
-                placeholder="Number of Available Tickets"
-                pattern="[0-9]*"
-              />
-
-              <Input
-                value={this.state.date}
-                onChange={this.handleInputChange}
-                name="date"
-                placeholder="Date"
-              />
-
-              <Input
-                type="number"
-                value={this.state.time}
-                onChange={this.handleInputChange}
-                name="time"
-                placeholder="Time"
-              />
-
-              <TextArea
-                value={this.state.description}
-                onChange={this.handleInputChange}
-                name="description"
-                placeholder="Tour Description"
-              />
-
-              <FormBtn
-                disabled={!(this.state.name && this.state.address)}
-                onClick={this.handleFormSubmit}
-              >
-                Save & Publish Tour
-              </FormBtn>
-            </form>
+            <div className="sections">
+              <i class="far fa-envelope"></i> Inbox (4)
+            </div>
           </Col>
-          <Col size="md-8 sm-12">
-              <h2 className="text-white">Preview Tour</h2>
-            {this.state.books.length ? (
-
-              <List>
-
-                {this.state.books.map(book => {
-                  return (
-
-                    <ListItem key={book._id}>
-                   <Row>
-                        <Col size="sm-2 md-2" >
-                          <div className="image">
-                            {book.pictures}
-                          </div>
-                        </Col>
-
-                        <Col size="sm-7 md-7">
-                          <strong>Tour Name:</strong> {book.name} <br />
-                          <strong> Starting Location:</strong>  {book.address} <br />
-                          <a href={"/tours/" + book._id}>More Details</a>
-
-                        </Col>
-
-                        <Col size="sm-3 md-3" >
-                        <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                         <div className="price">
-                            <span className="ad-price">
-                              <strong> $ {book.price} </strong>
-                            </span>
-                            <br />
-                            <span className="per-price"> per person </span>
-                          </div>
-                            <br />
-                            <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
-                          
-                        </Col>
-                      </Row>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
+          <Col size="md-4 sm-12">
+            <div className="sections">
+              Upcoming Tours (30)
+            </div>
+          </Col>
+          <Col size="md-4 sm-12">
+            <div className="sections">
+              Pending Transactions: $3,120.00 <br />
+              <span className="payout">Next Payout: 5/17</span>
+            </div>
           </Col>
         </Row>
+
+        <Row>
+          <Col size="lg-12 sm-12">
+            <div className="booked-tours">
+              <h2>Bookings</h2>
+              <hr />
+              <table className="booked-tours-table">
+                <tbody>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tour Name</th>
+                    <th>Tour Date</th>
+                    <th>Tour Time</th>
+                    <th>Customer Name</th>
+                    <th>Customer Email</th>
+                    <th>Qty</th>
+                    <th>{/*<!-- Checkout Box -->*/}</th>
+                  </tr>
+                  <tr className="booked-tours-data">
+                    <td>038</td>
+                    <td>Central Park Bike Tour</td>
+                    <td>9/5/18</td>
+                    <td>10 AM</td>
+                    <td>Molly Smith</td>
+                    <td><a href="">msmith@gmail.com</a></td>
+                    <td>3</td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr className="booked-tours-data">
+                    <td>038</td>
+                    <td>Central Park Bike Tour</td>
+                    <td>9/5/18</td>
+                    <td>10 AM</td>
+                    <td>Molly Smith</td>
+                    <td><a href="">msmith@gmail.com</a></td>
+                    <td>3</td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr className="booked-tours-data">
+                    <td>038</td>
+                    <td>Central Park Bike Tour</td>
+                    <td>9/5/18</td>
+                    <td>10 AM</td>
+                    <td>Molly Smith</td>
+                    <td><a href="">msmith@gmail.com</a></td>
+                    <td>3</td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr className="booked-tours-data">
+                    <td>038</td>
+                    <td>Central Park Bike Tour</td>
+                    <td>9/5/18</td>
+                    <td>10 AM</td>
+                    <td>Molly Smith</td>
+                    <td><a href="">msmith@gmail.com</a></td>
+                    <td>3</td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr className="booked-tours-data">
+                    <td>038</td>
+                    <td>Central Park Bike Tour</td>
+                    <td>9/5/18</td>
+                    <td>10 AM</td>
+                    <td>Molly Smith</td>
+                    <td><a href="">msmith@gmail.com</a></td>
+                    <td>3</td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                </tbody>
+              </table>
+                    <button className="float-right btn-primary cancel-refund">Cancel & Refund</button>
+            </div>
+          </Col>
+        </Row>
+
+
+        <Row>
+          <Col size="md-4 sm-12">
+            <div className="add-tour">
+              <h2>Add Tour</h2>
+              <form>
+                {/* Adding functionality to upload image to rEact.js
+              Source: https://academind.com/learn/react/snippets/image-upload/#select-a-file*/}
+                {/* <PhotoInput type="file" onChange={this.fileChangedHandler} /> */}
+                {/* <button onClick={this.uploadHandler}>Upload!</button> */}
+                <Input
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
+                  name="name"
+                  placeholder="Tour Name (required)"
+                />
+                <Input
+                  value={this.state.address}
+                  onChange={this.handleInputChange}
+                  name="address"
+                  placeholder="Meet Up Address(required)"
+                />
+                <Input
+                  type="number"
+                  value={this.state.price}
+                  onChange={this.handleInputChange}
+                  name="price"
+                  placeholder="Price ($ USD)"
+                  pattern="[0-9]*"
+                />
+                <Input
+                  type="number"
+                  value={this.state.qty}
+                  onChange={this.handleInputChange}
+                  name="qty"
+                  placeholder="Number of Available Tickets"
+                  pattern="[0-9]*"
+                />
+                <Input
+                  value={this.state.date}
+                  onChange={this.handleInputChange}
+                  name="date"
+                  placeholder="Date"
+                />
+                <Input
+                  type="number"
+                  value={this.state.time}
+                  onChange={this.handleInputChange}
+                  name="time"
+                  placeholder="Time"
+                />
+                <TextArea
+                  value={this.state.description}
+                  onChange={this.handleInputChange}
+                  name="description"
+                  placeholder="Tour Description"
+                />
+                <FormBtn
+                  disabled={!(this.state.name && this.state.address)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Save & Publish Tour
+              </FormBtn>
+              </form>
+            </div>
+          </Col>
+          <Col size="md-8 sm-12">
+            <div className="preview-tour">
+              <h2 className="">Preview Tour</h2>
+              {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => {
+                    return (
+                      <ListItem key={book._id}>
+                        <Row>
+                          <Col size="sm-2 md-2" >
+                            <div className="image">
+                              {book.pictures}
+                            </div>
+                          </Col>
+                          <Col size="sm-7 md-7">
+                            <strong>Tour Name:</strong> {book.name} <br />
+                            <strong> Starting Location:</strong>  {book.address} <br />
+                            <a href={"/tours/" + book._id}>More Details</a>
+                          </Col>
+                          <Col size="sm-3 md-3" >
+                            <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                            <div className="price">
+                              <span className="ad-price">
+                                <strong> $ {book.price} </strong>
+                              </span>
+                              <br />
+                              <span className="per-price"> per person </span>
+                            </div>
+                            <br />
+                            <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
+                          </Col>
+                        </Row>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              ) : (
+                  <h2>No Results to Display</h2>
+                )}
+            </div>
+          </Col>
+        </Row>
+
       </Container>
     );
   }
