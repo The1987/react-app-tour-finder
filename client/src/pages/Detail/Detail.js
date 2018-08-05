@@ -69,12 +69,12 @@ class Detail extends React.Component {
                   <strong> $ {this.state.books.price} </strong>
                 </span>
                 <br />
-                <span className="per-price mr-2"> per person </span>
+                <span className="details-per-person per-price mr-2"> per person </span>
               </div>
-              <h2 className="ml-2">
+              <h2 className="details-tour-title ml-2">
                 {this.state.books.name} <br />
               </h2>
-              <span className="ml-2">Operated By <a href="">ACME Company</a></span>
+              <span className="operated-by ml-2">Operated by:    <a className="operator-name-link" href=""> ACME Company</a></span>
             </div>
           </Col>
         </Row>
@@ -90,12 +90,12 @@ class Detail extends React.Component {
                 </Col>
 
                 <Col size="md-12 sm-12">
-                  <Link className="book-btn btn btn-success btn-block btn-lg " to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+                  <Link className="book-btn btn btn-success btn-block btn-lg hvr-shadow" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
                 </Col>
 
                 <Col size="md-12 sm-12">
-                <p className="tour-details">
-                  <strong>About This Tour:</strong> {this.state.books.description} <br />
+                <p className="tour-details tour-details-p">
+                  <strong className="about-this-tour-detail">About This Tour:</strong> <span className="about-this-tour-detail-description"> {this.state.books.description} </span> <br />
                   {/* Tour Name: {this.state.books.name} <br /> */}
                   {/* Starting Location: {this.state.books.address} <br /> */}
                 </p>

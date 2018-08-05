@@ -1,25 +1,26 @@
-*, h2, h3 nav, navbar, nav-link, link {
+/* *, h2, h3 nav, navbar, nav-link, link {
     font-family: quicksand;
     color: black;
-}
+} */
 
 
 .header{
-    background-color: white;
+    background-color: rgb(50, 54, 66);
     background-image: none;
     width: 100%;
     margin-top: 20px;
     padding: 0;
+    border-radius: 10px;
 }
 
-navbar {
+/* navbar {
     background-color: #ccc;
-}
+} */
 
 
 
 .tour-details, .map-details {
-   background-color: white; 
+    /* background-color: rgb(50, 54, 66, 0.0); */
    width: 100%;
    padding: 10px;
    border-radius: 1%;
@@ -27,14 +28,19 @@ navbar {
 
 
 .tour-image {
-    height: auto;
-    width: 100%;
+    /* height: auto; */
+    width: 102.5%;
     margin-bottom: 20px;
+    border-radius: 5px;
+    position: relative;
+    left: -10px;
 }
 
 .tour-calendar {
     margin-bottom: 20px;
-    width: 100%;
+    width: 93.5%;
+    position:relative;
+    left: -0.5px;
 }
 
 .price {
@@ -42,9 +48,15 @@ navbar {
 }
 
 .ad-price {
-    font-size: 32px;
+    /* font-size: 32px;
     color: rgb(19, 189, 19);
-    /* color: white; */
+    color: white; */
+
+
+    color: #FF9900;
+    font-family: 'Josefin Sans', serif;
+    font-weight: 500;
+    font-size: 65px;
 }
 
 .per-price {
@@ -52,11 +64,66 @@ navbar {
 }
 
 .book-btn {
-    margin-top: 20px;
+    margin-top: -10px;
     margin-bottom: 20px;
+    background-color: #FF6161;
+    border: solid;
+    border-color: #FF6161;
+    width: 100%;
+}
+
+.book-btn:hover {
+    background-color: #F25174;
+    border: solid;
+    border-color: #F25174;
 }
 
 .back-link {
     text-align: center;
     color: red;
+}
+
+.details-tour-title {
+    padding-top: 14px;
+    font-family: 'Josefin Sans', serif;
+    font-weight: 300;
+    font-size: 45px;
+    color: #FF9761;
+    
+}
+
+.operated-by {
+    color: #FFF0C9; 
+    font-family: 'Quicksand', sans-serif;
+}
+
+.operator-name-link {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 23px;
+    font-weight: 300;
+}
+
+.details-per-person {
+    position: relative;
+    top: -20px;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+
+.about-this-tour-detail{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    color: #FF6161;
+
+}
+
+.about-this-tour-detail-description {
+    font-family: 'Quicksand', sans-serif;
+    color: #FFF0C9; 
+}
+
+.tour-details-p {
+    background-color: #454954 ;
+    height: 269px;
+    margin-bottom: 200px;
 }
