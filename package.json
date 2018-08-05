@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "private": true,
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+  },
   "scripts": {
     "debug": "concurrently \"node --inspect-brk=43240 server.js\" \"npm run client\"",
     "start": "if-env NODE_ENV=production && npm run server || npm run start:dev",
