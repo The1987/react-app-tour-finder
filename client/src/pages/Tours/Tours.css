@@ -1,9 +1,22 @@
 .image {
     background-color: #ccc;
-    width: 100%;
+    width: 115%;
     height: 100%;
     text-align: center;
-    padding-top: 30%;
+    padding-top: 32%;
+    border-radius: 10px;
+    position: relative;
+    left: -15px;
+    
+  
+}
+
+.image-p {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 53px;
+    color: #3c3c3c;
+    opacity: 0.1;
 }
 
 .price {
@@ -12,15 +25,18 @@
 
 .ad-price {
     font-size: 30px;
-    color: rgb(19, 189, 19);
+    /* color: rgb(19, 189, 19); */
 }
 
 .per-price {
-    font-size: 14px;
+    font-size: 30px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .book-now {
-    background-color: rgb(19, 189, 19);
+    background-color: #FF6161;
+    /*  rgb(19, 189, 19) */
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -31,6 +47,100 @@
 }
 
 a.book-now:hover {
-    background-color: rgb(14, 153, 14);
+    background-color: #F25174;
+    /* background-color: rgb(14, 153, 14); */
     text-decoration-line: none;
 }
+
+
+.tours-h2 {
+    padding-top: 14px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 100;
+    font-size: 45px;
+    
+}
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.9);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  .tour-name-location {
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FF9761;
+
+  }
+
+  .tour-name-location-details {
+      color: #F4F5F2;
+      font-size: 23px;
+      font-weight: 100;
+      font-family: Quicksand, sans-serif;
+  }
+
+  /* .more-details:link {
+      color: #091324;
+  } */
+
+  .more-details:hover {
+    text-decoration: none;
+}
+
+
+/* Underline Reveal */
+.hvr-underline-reveal {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-reveal:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #F25174;
+    height: 2px;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  
+
+.book-price {
+    color: #FF9900;
+    font-family: 'Josefin Sans', serif;
+    font-weight: 500;
+    font-size: 65px;
+}
+ 
