@@ -44,31 +44,33 @@ class Nav extends Component {
                 <div id="navbarNavDropdown" className="navbar-collapse collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active" id="available-tours" >
-                            <a href="/tours" className="nav-link" >Available Tours <span className="sr-only">(current)</span></a>
+                            <a href="/tours" className="nav-link hvr-fade" >Available Tours <span className="sr-only">(current)</span></a>
                         </li>
 
                     </ul>
 
                     {loggedIn ? (
                         <section className="navbar-section">
-                            <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                            <Link to="#" className="btn btn-link text-secondary hvr-fade" onClick={this.logout}>
                                 <span className="text-secondary">Logout</span></Link>
                         </section>
 
                     ) : (
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/login">Login</a>
+                                    <a className="nav-link hvr-fade" href="/login">Login</a>
                                 </li>
                                 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/signup">Sign Up</a>
+                                    <a className="nav-link hvr-fade" href="/signup">Sign Up</a>
                                 </li>
                                 <li className="nav-item">
+
                                     <a className="nav-link" href="/operator">Operator-Dash</a>
                                 </li>
                                 <li className="nav-item">
                                 <a className="nav-link" href="/profile">Customer-Profile</a>
+
                                 </li>
                             </ul>
                         )}
