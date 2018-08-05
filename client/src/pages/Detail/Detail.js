@@ -95,7 +95,7 @@ class Detail extends React.Component {
 
                 <Col size="md-12 sm-12">
                 <p className="tour-details tour-details-p">
-                  <strong className="about-this-tour-detail">About This Tour:</strong> <span className="about-this-tour-detail-description"> {this.state.books.description} </span> <br />
+                  <strong className="about-this-tour-detail">About this Tour:</strong> <span className="about-this-tour-detail-description"> {this.state.books.description} </span> <br />
                   {/* Tour Name: {this.state.books.name} <br /> */}
                   {/* Starting Location: {this.state.books.address} <br /> */}
                 </p>
