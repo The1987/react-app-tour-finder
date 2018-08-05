@@ -63,7 +63,7 @@ class Detail extends React.Component {
       <div className="header">
         <Row>
           <Col size="md-12">
-            <div className="header">
+            <div className="header2">
               <div className="price float-right">
                 <span className="ad-price mr-2">
                   <strong> $ {this.state.books.price} </strong>
