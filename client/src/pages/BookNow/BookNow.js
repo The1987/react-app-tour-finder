@@ -297,18 +297,19 @@ class BookNow extends React.Component {
             // getConfirmationForm = () => (
             <Container fluid>
             <div className="cart">
+            <Link to="../../tours" className="btn buy-button-text previous-btn" onClick={this.handleBackBook}> {'<<<   '}Continue Browsing </Link>
                 <Row>
                     <Col size="md-7">
-                        <div className="divStyle tour-info">
-                            <h4>Tour Information</h4>
-                            <strong>Tour Name:</strong> {this.state.books.name} <br />
-                            <strong>Tour Date:</strong> {this.state.books.date} <br />
-                            <strong>Start Location:</strong> {this.state.books.address} <br />
-                            <strong>Start Time:</strong> {this.state.books.time}
+                        <div className="divStyle tour-info effect6">
+                            <h4 className="cart-h4">Tour Information</h4>
+                            <strong className="cart-info-label">Tour Name:</strong> {this.state.books.name} <br />
+                            <strong className="cart-info-label">Tour Date:</strong> {this.state.books.date} <br />
+                            <strong className="cart-info-label">Start Location:</strong> {this.state.books.address} <br />
+                            <strong className="cart-info-label">Start Time:</strong> {this.state.books.time}
                         </div>
 
-                        <div className="divStyle bill-info">
-                            <h4>Billing Information</h4>
+                        <div className="divStyle bill-info effect6">
+                            <h4 className="cart-h4">Billing Information</h4>
                             <form>
                                 <Input size="sm-2"
                                     // value={this.state.billname}
@@ -379,8 +380,8 @@ class BookNow extends React.Component {
                             </form>
                         </div>
 
-                        <div className="divStyle pay-info">
-                            <h4>Payment Information</h4>
+                        <div className="divStyle pay-info effect6">
+                            <h4 className="cart-h4">Payment Information</h4>
 
 
                             {/* <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR"> */}
@@ -395,15 +396,15 @@ class BookNow extends React.Component {
                     </Col>
 
                     <Col size="md-5">
-                        <div className="divStyle cart-info">
-                            <h4>Cart</h4>
+                        <div className="divStyle cart-info effect6">
+                            <h4 className="cart-h4">Cart</h4>
                             <table>
                                 <tbody>
                                     <tr className="line">
-                                        <th>Admission</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th> Amount</th>
+                                        <th className="cart-info-label">Admission</th>
+                                        <th className="cart-info-label">Price</th>
+                                        <th className="cart-info-label">Qty</th>
+                                        <th className="cart-info-label"> Amount</th>
                                     </tr>
                                     <tr className="line">
                                         <td>General</td>
@@ -446,10 +447,10 @@ class BookNow extends React.Component {
                     </Col>
 
                     <Col size="md-7">
-                        <button className="book-btn btn btn-success btn-block btn-lg" onClick={this.handlePurchaseSubmit}>
-                            Buy Now
+                        <button className="book-btn btn btn-success btn-block btn-lg hvr-grow-shadow-2" onClick={this.handlePurchaseSubmit}>
+                            <span>Buy Now </span>
                           </button>
-                        <Link to="../../tours" className="book-btn btn btn-block btn-sm" onClick={this.handleBackBook}> Previous </Link>
+                        
 
 
                         {/* <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
