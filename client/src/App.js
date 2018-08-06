@@ -42,8 +42,8 @@ class App extends Component {
             <hr />
             <Switch>
               
-            <Route exact path="/" component={Home} />
-            <Route exact path={routes.SIGN_UP} component={Home} />
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path={routes.HOME} component={Home} />
             
             <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
             <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
