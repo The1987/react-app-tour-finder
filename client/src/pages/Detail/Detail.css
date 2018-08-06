@@ -177,6 +177,7 @@
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
+    background-color: #FF5174;
   }
 
   .details-dollar-sign {
