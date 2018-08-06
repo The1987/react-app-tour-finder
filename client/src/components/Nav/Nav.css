@@ -1,5 +1,6 @@
 .navbar{
   background-color: black;
+  
 }
 
 /* .navbar-brand{ 
@@ -59,6 +60,7 @@ li {
   transition-duration: 0.3s;
   -webkit-transition-property: color, background-color;
   transition-property: color, background-color;
+  border-radius: 4px;
 }
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
   background-color: #2098D1; 
