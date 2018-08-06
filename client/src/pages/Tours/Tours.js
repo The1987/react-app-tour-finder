@@ -85,7 +85,7 @@ class Tours extends React.Component {
       
       <Container fluid>
       
-        <Row className="tours-h2-container">
+        <Row>
           <Col  size="md-12">
             <h2 className="tours-h2">Tours in your Area</h2>
           </Col>

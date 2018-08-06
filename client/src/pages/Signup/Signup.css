@@ -1,0 +1,66 @@
+.sign-up-h1{
+    /* position: relative;
+    left: -2.1%;
+    padding-top: 17px;
+    padding-left: 35px;
+    padding-bottom: 14px;
+    margin-bottom: 0px;
+    width: 104.3%; */
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 45px;
+    color: #FF6161; 
+   
+     /* #FFF0C9 #FF6161 #FF9761  rgb(50, 54, 66) */
+    /* background-color: rgb(177, 177, 177, 0.4); */
+
+}
+
+.SignupForm {
+    padding: 8%;
+    padding-top: -4%;
+    border-radius: 10px;
+    opacity: 1;
+    width: 720px;
+    margin: 0 auto;
+    margin-left: 25px;
+    margin-top: 4%;
+    background-color: rgb(53, 51, 62, 0.8);
+}
+
+
+
+.form-input {
+    
+    border: none;
+    border-radius: 8px !important;
+    padding: 35px;
+    width: 568px;
+    height: 55px;
+    border-radius: 1px;
+    font-family: 'Quicksand', sans-serif;
+  font-weight: 100 !important;
+  font-size: 35px;
+  color: rgb(76, 76, 76, 0.9);
+
+}
+
+#sign-in-button-id{
+    width: 94%;
+    margin-left: 2%;
+    /* 
+    background-color: #F7931E;
+    opacity: 1.0;
+    font-family: 'Josefin Sans', sans-serif; */
+    margin-top: 25px;
+    font-size: 30px;
+    margin-bottom: 25px;
+    cursor: pointer !important;
+}
+
+.form-label {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 100;
+    font-size: 25px;
+    color: #FFF0C9 !important;
+}
