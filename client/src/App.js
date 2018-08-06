@@ -12,7 +12,6 @@ import Footer from "./components/Footer";
 import SignUpPage from './components/SignUp';
 import SignInPage from './components/SignIn';
 import PasswordForgetPage from './components/PasswordForget';
-import HomePage from './components/Home';
 import * as routes from '../src/constants/routes';
 import { firebase } from './firebase';
 
@@ -44,13 +43,12 @@ class App extends Component {
             <Switch>
               
             <Route exact path="/" component={Home} />
-
+            <Route exact path={routes.SIGN_UP} component={Home} />
             
             <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
             <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
             <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
-            <Route exact path={routes.HOME} component={() => <HomePage />} />
-            
+          
             <Route exact path="/operator" component={Operator} />
             <Route exact path="/operator/:id" component={Detail} />
             <Route exact path="/tours/:id" component={Detail} />
