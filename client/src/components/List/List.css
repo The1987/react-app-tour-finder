@@ -1,38 +1,61 @@
+
+.list-group-item{
+  background-color: transparent;
+  border: none;
+}
 .list-overflow-container {
-  max-height: 545px;
-  border: 1px #DDDDDD solid;
-  border-radius: 4px;
+  max-height: 575px;
+  /* border: 0px #DDDDDD solid; */
+  border-radius: 12px;
   overflow-y: scroll;
   overflow-x: hidden;
   list-style-type: none;
+  border: none;
+  
+  
 }
 
 .list-overflow-container ul {
   margin: 0;
+
+  
 }
 
 .list-overflow-container li {
-  border-radius: 0px;
+  border-radius: 8px;
   border-left: none;
   border-right: none;
+  background-color: rgb(50, 54, 66, 0.85);
+  padding: 50px;
+
 }
 
 .list-overflow-container li * {
   cursor: pointer;
+  
 }
 
 .list-overflow-container li a {
-  color: blue;
+  /* color: blue; */
 }
 
 .list-overflow-container li:first-child {
   border-top: none;
+  
 }
+
+/* .list-overflow-container li:nth-child(odd) {
+ 
+  padding: 10px;
+} */
 
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
 
 .listItem {
-  border: red;
+  /* border: red; */
+  
 }
+
+

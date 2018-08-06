@@ -1,25 +1,35 @@
-*, h2, h3 nav, navbar, nav-link, link {
+/* *, h2, h3 nav, navbar, nav-link, link {
     font-family: quicksand;
     color: black;
-}
+} */
 
+/* body {
+    background-image: url('../../assets/images/_TLI5087.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0;
+    height: 400px;
+    width: 100%;
+    background-color: #0D1A33;
+} */
 
 .header{
-    background-color: white;
+    background-color: rgb(50, 54, 66, 0.8);
     background-image: none;
     width: 100%;
     margin-top: 20px;
     padding: 0;
+    border-radius: 10px;
 }
 
-navbar {
+/* navbar {
     background-color: #ccc;
-}
+} */
 
 
 
 .tour-details, .map-details {
-   background-color: white; 
+    /* background-color: rgb(50, 54, 66, 0.0); */
    width: 100%;
    padding: 10px;
    border-radius: 1%;
@@ -27,14 +37,19 @@ navbar {
 
 
 .tour-image {
-    height: auto;
-    width: 100%;
-    margin-bottom: 20px;
+    /* height: auto; */
+    width: 102.5%;
+    margin-bottom: 0.4%;
+    border-radius: 5px;
+    position: relative;
+    left: -10px;
 }
 
 .tour-calendar {
     margin-bottom: 20px;
-    width: 100%;
+    width: 108.7%;
+    position:relative;
+    left: -6.6%;
 }
 
 .price {
@@ -42,9 +57,15 @@ navbar {
 }
 
 .ad-price {
-    font-size: 32px;
+    /* font-size: 32px;
     color: rgb(19, 189, 19);
-    /* color: white; */
+    color: white; */
+
+
+    color: #FF9900;
+    font-family: 'Josefin Sans', serif;
+    font-weight: 500;
+    font-size: 65px;
 }
 
 .per-price {
@@ -52,11 +73,114 @@ navbar {
 }
 
 .book-btn {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0.7%;
+    margin-bottom: 2%;
+    background-color: #FF6161;
+    border: solid;
+    border-color: #FF6161;
+    width: 100%;
+    cursor: pointer;
+}
+
+.book-btn:hover {
+    background-color: #F25174;
+    border: solid;
+    border-color: #F25174;
+    cursor: pointer;
 }
 
 .back-link {
     text-align: center;
     color: red;
 }
+
+.details-tour-title {
+    padding-top: 14px;
+    font-family: 'Josefin Sans', serif;
+    font-weight: 300;
+    font-size: 45px;
+    color: #FF9761;
+    
+}
+
+.operated-by {
+    color: #FFF0C9; 
+    font-family: 'Quicksand', sans-serif;
+}
+
+.operator-name-link {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.details-per-person {
+    position: relative;
+    top: -20px;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+
+.about-this-tour-detail{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+    color: #FF6161;
+
+}
+
+.about-this-tour-detail-description {
+    font-family: 'Quicksand', sans-serif;
+    color: #FFF0C9; 
+    font-size: 26px;
+    font-weight: 100;
+}
+
+.tour-details-p {
+    background-color: #454954 ;
+    height: 255px;
+    margin-bottom: 100px;
+    overflow: auto;
+    padding: 3%;
+}
+
+/* Fade */
+.hvr-fade-2 {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+  }
+  .hvr-fade-2:hover, .hvr-fade-2:focus, .hvr-fade-2:active {
+    background-color: #F25174;
+    color: white;
+  }
+  
+  /* Grow Shadow */
+.hvr-grow-shadow-2 {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+  .hvr-grow-shadow-2:hover, .hvr-grow-shadow-2:focus, .hvr-grow-shadow-2:active {
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+    background-color: #FF5174;
+  }
+
+  .details-dollar-sign {
+      font-weight: 300;
+      color: #FF9A62;
+  }

@@ -1,10 +1,16 @@
 .cart {
-    background-color: white;
+    background-color: rgb(214, 215, 218, 0.95);
+    border-radius: 12px; 
+    margin-top: 25px;
+    margin-bottom: 60px;
 }
 
 .divStyle {
-    background-color: white;
-    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(254, 255, 252, 0.8);
+   font-family: 'Quicksand', sans-serif;
+   font-weight: 100;
+   color: #757478;
+   font-size: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
@@ -13,18 +19,29 @@
 }
 
 .tour-info {
-    margin-bottom: 20px;
+    padding: 5%;
+    height: 287px;
+    margin-top: 25px;
+    margin-bottom: 27px;
+    border-radius: 8px;
 }
 
 .bill-info {
+    padding: 5%;
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
 .pay-info {
-    margin-bottom: 20px;
+    padding: 5%;
+    border-radius: 8px;
+    margin-bottom: 14px;
 }
 
 .cart-info {
+    border-radius: 8px;
+    padding: 5%;
+    margin-top: 25px;
     margin-bottom: 20px;
 }
 
@@ -44,8 +61,26 @@
 
 
 .previous-btn {
-    margin-bottom: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+    width: 100px;
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-bottom: -32px;
+    color: #204260 !important;
+    opacity: 0.5;
+    font-size: 14px;
+    height: 50px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    
+}
+
+.previous-btn:hover{
+    opacity: 1.0;
+}
+
+.buy-button-text {
+   
+    /* float: left; */
 }
 
 .line {
@@ -58,4 +93,60 @@ h4  {
 
 .example {
     border: 1px solid #ccc;
+}
+
+
+
+
+.effect6
+{
+  	position:relative;
+    -webkit-box-shadow:0 1px 5px rgba(33, 33, 33, 0.1), 0 0 40px rgba(33, 33, 33, 0.1) inset;
+       -moz-box-shadow:0 1px 5px rgba(33, 33, 33, 0.1), 0 0 40px rgba(33, 33, 33, 0.1) inset;
+            box-shadow:0 1px 5px rgba(33, 33, 33, 0.1), 0 0 40px rgba(33, 33, 33, 0.1) inset;
+}
+.effect6:before, .effect6:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(77,77,77, 0.1);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.1);
+    box-shadow:0 0 20px rgba(0,0,0,0.1);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect6:after
+{
+	right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+
+
+
+.cart-h4 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700 !important;
+    font-size: 31px;
+    color: #204260;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+}
+
+.cart-info-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300 !important;
+    font-size: 25px;
+    color: #63777D;
+    padding: 8px;
+    
 }

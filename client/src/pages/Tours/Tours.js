@@ -82,14 +82,17 @@ class Tours extends React.Component {
 
   render() {
     return (
+      
       <Container fluid>
+      
         <Row>
-          <Col size="md-12">
-            <h2 className="text-white">Tours In Your Area</h2>
+          <Col  size="md-12">
+            <h2 className="tours-h2">Tours in your Area</h2>
           </Col>
         </Row>
-
+      
         <Row>
+         
           <Col size="lg-12 sm-12 pb-6">
             {this.state.books.length ? (
               <List>
@@ -97,29 +100,29 @@ class Tours extends React.Component {
                   return (
                     <ListItem key={book._id} >
                       <Row>
-                        <Col size="sm-2 md-2" >
+                        <Col size="sm-3 md-2" >
                           <div className="image">
-                            <p>Image</p>
+                            <p className="image-p">Image</p>
                           </div>
                         </Col>
 
                         <Col size="sm-7 md-7">
-                          <strong>Tour Name:</strong> {book.name} <br />
-                          <strong> Starting Location:</strong>  {book.address} <br />
-                          <a href={"/tours/" + book._id}>More Details</a>
+                          <strong className="tour-name-location">Tour Name:</strong> <span className="tour-name-location-details">{book.name}</span> <br />
+                          <strong className="tour-name-location"> Starting Location:</strong>  <span className="tour-name-location-details">{book.address} </span> <br />
+                          <a className="more-details hvr-underline-reveal" href={"/tours/" + book._id}>More Details</a>
                         </Col>
 
                         <Col size="sm-3 md-3" >
 
                           <div className="price">
                             <span className="ad-price">
-                              <strong> $ {book.price} </strong>
+                              <strong className="book-price"> <span id="tours-dollar-sign">$</span> {book.price} </strong>
                             </span>
                             <br />
                             <span className="per-price"> per person </span>
                           </div>
                           <br />
-                          <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
+                          <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now hvr-grow-shadow" >Book Now</Link>
 
                         </Col>
                       </Row>
@@ -128,6 +131,7 @@ class Tours extends React.Component {
 
 
                 })}
+                
               </List>
             ) : (
                 <h3 className="text-white">No Results to Display</h3>
@@ -138,6 +142,7 @@ class Tours extends React.Component {
             <PresentGoogleMaps />
           </Col> */}
         </Row>
+        
       </Container>
     );
   }

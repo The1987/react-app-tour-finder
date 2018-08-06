@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
-
+// import Jumbotron from "../../components/Jumbotron";
+import './Signup.css'
 
 
 class Signup extends Component {
@@ -54,17 +54,19 @@ render() {
 	return (
 
 		<Container fluid>
+		
 		<Row>
 			<Col size="sm-12 md-6">
-				<Jumbotron>
-					<h1>Sign Up</h1>
-				</Jumbotron>
+				<div>
+					
+				</div>
 
 		<div className="SignupForm">
+		<h1 className="sign-up-h1">Sign Up</h1>
 			<form className="form-horizontal">
 				<div className="form-group">
 					<div className="col-1">
-						<label className="form-label text-white" htmlFor="username">Username</label>
+						<label className="form-label text-white" htmlFor="username">Username:</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
@@ -79,7 +81,7 @@ render() {
 				</div>
 				<div className="form-group">
 					<div className="col-1 col-ml-auto">
-						<label className="form-label text-white" htmlFor="password">Password</label>
+						<label className="form-label text-white" htmlFor="password">Password:</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
@@ -94,10 +96,11 @@ render() {
 				<div className="form-group ">
 					<div className="col-7"></div>
 					<button
-						className="btn btn-primary btn-block col-mr-auto"
+						id="sign-in-button-id"
+						className="btn btn-primary btn-block col-mr-auto hvr-grow-shadow-2"
 						onClick={this.handleSubmit}
 						type="submit"
-					>Sign up</button>
+					>Sign Up</button>
 				</div>
 			</form>
 		</div>
