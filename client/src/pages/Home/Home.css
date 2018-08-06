@@ -33,7 +33,7 @@ list-style-type: none;}
     height: 110%;
     top: 0px;
     left: 0px;
-    z-index: 0; 
+    z-index: -1; 
 }
 
 .cb-slideshow li span { 
