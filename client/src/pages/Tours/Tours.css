@@ -97,10 +97,12 @@ a.book-now:hover {
   .more-details:link {
       font-family: 'Quicksand', sans-serif;
       /* color: #091324; */
+      cursor: pointer;
   }
 
   .more-details:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 
