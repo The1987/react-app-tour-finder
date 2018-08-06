@@ -90,7 +90,7 @@ class Detail extends React.Component {
                 </Col>
 
                 <Col size="md-12 sm-12">
-                  <Link className="book-btn btn btn-success btn-block btn-lg hvr-shadow" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
+                  <Link className="book-btn hvr-fade-2 hvr-grow-shadow-2 btn btn-success btn-block btn-lg hvr-shadow" to={`/tours/book-now/${this.state.books._id}`}>Book Now</Link>
                 </Col>
 
                 <Col size="md-12 sm-12">

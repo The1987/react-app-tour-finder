@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withScriptjs,withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 // const { StandaloneSearchBox } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
 // import API from "../../utils/API";
-
+import "./CreateGoogleMap.css";
 
 class CreateGoogleMap extends Component {
   constructor(props) {
@@ -54,7 +54,9 @@ class CreateGoogleMap extends Component {
         <GettingStartedGoogleMap
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPXkPNnkgMPqpYXUfGcTXcyyuKEjYnn8A&v=3.exp&libraries=geometry,drawing,places"
           containerElement={
-           <div style={{ height: "600px", width: "330px" }} />
+           <div className="create-google-map" />
+            
+          //  style={{ height: "628px", width: "405px" }}
           }
           loadingElement={<div style={{ height: `100%` }} />}
           mapElement={
