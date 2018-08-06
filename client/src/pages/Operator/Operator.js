@@ -100,7 +100,7 @@ class Operator extends React.Component {
         <Row>
           <Col size="md-4 sm-12">
             <div className="sections">
-              <i class="far fa-envelope"></i> Inbox (4)
+              <i className="far fa-envelope"></i> Inbox (4)
             </div>
           </Col>
           <Col size="md-4 sm-12">
