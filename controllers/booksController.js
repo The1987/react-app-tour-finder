@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
-const db = require("../database/models");
+const db = require("../server/database/models");
 
 // all tour api get, post, update, deletes
 

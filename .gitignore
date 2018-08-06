@@ -68,3 +68,6 @@ typings/
 
 #sens
 foobar.config 
+
+#yarn.lock
+yarn.lock
