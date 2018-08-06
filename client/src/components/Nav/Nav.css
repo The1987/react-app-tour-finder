@@ -63,7 +63,7 @@ li {
   border-radius: 4px;
 }
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
-  background-color: #2098D1; 
+  background-color: rgb(32, 152, 209, 0.6); 
   /* F25C5C 2098D1 */
   color: white;
 }
