@@ -66,7 +66,7 @@ class Detail extends React.Component {
             <div className="header2">
               <div className="price float-right">
                 <span className="ad-price mr-2">
-                  <strong> $ {this.state.books.price} </strong>
+                  <strong> <span className="details-dollar-sign">$</span> {this.state.books.price} </strong>
                 </span>
                 <br />
                 <span className="details-per-person per-price mr-2"> per person </span>

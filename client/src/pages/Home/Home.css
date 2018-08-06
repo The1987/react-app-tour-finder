@@ -23,7 +23,7 @@
     background-color: white;
     border: 1px solid red;
 }
-ul{
+ul, li{
 list-style-type: none;}
 
 .cb-slideshow,

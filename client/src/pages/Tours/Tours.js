@@ -85,8 +85,8 @@ class Tours extends React.Component {
       
       <Container fluid>
       
-        <Row>
-          <Col size="md-12">
+        <Row className="tours-h2-container">
+          <Col  size="md-12">
             <h2 className="tours-h2">Tours in your Area</h2>
           </Col>
         </Row>
@@ -116,7 +116,7 @@ class Tours extends React.Component {
 
                           <div className="price">
                             <span className="ad-price">
-                              <strong className="book-price"> $ {book.price} </strong>
+                              <strong className="book-price"> <span id="tours-dollar-sign">$</span> {book.price} </strong>
                             </span>
                             <br />
                             <span className="per-price"> per person </span>

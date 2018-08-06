@@ -79,12 +79,14 @@
     border: solid;
     border-color: #FF6161;
     width: 100%;
+    cursor: pointer;
 }
 
 .book-btn:hover {
     background-color: #F25174;
     border: solid;
     border-color: #F25174;
+    cursor: pointer;
 }
 
 .back-link {
@@ -108,7 +110,7 @@
 
 .operator-name-link {
     font-family: 'Quicksand', sans-serif;
-    font-size: 23px;
+    font-size: 28px;
     font-weight: 300;
 }
 
@@ -121,7 +123,7 @@
 
 .about-this-tour-detail{
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: #FF6161;
 
 }
@@ -129,12 +131,16 @@
 .about-this-tour-detail-description {
     font-family: 'Quicksand', sans-serif;
     color: #FFF0C9; 
+    font-size: 26px;
+    font-weight: 100;
 }
 
 .tour-details-p {
     background-color: #454954 ;
     height: 255px;
     margin-bottom: 100px;
+    overflow: auto;
+    padding: 3%;
 }
 
 /* Fade */
@@ -171,4 +177,9 @@
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
+  }
+
+  .details-dollar-sign {
+      font-weight: 300;
+      color: #FF9A62;
   }
