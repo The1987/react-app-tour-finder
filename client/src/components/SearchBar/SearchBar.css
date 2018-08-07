@@ -2,9 +2,11 @@
   padding-top: 30px;
   width: 100%;
   height: 200px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
   margin-top: 13%;
+  font-size: 24px;
+  color: #333;
   /* background-color: rgb(255, 97, 97, 0.8); */
 }
 
@@ -39,6 +41,19 @@
   margin-right: 4px;
 }
 
+.search::placeholder {
+  color: black; 
+/* vertical-align: center; */
+  font-size: 24px;
+  
+}
+
+input.main-search [type=text]{
+  color: black; 
+/* vertical-align: center; */
+  font-size: 55px;
+}
+
 .fa-search {
   color: white;
 }
@@ -47,6 +62,9 @@
 .main-tagline {
   position: relative;
   left: -25px;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
 }
 
 .submit {

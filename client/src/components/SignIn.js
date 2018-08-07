@@ -5,11 +5,12 @@ import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
 import { Col, Row, Container } from "./Grid";
+import './SignAuthentication.css';
 
 
 const SignInPage = ({ history }) =>
-  <div>
-    <h1>SignIn</h1>
+  <div className="sign-in-main-div">
+    <h1 className="sign-up-h1">Log In</h1>
     <SignInForm history={history} />
     <SignUpLink />
   </div>
@@ -67,27 +68,33 @@ class SignInForm extends Component {
     return (
       <Container fluid>
       <Row>
-        <Col size="md-6">
+        <div>
+        {/* size="md-6" */}
       <form onSubmit={this.onSubmit}>
+      <label id="email-sign-in-label" className="authentication-labels">Email:</label>
         <input
+          className="authentication-input"
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
+
+<label className="authentication-labels">Password:</label>
         <input
+        className="authentication-input"
           value={password}
           onChange={event => this.setState(byPropKey('password', event.target.value))}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button  className="authentication-button hvr-grow-shadow-2" disabled={isInvalid} type="submit">
           Sign In
         </button>
 
         { error && <p>{error.message}</p> }
       </form>
-      </Col>
+      </div>
       </Row>
       </Container>
     );

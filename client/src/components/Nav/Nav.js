@@ -67,10 +67,10 @@ const NavigationNonAuth = () =>
             </ul>
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link className="nav-link" to={routes.SIGN_IN}>Sign In</Link>
+                    <Link className="nav-link hvr-fade" to={routes.SIGN_IN}>Sign In</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to={routes.SIGN_UP}>Sign Up</Link>
+                    <Link className="nav-link hvr-fade" to={routes.SIGN_UP}>Sign Up</Link>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,113 @@
+.sign-up-main-div {
+    width: 45%;
+    margin: 0 auto;
+    /* background-color: peachpuff; */
+    /* background-color: rgb(50, 54, 66, 0.85); */
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.6) 0%, rgba(32,66,96,0.8) 100%, rgba(0,0,0,0.6) 100%);
+    margin-top: 3%;
+    padding: 2%;
+    padding-bottom: 2%;
+    border-radius: 3px;
+}
+
+.sign-up-h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    color: #F25174;
+    float: right;
+} 
+
+
+
+.authentication-input {
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    height: 60px;
+    width: 99%;
+    padding: 3%; 
+    margin: 5px;
+    /* background-color: #3c3c3c; */
+    /* background: rgb(40,56,84);
+    background: linear-gradient(353deg, rgba(40,56,84,0.7) 0%, rgba(54,74,112,0.7) 100%); */
+    background: rgb(62,86,130);
+background: linear-gradient(353deg, rgba(62,86,130,0.6) 0%, rgba(71,98,148,0.6) 100%);
+
+}
+
+.authentication-labels{
+    padding-top: 1%;
+    margin-bottom:-1%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 25px;
+}
+
+#authentication-name {
+    margin-top: 8px;
+}
+
+::placeholder{
+    color: white;
+    opacity: 0.5;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.authentication-input[type=text], .authentication-input[type=password]  {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: #FFF0C9;
+    font-size: 30px;
+    
+ }
+
+
+ .authentication-button {
+     cursor: pointer;
+     width: 45%;
+     height: 50px;
+     margin-top: 3%;
+     font-family: 'Quicksand', sans-serif;
+     font-weight: 300;
+     font-size: 30px;
+     color: white;
+     /* margin: 0 auto 0 auto; */
+     border-radius: 5px;
+     background-color: #FF6161;
+     border: none;
+     
+ }
+
+
+ /* Sign in Styles */
+
+
+ .sign-in-main-div {
+    width: 45%;
+    margin: 0 auto;
+    /* background-color: peachpuff; */
+    /* background-color: rgb(50, 54, 66, 0.85); */
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.6) 0%, rgba(32,66,96,0.8) 100%, rgba(0,0,0,0.6) 100%);
+    margin-top: 3%;
+    padding: 2%;
+    padding-bottom: 2%;
+    border-radius: 3px;
+}
+
+#email-sign-in-label {
+    margin-top: -25px;
+}
+
+.sign-up-redirect {
+    color: #CCCBD1;
+    margin-left: 2.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 0.5%;
+}

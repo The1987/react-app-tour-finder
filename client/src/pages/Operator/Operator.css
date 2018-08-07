@@ -1,11 +1,49 @@
+
+.dashboard-div {
+    background-color: #E8EAED;
+    opacity: 0.93;
+    /* background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png"); */
+    box-shadow: inset 0 2.5px 4.5px 0 rgba(0,0,0,0.25);
+}
+
+.sections, .booked-tours, .booked-tours, .add-tour, .preview-tour {
+    border-radius: 3px;
+   
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),
+            0 2px 4px 0 rgba(0,0,0,0.08); */
+            
+            /* box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+            0 5px 15px 0 rgba(0,0,0,0.08); */
+            box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+            box-shadow: 0px 3px 15px rgba(0,0,0,0.1);
+        background-color: white;
+    /* background: rgb(229,238,255);
+background: radial-gradient(circle, rgba(229,238,255,0.9) 0%, rgba(232,234,237,0.9) 100%); */
+
+
+/* background: rgb(229,238,255);
+background: linear-gradient(353deg, rgba(229,238,255,0.8) 0%, rgba(232,234,237,0.8) 100%); */
+
+/* background: rgb(129,0,110);
+background: linear-gradient(353deg, rgba(129,0,110,0.5) 0%, rgba(242,92,92,0.8) 100%); */
+/* background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.7) 0%, rgba(32,66,96,0.7) 100%, rgba(0,0,0,0.7) 100%); */
+
+overflow: auto;
+
+}
+
 .sections {
     text-align: center;
-    background-color: white;
+    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10); */
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    height: 80px;
+    height: 67px;
+    margin-right: -10px;
+    margin-top: -11px;
+    
 }
 
 .sections:hover {
@@ -19,26 +57,40 @@
 }
 
 .booked-tours {
-    background-color: white;
+    
     height: 300px;
     margin-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    overflow: auto;
 }
 
-.booked-tours h2 {
+/* .booked-tours h2 {
     text-align: center;
     padding-top: 10px;
-}
+} */
 
 .booked-tours-table {
     justify-content: center;
     align-content: center;
     width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 19px;
+    
+}
+
+.booked-tours th {
+    font-size: 23px;
+    /* color: #F25C5C; */
+    color: rgb(0,159,167, 1);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
 }
 
 .booked-tours-data td {
-    color: #ccc;
+    /* color: #ccc; */
+    color: #667172;
+    font-weight: 300;
 }
 
 .cancel-refund {
@@ -53,17 +105,34 @@ th, td {
 }
 
 .add-tour, .preview-tour {
-    background-color: white;
-    height: auto;
+    
+    /* height: auto; */
+    height: 690px;
     margin-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-right: -10px;
     
+}
+
+.add-tour{
+    padding-left: 30px;
+    padding-right: 30px;
+    
+}
+
+.preview-tour{
+    width:99.9%;
+    position: relative;
+    left: 0.3%;
+    margin-bottom: 75px;
+    overflow: auto;
 }
 
 .add-tour h2, .preview-tour h2 {
     text-align: center;
     padding-top: 10px;
+    
 }
 
 .form-btn {
@@ -92,7 +161,8 @@ th, td {
 }
 
 .book-now {
-    background-color: rgb(19, 189, 19);
+    /* background-color: rgb(19, 189, 19); */
+    
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -103,6 +173,74 @@ th, td {
 }
 
 a.book-now:hover {
-    background-color: rgb(14, 153, 14);
+    /* background-color: rgb(14, 153, 14); */
     text-decoration-line: none;
+}
+
+
+.tour-description-form-dashboard{
+    border-radius: 8px;
+    width: 100%;
+    height: 210px;
+    border-color:#ccc;
+}
+
+.dashboard-h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    color: #FF6161;
+    padding: 29px;
+    letter-spacing: 2.5px;
+    
+   
+   
+}
+
+
+.dashboard-h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300 !important;
+    color: rgb(63, 189, 196);
+    padding: 7px;
+    padding-bottom: -15px;
+    padding-top: 15px;
+    font-size: 34px;
+    letter-spacing: 2.2px;
+    background-color: #F5F6FA;
+    width: 116%;
+    position: relative;
+    left: -8%;
+    margin-bottom: 2%;
+    text-align: center;
+    
+}
+
+/* .h2-panel {
+    background-color: #F5F6FA;
+    width: 104%;
+} */
+
+.dashboard-h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #192B4C;
+}
+
+.save-tour-btn, .btn-block{
+   
+background-color: #FF8787 !important;
+border: none;
+cursor: pointer;
+
+}
+
+.btn-success {
+    background-color: #FF6161 !important;
+
+}
+
+
+.add-tour h2 {
+ margin-bottom: 20px;
 }
