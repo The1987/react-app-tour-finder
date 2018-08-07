@@ -38,10 +38,8 @@ class BookNow extends React.Component {
         API.getBook(this.props.match.params.id)
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
-        console.log("didMountQty: " + this.state.books.price);
-        console.log("didMountPrice: " + this.state.books.qty);
-        console.log("didMountTotal: " + this.state.books.price * this.state.books.qty);
-        // console.log("BookPrice:" + typeof this.state.books.price)
+            this.setState({checkouttotal: 0,
+             qty: 0});
     };
 
 
@@ -57,15 +55,26 @@ class BookNow extends React.Component {
 
 
 
-    // handleInputChange = event => {
-    //     const { Qty, value } = event.target;
-    //     const purchasedBook = { ...this.state.books }
-    //     purchasedBook[Qty] = value;
-    //     this.setState({
-    //         [Qty]: value
-    //     });
+    handleChange = event => {
+        const { name, type, value } = event.target;
+        // input value conditioner----integer to number
+        const updatedBook = { ...this.state.books }
+        // new add
+        let Value = type === 'number' ? parseInt(value, 10) : value;
+        // new add
+        const Qty = parseInt(this.state.books.qty, 10);
 
-    // }
+        const updatedTotal = (Qty + 1) * this.state.books.price;
+        console.log("Qty test on change: " + updatedTotal);
+
+        // new add
+        updatedBook[name] = Value
+        this.setState({
+            books: updatedBook,
+            // new add
+            checkouttotal: updatedTotal,
+        });
+    };
 
     handleInputChange = event => {
         const { name, type, value } = event.target;
@@ -74,7 +83,10 @@ class BookNow extends React.Component {
         // new add
         let Value = type === 'number' ? parseInt(value, 10) : value;
         // new add
-        // const updatedTotal = {...this.state.books.checkouttotal}
+        // const Qty = parseInt(this.state.books.qty, 10);
+
+        // const updatedTotal = (Qty + 1) * this.state.books.price;
+        // console.log("Qty test on change: " + updatedTotal);
 
         // new add
         updatedBook[name] = Value
@@ -265,12 +277,18 @@ class BookNow extends React.Component {
     handlePurchaseSubmit = event => {
         console.log("test-name: " + this.state.books.name);
         console.log("test-address: " + this.state.books.address);
+        console.log("test Qty" + this.state.books.qty * this.state.books.price);
+        let Qty = this.state.books.qty * this.state.books.price;
         event.preventDefault();
         if (this.state.books.name && this.state.books.address) {
             API.purchasePost({
                 name: this.state.books.name,
                 address: this.state.books.address,
                 price: this.state.books.price,
+                qty: this.state.books.qty,
+                checkouttotal: Qty,
+                isConfirmed: this.state.books.isConfirmed,
+                isPurchased: this.state.books.isPurchased
                 // checkouttotal: this.state.books.checkouttotal,
             })
                 .then(res => this.setState({
@@ -322,7 +340,7 @@ class BookNow extends React.Component {
                                         onChange={this.handleInputChange}
                                         // name="billphone"
                                         placeholder="Phone Number"
-                                        pattern="[0-9]*"
+                                        pattern="[1-0]*"
                                     />
 
                                     <Input
@@ -353,7 +371,7 @@ class BookNow extends React.Component {
                                                 onChange={this.handleInputChange}
                                                 name="billzip"
                                                 placeholder="Zipcode"
-                                                pattern="[0-9]*"
+                                                pattern="[1-0]*"
                                             />
                                         </Col>
                                         <Col size="sm-12 md-4">
@@ -403,10 +421,12 @@ class BookNow extends React.Component {
                                             <td>
                                                 <Input
                                                     className="qty"
+                                                    min="1"
+                                                    step="1"
                                                     type="number"
-                                                    onChange={this.handleInputChange}
+                                                    onChange={this.handleChange}
                                                     name="qty"
-                                                    pattern="[0-9]*"
+                                                    pattern="[1-0]*"
                                                 />
                                             </td>
                                             <td>$ {this.state.books.price * this.state.books.qty}</td>
