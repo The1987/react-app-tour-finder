@@ -5,7 +5,7 @@
     height: 100%;
     text-align: center;
     padding-top: 32%;
-    border-radius: 10px;
+    border-radius: 6px;
     position: relative;
     left: -15px;
     
@@ -57,18 +57,24 @@ a.book-now:hover {
 
 .tours-h2 {
     position: relative;
-    left: -2.1%;
-    padding-top: 17px;
+    left: 1.5%;
+    padding-top: 32px;
     padding-left: 35px;
     padding-bottom: 14px;
     margin-bottom: 0px;
-    width: 104.3%;
+    width: 97.05%;
     font-family: 'Josefin Slab', serif;
     font-weight: 300;
     font-size: 45px;
-    color: #0D1A33; 
-     /* #FFF0C9 #FF6161 #FF9761 */
-    background-color: rgb(177, 177, 177, 0.4);
+    color: #fff; 
+     /* #FFF0C9 #FF6161 #FF9761 #0D1A33 */
+    /* background-color: rgb(177, 177, 177, 0.4); */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,0.3) 0%, rgba(32,66,96,0.2) 100%, rgba(0,0,0,0.6) 100%);
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.2),
+             0px 18px 23px rgba(0,0,0,0.2);
+    border-radius: 0px 0px 3px 3px;
 }
 
 /* Grow Shadow */

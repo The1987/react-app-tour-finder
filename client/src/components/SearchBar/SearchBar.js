@@ -7,7 +7,7 @@ const SearchBar = () =>
         <form className="search-bar">
         {/* <h2>Travel Locally. Explore Globally.</h2> */}
         <h2 className="main-tagline">find your happy place.</h2>
-            <input className="search" type="search" placeholder="Enter a City, State, or Zipcode" />
+            <input className="search main-search" type="search" placeholder="Enter a City, State, or Zipcode" />
             <button className="submit" type="submit"><i className="fas fa-1x fa-search"></i></button>
         </form>
 </div>

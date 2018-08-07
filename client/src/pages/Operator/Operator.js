@@ -96,22 +96,25 @@ class Operator extends React.Component {
 
   render() {
     return (
+      <div className="dashboard-div">
+      <h1 className="dashboard-h1"> Welcome back, Thomas Anderson!</h1>
+      {/* <h2 className="dashboard-h2"> Plan your next adventure.</h2> */}
       <Container fluid>
         <Row>
           <Col size="md-4 sm-12">
             <div className="sections">
-              <i className="far fa-envelope"></i> Inbox (4)
+              <i className="far fa-envelope"></i> <h3 className="dashboard-h3">Inbox (4) </h3>
             </div>
           </Col>
           <Col size="md-4 sm-12">
             <div className="sections">
-              Upcoming Tours (30)
+              <h3 className="dashboard-h3">Upcoming Tours (30)</h3>
             </div>
           </Col>
           <Col size="md-4 sm-12">
             <div className="sections">
-              Pending Transactions: $3,120.00 <br />
-              <span className="payout">Next Payout: 5/17</span>
+            <h3 className="dashboard-h3">Pending Transactions: $3,120.00</h3> <br />
+              <span className="payout"><h3 className="dashboard-h3">Next Payout: 5/17</h3></span>
             </div>
           </Col>
         </Row>
@@ -119,8 +122,8 @@ class Operator extends React.Component {
         <Row>
           <Col size="lg-12 sm-12">
             <div className="booked-tours">
-              <h2>Bookings</h2>
-              <hr />
+              <h2 className="dashboard-h2">Bookings</h2>
+              {/* <hr /> */}
               <table className="booked-tours-table">
                 <tbody>
                   <tr>
@@ -194,7 +197,7 @@ class Operator extends React.Component {
         <Row>
           <Col size="md-4 sm-12">
             <div className="add-tour">
-              <h2>Add Tour</h2>
+              <h2 className="dashboard-h2">Add Tour</h2>
               <form>
                 {/* Adding functionality to upload image to rEact.js
               Source: https://academind.com/learn/react/snippets/image-upload/#select-a-file*/}
@@ -242,12 +245,14 @@ class Operator extends React.Component {
                   placeholder="Time"
                 />
                 <TextArea
+                  className="tour-description-form-dashboard"
                   value={this.state.description}
                   onChange={this.handleInputChange}
                   name="description"
                   placeholder="Tour Description"
                 />
                 <FormBtn
+                className="save-tour-btn"
                   disabled={!(this.state.name && this.state.address)}
                   onClick={this.handleFormSubmit}
                 >
@@ -258,7 +263,8 @@ class Operator extends React.Component {
           </Col>
           <Col size="md-8 sm-12">
             <div className="preview-tour">
-              <h2 className="">Preview Tour</h2>
+            <div className="h2-panel">
+              <h2 className="dashboard-h2">Preview Tour</h2> </div>
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map(book => {
@@ -300,6 +306,7 @@ class Operator extends React.Component {
         </Row>
 
       </Container>
+      </div>
     );
   }
 }
