@@ -38,9 +38,6 @@ class BookNow extends React.Component {
         API.getBook(this.props.match.params.id)
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
-        console.log("didMountQty: " + this.state.books.price);
-        console.log("didMountPrice: " + this.state.books.qty);
-        console.log("didMountTotal: " + this.state.books.price * this.state.books.qty);
         // console.log("BookPrice:" + typeof this.state.books.price)
     };
 
@@ -74,14 +71,17 @@ class BookNow extends React.Component {
         // new add
         let Value = type === 'number' ? parseInt(value, 10) : value;
         // new add
-        // const updatedTotal = {...this.state.books.checkouttotal}
+        const Qty = parseInt(this.state.books.qty, 10);
+
+        const updatedTotal = (Qty+1) * this.state.books.price;
+        console.log("Qty test on change: " + updatedTotal);
 
         // new add
         updatedBook[name] = Value
         this.setState({
             books: updatedBook,
             // new add
-            // checkouttotal: updatedTotal,
+            checkouttotal: updatedTotal,
         });
     };
 
