@@ -1,6 +1,6 @@
 // import React, { Component } from 'react'
 import React from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MainLogo from '../../assets/images/main-logo.png';
 import MainModal from '../../assets/images/main-modal.png';
 import "./Nav.css";
