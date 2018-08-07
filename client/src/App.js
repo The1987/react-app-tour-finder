@@ -39,7 +39,7 @@ class App extends Component {
           <Router>
             <div>
             <Navigation authUser={this.state.authUser} />
-           
+
             <Switch>
               
             {/* <Route exact path="/" component={Home} /> */}
