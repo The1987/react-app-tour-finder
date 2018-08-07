@@ -105,7 +105,7 @@ th, td {
 }
 
 .add-tour, .preview-tour {
-    
+    border-radius: 3px 3px 3px 3px;
     /* height: auto; */
     height: 690px;
     margin-top: 20px;
@@ -191,22 +191,46 @@ a.book-now:hover {
     color: #FF6161;
     padding: 29px;
     letter-spacing: 2.5px;
-    
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
    
    
 }
 
 
 .dashboard-h2 {
+    border-radius: 3px !important;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300 !important;
-    color: rgb(63, 189, 196);
+    color: #3fbdc4;
+    /* 3fbdc4 00A99D */
     padding: 7px;
     padding-bottom: -15px;
     padding-top: 15px;
     font-size: 34px;
     letter-spacing: 2.2px;
-    background-color: #F5F6FA;
+    text-shadow: 0.3px 0.3px 0px rgba(255, 255, 255, 0.6);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.53) 0%, rgba(32,66,96,0.53) 100%, rgba(0,0,0,0.53) 100%);
+    
+    
+    /* #f5f6fa   rgb(237, 243, 255, 0.7) 
+    
+    background: rgb(129,0,110);
+background: linear-gradient(353deg, rgba(129,0,110,0.2) 0%, rgba(242,92,92,0.2) 100%);
+    
+    
+*/
+
+
+/* background: rgb(229,238,255);
+background: linear-gradient(353deg, rgba(229,238,255,0.8) 0%, rgba(232,234,237,0.8) 100%); */
+
+/* background: rgb(129,0,110);
+background: linear-gradient(353deg, rgba(129,0,110,0.5) 0%, rgba(242,92,92,0.8) 100%); */
+/* background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.7) 0%, rgba(32,66,96,0.7) 100%, rgba(0,0,0,0.7) 100%); */
+
+
     width: 116%;
     position: relative;
     left: -8%;
@@ -243,4 +267,5 @@ cursor: pointer;
 
 .add-tour h2 {
  margin-bottom: 20px;
+ 
 }
