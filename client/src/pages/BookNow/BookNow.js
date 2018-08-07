@@ -5,35 +5,7 @@ import "./BookNow.css";
 import { Input } from "../../components/Form";
 import { Link } from "react-router-dom";
 import aws from 'aws-sdk';
-// import axios from 'axios';
-// import CheckoutForm from "../../components/CheckoutForm";
-// import { Elements, StripeProvider } from 'react-stripe-elements';
 
-// 
-// ==========TEST CONFIG CONSOLE================
-// console.log("access key id:" + process.env.REACT_APP_ACCESSKEYID);
-// console.log("secret access key" + process.env.REACT_APP_SECRETACCESSKEY);
-// console.log("aws region:" + process.env.REACT_APP_REGION);
-// const mailOptions = {
-//     from: 'developers.act@gmail.com',
-//     to: 'andrewmflak@gmail.com',
-//     subject: 'TEST E-mail 123',
-//     text: 'Thank you for your purchase. We look forward to taking your money and providing no service what so ever to you.  Please make sure to return to review your tour experience.  Best Regards, The Tour Gurus'
-
-
-// };
-
-// var fetchData = [];
-// import AWS from "../../components/AWS";
-// import Math from "./Match";
-// Load the AWS SDK for Node.js
-
-// const Config = require('Config');
-// const Amazon_accessKeyId = fetch(process.env.Amazon_accessKeyId);
-// const Amazon_secretAccessKey = fetch(process.env.Amazon_secretAccessKey);
-// const Amazon_accessKeyId = process.env.Amazon_accessKeyId;
-// const Amazon_secretAccessKey = process.env.secretAccessKey;
-// const Amazon_region = process.env.region;
 
 class BookNow extends React.Component {
     constructor(props) {
@@ -67,6 +39,9 @@ class BookNow extends React.Component {
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
         console.log(this.state.books);
+        console.log("didMountQty: " + this.state.books.price);
+        console.log("didMountPrice: " + this.state.books.qty);
+        console.log("didMountTotal: " + this.state.books.price * this.state.books.qty);
         // console.log("BookPrice:" + typeof this.state.books.price)
     };
 
@@ -357,10 +332,9 @@ class BookNow extends React.Component {
                                     </Col >
                                     <Col size="md-4">
                                         <Input
-                                            type="number"
                                             // value={this.state.billzip}
                                             onChange={this.handleInputChange}
-                                            // name="billzip"
+                                            name="billzip"
                                             placeholder="Zipcode"
                                             pattern="[0-9]*"
                                         />
@@ -425,7 +399,7 @@ class BookNow extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <td>Subtotal</td>
-                                        <td>$ </td>
+                                        <td>$ {this.state.books.qty * this.state.books.price}</td>
                                     </tr>
 
                                     <tr>
@@ -439,7 +413,7 @@ class BookNow extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <th>Total</th>
-                                        <th>$ {this.state.books.checkouttotal}</th>
+                                        <th>$ {this.state.books.qty * this.state.books.price}</th>
                                     </tr>
                                 </tbody>
                             </table >
