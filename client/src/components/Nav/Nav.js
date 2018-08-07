@@ -37,13 +37,7 @@ const NavigationAuth = () =>
             </ul>
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link className="nav-link hvr-fade" to="/operator">Operator-Dash</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link hvr-fade" to={routes.SIGN_IN}>Sign In</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link hvr-fade" to={routes.SIGN_UP}>Sign Up</Link>
+                    <Link className="nav-link hvr-fade" to="/operator">Tour Dashboard</Link>
                 </li>
                 <li className="nav-item">
                     <SignOutButton />
