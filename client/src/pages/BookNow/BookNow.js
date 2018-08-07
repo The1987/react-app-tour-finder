@@ -149,11 +149,11 @@ class BookNow extends React.Component {
                     },
                     Message: {
                         Subject: {
-                            Data: "TourFinder: Thank you for your purchase!",
+                            Data: "Tour Booker: Order # 55546 Thank you for your purchase!",
                         },
                         Body: {
                             Html: {
-                                Data: "<h1>Thank you for your purchase</h1><p>Your card has been charged and your tour operator has been notified.</p><p>Please arrive promptly at the scheduled time.</p><p>Enjoy,</p><p>The tour gurus</p>"
+                                Data: "<h1>Thank you for your recent purchase</h1><p>Your card has been charged for the amount of <strong>$134.65</strong> for the <strong>" + this.state.books.name + "</strong> on <strong>" + this.state.books.date +"</strong>.<br /><br />Tour Company: ACME Corp Operates <br />Tour Guide: Steve M. <br />Phone Number: 1-800-734-6767 <br />Email: ACME@example.com<br />Website: www.ACME.com <br/><br/>Please arrive promptly at " + this.state.books.time + "AM at " + this.state.books.address + ". <br /><br />If you need help or assistance getting to the starting location please call 1-800-734-6767 or email ACME@example.com<br /><br />Enjoy,<br /><br />The Tour Booker Team"
                             },
                         },
                     },

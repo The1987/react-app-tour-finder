@@ -6,7 +6,7 @@ const bookSchema = new Schema({
   address: { type: String, required: true },
   price: { type: Number, required: true },
   qty: { type: Number, required: false },
-  date: {type: Date, required: false },
+  date: {type: String, required: false },
   time: {type: String, required: false },
   description: {type: String, required: false}
 

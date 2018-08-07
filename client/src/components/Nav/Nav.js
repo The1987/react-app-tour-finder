@@ -23,11 +23,11 @@ const Navigation = ({ authUser }) =>
 const NavigationAuth = () =>
 
     <nav className="navbar navbar-expand-sm navbar-inverse">
-        <img id="main-modal" src={MainModal} alt="MainModal" />
+        {/* <img id="main-modal" src={MainModal} alt="MainModal" /> */}
         <a className="navbar-brand" href="/"><img id="main-logo" src={MainLogo} alt="Tour Finder Logo" /></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
-        </button>
+     </button>
         <div id="navbarNavDropdown" className="navbar-collapse collapse">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active" id="available-tours" >
@@ -55,10 +55,9 @@ const NavigationAuth = () =>
 const NavigationNonAuth = () =>
 
     <nav className="navbar navbar-expand-sm navbar-inverse">
-        <img id="main-modal" src={MainModal} alt="MainModal" />
         <a className="navbar-brand" href="/"><img id="main-logo" src={MainLogo} alt="Tour Finder Logo" /></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <span className=""><img id="main-modal" src={MainModal} alt="MainModal" /></span>
         </button>
         <div id="navbarNavDropdown" className="navbar-collapse collapse">
             <ul className="navbar-nav mr-auto">
