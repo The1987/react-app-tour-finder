@@ -6,10 +6,10 @@ const purchaseSchema = new Schema({
   name: {type: String, required: true },
   address: { type: String, required: true },
   price: {type: Number, required: true},
-  quantity: {type: Number, required: false},
-  total: {type: Number, required: false},
+  qty: {type: Number, required: false},
+  checkouttotal: {type: Number, required: false},
   isConfirmed: {type: Boolean, required: false},
-  isPurchased: {type: Boolean, required: false}
+  isPurchased: {type: Boolean, required: false},
 });
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);

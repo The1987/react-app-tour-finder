@@ -3,8 +3,7 @@ import "./Footer.css";
 
 const Footer = () => 
     <footer className="footer">
-    <span> (C) 2018 Tour Finder, LLC. All Rights Reserved. <br />
-    314 Buffalo Row Road, Las Vegas, Nevada, 09987. </span>
+    <span> &copy; 2018 Tour Booker, LLC. | <a href="">About Us</a> | <a href="">Careers</a></span>
 </footer>
     
 
