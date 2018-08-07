@@ -38,7 +38,8 @@ class BookNow extends React.Component {
         API.getBook(this.props.match.params.id)
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
-        // console.log("BookPrice:" + typeof this.state.books.price)
+            this.setState({checkouttotal: 0,
+             qty: 0});
     };
 
 
@@ -265,12 +266,18 @@ class BookNow extends React.Component {
     handlePurchaseSubmit = event => {
         console.log("test-name: " + this.state.books.name);
         console.log("test-address: " + this.state.books.address);
+        console.log("test Qty" + this.state.books.qty * this.state.books.price);
+        let Qty = this.state.books.qty * this.state.books.price;
         event.preventDefault();
         if (this.state.books.name && this.state.books.address) {
             API.purchasePost({
                 name: this.state.books.name,
                 address: this.state.books.address,
                 price: this.state.books.price,
+                qty: this.state.books.qty,
+                checkouttotal: Qty,
+                isConfirmed: this.state.books.isConfirmed,
+                isPurchased: this.state.books.isPurchased
                 // checkouttotal: this.state.books.checkouttotal,
             })
                 .then(res => this.setState({
