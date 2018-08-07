@@ -38,7 +38,6 @@ class BookNow extends React.Component {
         API.getBook(this.props.match.params.id)
             .then(res => this.setState({ books: res.data }))
             .catch(err => console.log(err));
-        console.log(this.state.books);
         console.log("didMountQty: " + this.state.books.price);
         console.log("didMountPrice: " + this.state.books.qty);
         console.log("didMountTotal: " + this.state.books.price * this.state.books.qty);
@@ -69,15 +68,32 @@ class BookNow extends React.Component {
     // }
 
     handleInputChange = event => {
-        const { name, value } = event.target;
-
+        const { name, type, value } = event.target;
+        // input value conditioner----integer to number
         const updatedBook = { ...this.state.books }
-        updatedBook[name] = value
+        // new add
+        let Value = type === 'number' ? parseInt(value, 10) : value;
+        // new add
+        // const updatedTotal = {...this.state.books.checkouttotal}
 
+        // new add
+        updatedBook[name] = Value
         this.setState({
-            books: updatedBook
+            books: updatedBook,
+            // new add
+            // checkouttotal: updatedTotal,
         });
     };
+
+
+    // handleTotalUpdate(checkouttotal) {
+    //     // const { name, type, value } = event.target;
+    //     // const updatedBookTotal = { ...this.state.books };
+    //     // let Value = type === 'number' ? parseInt(value, 10) : value;
+    //     const purchaseTotal =  {this.state.books.price * this.state.books.qty}
+    //     this.setState({ checkouttotal: purchaseTotal })
+    // };
+
 
     // resetOperator() {
     //         this.setState({ books: {}, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" , isConfirmed: false, isPurchased: false})
@@ -128,7 +144,7 @@ class BookNow extends React.Component {
                         },
                         Body: {
                             Html: {
-                                Data: "<h1>Thank you for your recent purchase</h1><p>Your card has been charged for the amount of <strong>$134.65</strong> for the <strong>" + this.state.books.name + "</strong> on <strong>" + this.state.books.date +"</strong>.<br /><br />Tour Company: ACME Corp Operates <br />Tour Guide: Steve M. <br />Phone Number: 1-800-734-6767 <br />Email: ACME@example.com<br />Website: www.ACME.com <br/><br/>Please arrive promptly at " + this.state.books.time + "AM at " + this.state.books.address + ". <br /><br />If you need help or assistance getting to the starting location please call 1-800-734-6767 or email ACME@example.com<br /><br />Enjoy,<br /><br />The Tour Booker Team"
+                                Data: "<h1>Thank you for your recent purchase</h1><p>Your card has been charged for the amount of <strong>$134.65</strong> for the <strong>" + this.state.books.name + "</strong> on <strong>" + this.state.books.date + "</strong>.<br /><br />Tour Company: ACME Corp Operates <br />Tour Guide: Steve M. <br />Phone Number: 1-800-734-6767 <br />Email: ACME@example.com<br />Website: www.ACME.com <br/><br/>Please arrive promptly at " + this.state.books.time + "AM at " + this.state.books.address + ". <br /><br />If you need help or assistance getting to the starting location please call 1-800-734-6767 or email ACME@example.com<br /><br />Enjoy,<br /><br />The Tour Booker Team"
                             },
                         },
                     },
@@ -254,10 +270,11 @@ class BookNow extends React.Component {
             API.purchasePost({
                 name: this.state.books.name,
                 address: this.state.books.address,
-                price: this.state.books.price
+                price: this.state.books.price,
+                // checkouttotal: this.state.books.checkouttotal,
             })
                 .then(res => this.setState({
-                    isConfirmed: true, isPurchased: true
+                    isConfirmed: true, isPurchased: true 
                 }),
                     this.sendEmail(),
                     console.log(this),
@@ -271,76 +288,76 @@ class BookNow extends React.Component {
         return (
             // getConfirmationForm = () => (
             <Container fluid>
-            <div className="cart">
-            <Link to="../../tours" className="btn buy-button-text previous-btn" onClick={this.handleBackBook}> {'<<<   '}Continue Browsing </Link>
-                <Row>
-                    <Col size="md-7">
-                        <div className="divStyle tour-info effect6">
-                            <h4 className="cart-h4">Tour Information</h4>
-                            <strong className="cart-info-label">Tour Name:</strong> {this.state.books.name} <br />
-                            <strong className="cart-info-label">Tour Date:</strong> {this.state.books.date} <br />
-                            <strong className="cart-info-label">Start Location:</strong> {this.state.books.address} <br />
-                            <strong className="cart-info-label">Start Time:</strong> {this.state.books.time}
-                        </div>
+                <div className="cart">
+                    <Link to="../../tours" className="btn buy-button-text previous-btn" onClick={this.handleBackBook}> {'<<<   '}Continue Browsing </Link>
+                    <Row>
+                        <Col size="md-7">
+                            <div className="divStyle tour-info effect6">
+                                <h4 className="cart-h4">Tour Information</h4>
+                                <strong className="cart-info-label">Tour Name:</strong> {this.state.books.name} <br />
+                                <strong className="cart-info-label">Tour Date:</strong> {this.state.books.date} <br />
+                                <strong className="cart-info-label">Start Location:</strong> {this.state.books.address} <br />
+                                <strong className="cart-info-label">Start Time:</strong> {this.state.books.time}
+                            </div>
 
-                        <div className="divStyle bill-info effect6">
-                            <h4 className="cart-h4">Billing Information</h4>
-                            <form>
-                                <Input size="sm-2"
-                                    // value={this.state.billname}
-                                    onChange={this.handleInputChange}
-                                    // name="billname"
-                                    placeholder="Full Name"
-                                />
-                                <Input
-                                    type="email"
-                                    // value={this.state.billemail}
-                                    onChange={this.handleInputChange}
-                                    // name="billemail"
-                                    placeholder="Email"
-                                />
-                                <Input
-                                    type="tel"
-                                    // value={this.state.billphone}
-                                    onChange={this.handleInputChange}
-                                    // name="billphone"
-                                    placeholder="Phone Number"
-                                    pattern="[0-9]*"
-                                />
+                            <div className="divStyle bill-info effect6">
+                                <h4 className="cart-h4">Billing Information</h4>
+                                <form>
+                                    <Input size="sm-2"
+                                        // value={this.state.billname}
+                                        onChange={this.handleInputChange}
+                                        // name="billname"
+                                        placeholder="Full Name"
+                                    />
+                                    <Input
+                                        type="email"
+                                        // value={this.state.billemail}
+                                        onChange={this.handleInputChange}
+                                        // name="billemail"
+                                        placeholder="Email"
+                                    />
+                                    <Input
+                                        type="tel"
+                                        // value={this.state.billphone}
+                                        onChange={this.handleInputChange}
+                                        // name="billphone"
+                                        placeholder="Phone Number"
+                                        pattern="[0-9]*"
+                                    />
 
-                                <Input
-                                    // value={this.state.billaddress1}
-                                    onChange={this.handleInputChange}
-                                    name="billaddress1"
-                                    placeholder="Address Line 1"
-                                />
-                                <Input
-                                    // value={this.state.billaddress2}
-                                    onChange={this.handleInputChange}
-                                    name="billaddress2"
-                                    placeholder="Address Line 2"
-                                />
+                                    <Input
+                                        // value={this.state.billaddress1}
+                                        onChange={this.handleInputChange}
+                                        name="billaddress1"
+                                        placeholder="Address Line 1"
+                                    />
+                                    <Input
+                                        // value={this.state.billaddress2}
+                                        onChange={this.handleInputChange}
+                                        name="billaddress2"
+                                        placeholder="Address Line 2"
+                                    />
 
-                                <Row>
-                                    <Col size="md-4">
-                                        <Input
-                                            // value={this.state.billcity}
-                                            onChange={this.handleInputChange}
-                                            name="billcity"
-                                            placeholder="City"
-                                        />
-                                    </Col >
-                                    <Col size="md-4">
-                                        <Input
-                                            // value={this.state.billzip}
-                                            onChange={this.handleInputChange}
-                                            name="billzip"
-                                            placeholder="Zipcode"
-                                            pattern="[0-9]*"
-                                        />
-                                    </Col>
-                                    <Col size="sm-12 md-4">
-                                        {/* <Input
+                                    <Row>
+                                        <Col size="md-4">
+                                            <Input
+                                                // value={this.state.billcity}
+                                                onChange={this.handleInputChange}
+                                                name="billcity"
+                                                placeholder="City"
+                                            />
+                                        </Col >
+                                        <Col size="md-4">
+                                            <Input
+                                                // value={this.state.billzip}
+                                                onChange={this.handleInputChange}
+                                                name="billzip"
+                                                placeholder="Zipcode"
+                                                pattern="[0-9]*"
+                                            />
+                                        </Col>
+                                        <Col size="sm-12 md-4">
+                                            {/* <Input
                                 type="select" 
                                 name="select" ></Input
                                 <option>1</option>
@@ -349,89 +366,89 @@ class BookNow extends React.Component {
                                 <option>4</option>
                                 <option>5</option>
                             > */}
-                                    </Col>
-                                </Row>
-                            </form>
-                        </div>
+                                        </Col>
+                                    </Row>
+                                </form>
+                            </div>
 
-                        <div className="divStyle pay-info effect6">
-                            <h4 className="cart-h4">Payment Information</h4>
+                            <div className="divStyle pay-info effect6">
+                                <h4 className="cart-h4">Payment Information</h4>
 
 
-                            {/* <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR"> */}
-                            {/* <div className="example">
+                                {/* <StripeProvider className="example" apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR"> */}
+                                {/* <div className="example">
                                     <Elements>
                                         <CheckoutForm />
                                     </Elements>
                                 </div>
                             </StripeProvider>  */}
-                        </div>
+                            </div>
 
-                    </Col>
+                        </Col>
 
-                    <Col size="md-5">
-                        <div className="divStyle cart-info effect6">
-                            <h4 className="cart-h4">Cart</h4>
-                            <table>
-                                <tbody>
-                                    <tr className="line">
-                                        <th className="cart-info-label">Admission</th>
-                                        <th className="cart-info-label">Price</th>
-                                        <th className="cart-info-label">Qty</th>
-                                        <th className="cart-info-label"> Amount</th>
-                                    </tr>
-                                    <tr className="line">
-                                        <td>General</td>
-                                        <td>$ {this.state.books.price} </td>
-                                        <td>
-                                            <Input
-                                                className="qty"
-                                                type="number"
-                                                onChange={this.handleInputChange}
-                                                name="qty"
-                                                pattern="[0-9]*"
-                                            />
-                                        </td>
-                                        <td>$ {this.state.books.price * this.state.books.qty}</td>
-                                    </tr>
+                        <Col size="md-5">
+                            <div className="divStyle cart-info effect6">
+                                <h4 className="cart-h4">Cart</h4>
+                                <table>
+                                    <tbody>
+                                        <tr className="line">
+                                            <th className="cart-info-label">Admission</th>
+                                            <th className="cart-info-label">Price</th>
+                                            <th className="cart-info-label">Qty</th>
+                                            <th className="cart-info-label"> Amount</th>
+                                        </tr>
+                                        <tr className="line">
+                                            <td>General</td>
+                                            <td>$ {this.state.books.price} </td>
+                                            <td>
+                                                <Input
+                                                    className="qty"
+                                                    type="number"
+                                                    onChange={this.handleInputChange}
+                                                    name="qty"
+                                                    pattern="[0-9]*"
+                                                />
+                                            </td>
+                                            <td>$ {this.state.books.price * this.state.books.qty}</td>
+                                        </tr>
 
-                                    <tr className="total">
-                                        <td></td>
-                                        <td></td>
-                                        <td>Subtotal</td>
-                                        <td>$ {this.state.books.qty * this.state.books.price}</td>
-                                    </tr>
+                                        <tr className="total">
+                                            <td></td>
+                                            <td></td>
+                                            <td>Subtotal</td>
+                                            <td>$ {this.state.books.qty * this.state.books.price}</td>
+                                        </tr>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Tax</td>
-                                        <td>$ XX.XX</td>
-                                    </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Tax</td>
+                                            <td>$ XX.XX</td>
+                                        </tr>
 
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <th>Total</th>
-                                        <th>$ {this.state.books.qty * this.state.books.price}</th>
-                                    </tr>
-                                </tbody>
-                            </table >
-                        </div>
-                    </Col>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <th>Total</th>
+                                            <th>$ {this.state.books.qty * this.state.books.price}</th>
+                                        </tr>
+                                    </tbody>
+                                </table >
+                            </div>
+                        </Col>
 
-                    <Col size="md-7">
-                        <button className="book-btn btn btn-success btn-block btn-lg hvr-grow-shadow-2" onClick={this.handlePurchaseSubmit}>
-                            <span>Buy Now </span>
-                          </button>
-                        
+                        <Col size="md-7">
+                            <button className="book-btn btn btn-success btn-block btn-lg hvr-grow-shadow-2" onClick={this.handlePurchaseSubmit}>
+                                <span>Buy Now </span>
+                            </button>
 
 
-                        {/* <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
+
+                            {/* <button className="book-btn btn btn-success btn-block" onClick={this.handleConfirmBook}><h4>Buy Now</h4></button>
                         <Link to="../../tours" className="book-btn btn btn-danger btn-block previous-btn" onClick={this.onClick}>
                             Previous </Link> */}
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
                 </div>
             </Container>
         );
