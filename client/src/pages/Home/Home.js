@@ -67,14 +67,14 @@ class Home extends React.Component {
   render() {
     return (
       <Container fluid>
-      <ul class="cb-slideshow">
+      {/* <ul class="cb-slideshow">
           <li style={{listStyleType: "none;"}}><span></span></li>
           <li style={{listStyleType: "none;"}}><span></span></li>
           <li style={{listStyleType: "none;"}}><span></span></li>
           <li style={{listStyleType: "none;"}}><span></span></li>
           <li style={{listStyleType: "none;"}}><span></span></li>
           <li style={{listStyleType: "none;"}}><span></span></li>
-      </ul>
+      </ul> */}
         <Row>
           <Col size="md-12 sm-12" >
               <SearchBar className="justify-content-center" />
