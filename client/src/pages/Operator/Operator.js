@@ -7,6 +7,8 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, PhotoInput, TextArea, FormBtn } from "../../components/Form";
 import "./Operator.css";
+import InboxLogo from '../../assets/images/inbox.png';
+import TourLogo from '../../assets/images/tour-logo.png';
 
 class Operator extends React.Component {
   constructor(props) {
@@ -103,18 +105,23 @@ class Operator extends React.Component {
         <Row>
           <Col size="md-4 sm-12">
             <div className="sections">
-              <i className="far fa-envelope"></i> <h3 className="dashboard-h3">Inbox (4) </h3>
+              {/* <i className="far fa-envelope"></i>  */}
+              <h3 className="dashboard-h3">Inbox <strong>(14)</strong> </h3>
+              <img id="inbox-logo" src={InboxLogo} alt="inbox logo" />
+
             </div>
           </Col>
           <Col size="md-4 sm-12">
             <div className="sections">
-              <h3 className="dashboard-h3">Upcoming Tours (30)</h3>
+              <h3 className="dashboard-h3">Upcoming Tours <strong>(30)</strong></h3>
+
+              <img id="tour-logo" src={TourLogo} alt="tour logo" />
             </div>
           </Col>
           <Col size="md-4 sm-12">
             <div className="sections">
-            <h3 className="dashboard-h3">Pending Transactions: $3,120.00</h3> <br />
-              <span className="payout"><h3 className="dashboard-h3">Next Payout: 5/17</h3></span>
+            <h3 className="dashboard-h3">Pending Transactions: <br /><span className="payout-price">$3,120.00</span></h3>
+              <span className="payout"><h3 className="dashboard-h3-2">Next Payout: 08/17</h3></span>
             </div>
           </Col>
         </Row>
@@ -189,6 +196,10 @@ class Operator extends React.Component {
                 </tbody>
               </table>
                     <button className="float-right btn-primary cancel-refund">Cancel & Refund</button>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
             </div>
           </Col>
         </Row>
@@ -272,16 +283,20 @@ class Operator extends React.Component {
                       <ListItem key={book._id}>
                         <Row>
                           <Col size="sm-2 md-2" >
-                            <div className="image">
+                            <div className="dashboard-preview-image">
                               {book.pictures}
+                              <h3 className="dash-image-preview-h3">IMAGE</h3>
                             </div>
                           </Col>
                           <Col size="sm-7 md-7">
-                            <strong>Tour Name:</strong> {book.name} <br />
-                            <strong> Starting Location:</strong>  {book.address} <br />
+                          <div className="dashboard-preview-tour-info-div">
+                            <strong className="dashboard-preview-label">Tour Name:</strong> <br /> <span className="dashboard-preview-info">{book.name}</span> <br />
+                            <strong className="dashboard-preview-label"> Starting Location:</strong> <br />  <span className="dashboard-preview-info">{book.address}</span> <br />
                             <a href={"/tours/" + book._id}>More Details</a>
+                            </div>
                           </Col>
                           <Col size="sm-3 md-3" >
+                          <div className="preview-price-and-book"> 
                             <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                             <div className="price">
                               <span className="ad-price">
@@ -292,6 +307,7 @@ class Operator extends React.Component {
                             </div>
                             <br />
                             <Link to={`/tours/book-now/${book._id}`} className="text-white float-right book-now" >Book Now</Link>
+                            </div>
                           </Col>
                         </Row>
                       </ListItem>

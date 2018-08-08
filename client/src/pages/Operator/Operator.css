@@ -1,7 +1,8 @@
 
 .dashboard-div {
-    background-color: #E8EAED;
-    opacity: 0.93;
+    background-color: #EDEFF2;
+    /* 454954 E8EAED CCCBD1 F5F6FA EDEFF2 E6E7EB*/
+    opacity: 0.96;
     /* background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png"); */
     box-shadow: inset 0 2.5px 4.5px 0 rgba(0,0,0,0.25);
 }
@@ -40,10 +41,11 @@ overflow: auto;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    height: 67px;
+    height: 185px;
     margin-right: -10px;
     margin-top: -11px;
-    
+    cursor: pointer;
+    width: 99.6%;
 }
 
 .sections:hover {
@@ -52,8 +54,9 @@ overflow: auto;
 
 .payout {
     font-size: 14px;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
+    text-align: center;
 }
 
 .booked-tours {
@@ -95,6 +98,10 @@ overflow: auto;
 
 .cancel-refund {
     margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 3px;
 }
 
 th, td {
@@ -139,12 +146,15 @@ th, td {
     margin-bottom: 100px;
 }
 
-.image {
+.dashboard-preview-image {
     background-color: #ccc;
-    width: 100%;
-    height: 100%;
+    width: 190%;
+    height: 85%;
     text-align: center;
     padding-top: 30%;
+    margin-left: -40%;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .price {
@@ -191,7 +201,8 @@ a.book-now:hover {
     color: #FF6161;
     padding: 29px;
     letter-spacing: 2.5px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    /* 454954 */
    
    
 }
@@ -245,10 +256,24 @@ background: linear-gradient(90deg, rgba(2,0,36,0.7) 0%, rgba(32,66,96,0.7) 100%,
 } */
 
 .dashboard-h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 23px;
+    /* color: #192B4C; */
+    color: #28888C;
+}
+.dashboard-h3-2 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     font-size: 18px;
     color: #192B4C;
+    /* display: inline-block; */
+    /* position: absolute;
+    bottom: 6%; */
+    /* right: 50%; */
+    text-align: center;
+    margin-top: 1%;
+    
 }
 
 .save-tour-btn, .btn-block{
@@ -256,6 +281,8 @@ background: linear-gradient(90deg, rgba(2,0,36,0.7) 0%, rgba(32,66,96,0.7) 100%,
 background-color: #FF8787 !important;
 border: none;
 cursor: pointer;
+font-family: 'Quicksand', sans-serif;
+font-weight: 300;
 
 }
 
@@ -269,3 +296,59 @@ cursor: pointer;
  margin-bottom: 20px;
  
 }
+
+.payout-price {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 4%;
+   padding-top: 8px;
+    font-size: 57px;  
+    /* color: rgb(0,159,167, 1); */
+    color: #454954;
+    font-weight: 300; 
+}
+
+#inbox-logo {
+    margin-top: -13px;
+    height: 155px;
+}
+
+#tour-logo{
+    height: 125px;
+    margin-right: 1.5%;
+}
+
+.dashboard-preview-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    color: rgb(0,159,167, 1);
+    font-size:18px;
+    font-size:24px;
+}
+
+.dashboard-preview-info {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    color: #FEFFFC;
+    font-weight: 300;
+    }
+
+
+    .preview-price-and-book {
+        margin-left: 6%;
+        margin-top: -16%;
+    }
+
+    .dashboard-preview-tour-info-div{
+        margin-left: 9%;
+
+    }
+
+
+    .dash-image-preview-h3 {
+        font-family: 'Oswald', sans-serif;
+        opacity: 0.19;
+        letter-spacing: 1px;
+        font-size: 42px;
+        margin-top: 11%;
+    }
