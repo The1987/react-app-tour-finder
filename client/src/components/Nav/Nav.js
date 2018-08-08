@@ -37,14 +37,14 @@ const NavigationAuth = () =>
             </ul>
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link className="nav-link hvr-fade" to="/operator">Operator-Dash</Link>
+                    <Link className="nav-link hvr-fade" to="/operator">Dashboard</Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <Link className="nav-link hvr-fade" to={routes.SIGN_IN}>Sign In</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link hvr-fade" to={routes.SIGN_UP}>Sign Up</Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <SignOutButton />
                 </li>
