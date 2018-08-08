@@ -9,7 +9,7 @@ const SearchBar = () =>
         <h2 className="main-tagline">find your happy place.</h2>
 
             <input className="search main-search" type="search" placeholder="Enter a City, State, or Zipcode" />
-            <button className="submit" type="submit"><i className="fas fa-map-marker-alt"></i></button>
+            <button className="submit" type="submit"><i className="fas fa-1x fa-search"></i></button>
 
         </form>
 </div>
