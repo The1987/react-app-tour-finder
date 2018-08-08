@@ -16,12 +16,15 @@ app.use(booksController);
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
-  {
-    useMongoClient: true
-  }
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
+//   {
+//     useMongoClient: true
+//   }
+// );
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+var MONGODB_URI = "mongodb://ACTdevelopers:Fullstack123!@ds013414.mlab.com:13414/heroku_rxjqcz5m" || "mongodb://localhost/reactreadinglist";
 
 // Start the API server
 app.listen(PORT, function() {
