@@ -9,7 +9,9 @@ import { Image } from 'react-bootstrap';
 
 import image from "../../assets/images/new-york-bike-tour.jpg";
 import calendar from "../../assets/images/calendar.png";
-import GoogleMaps from "../../components/GoogleMaps";
+// import GoogleMaps from "../../components/GoogleMaps";
+import PresentGoogleMap from "../../components/PresentGoogleMap";
+// import CreateGoogleMap from "../../components/CreateGoogleMap";
 
 class Detail extends React.Component {
   constructor(props) {
@@ -117,7 +119,7 @@ class Detail extends React.Component {
           </Col>
 
           <Col size="md-12 sm-12" >
-            <GoogleMaps />
+            <PresentGoogleMap />
           </Col>
         </Row>
 

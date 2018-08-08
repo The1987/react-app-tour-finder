@@ -310,7 +310,7 @@ class BookNow extends React.Component {
                     <Link to="../../tours" className="btn buy-button-text previous-btn" onClick={this.handleBackBook}> {'<<<   '}Continue Browsing </Link>
                     <Row>
                         <Col size="md-7">
-                            <div className="divStyle tour-info effect6">
+                            <div className="divStyle tour-info">
                                 <h4 className="cart-h4">Tour Information</h4>
                                 <strong className="cart-info-label">Tour Name:</strong> {this.state.books.name} <br />
                                 <strong className="cart-info-label">Tour Date:</strong> {this.state.books.date} <br />
@@ -318,7 +318,7 @@ class BookNow extends React.Component {
                                 <strong className="cart-info-label">Start Time:</strong> {this.state.books.time}
                             </div>
 
-                            <div className="divStyle bill-info effect6">
+                            <div className="divStyle bill-info">
                                 <h4 className="cart-h4">Billing Information</h4>
                                 <form>
                                     <Input size="sm-2"
@@ -389,7 +389,7 @@ class BookNow extends React.Component {
                                 </form>
                             </div>
 
-                            <div className="divStyle pay-info effect6">
+                            <div className="divStyle pay-info">
                                 <h4 className="cart-h4">Payment Information</h4>
 
 
@@ -405,7 +405,7 @@ class BookNow extends React.Component {
                         </Col>
 
                         <Col size="md-5">
-                            <div className="divStyle cart-info effect6">
+                            <div className="divStyle cart-info">
                                 <h4 className="cart-h4">Cart</h4>
                                 <table>
                                     <tbody>

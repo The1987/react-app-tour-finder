@@ -1,6 +1,6 @@
 .cart {
     background-color: rgb(214, 215, 218, 0.95);
-    border-radius: 12px; 
+    border-radius: 6px; 
     margin-top: 25px;
     margin-bottom: 60px;
 }
@@ -16,6 +16,8 @@
     padding-left: 10px;
     padding-right: 10px;
     height: auto;
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
 }
 
 .tour-info {
@@ -23,23 +25,24 @@
     height: 287px;
     margin-top: 25px;
     margin-bottom: 27px;
-    border-radius: 8px;
+    border-radius: 6px;
+    
 }
 
 .bill-info {
     padding: 5%;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 20px;
 }
 
 .pay-info {
     padding: 5%;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 14px;
 }
 
 .cart-info {
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 5%;
     margin-top: 25px;
     margin-bottom: 20px;
