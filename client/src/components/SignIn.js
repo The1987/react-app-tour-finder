@@ -3,8 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
-
-import { Col, Row, Container } from "./Grid";
+import { Row, Container } from "./Grid";
 import './SignAuthentication.css';
 
 
