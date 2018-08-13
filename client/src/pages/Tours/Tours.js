@@ -87,13 +87,22 @@ class Tours extends React.Component {
       
         <Row>
           <Col  size="md-12">
-            <h2 className="tours-h2">Tours in your Area</h2>
+            <h2 className="tours-h2">Tours Near You</h2>
           </Col>
         </Row>
       
         <Row>
-         
-          <Col size="lg-12 sm-12 pb-6">
+        
+        
+        <Col size="lg-2">
+        <p className="image mt-6 pb-6">
+         This is where we add the filter <br/>
+         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+         </p>
+         </Col>
+        
+
+          <Col size="lg-10 sm-12" className="pb-6">
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => {
@@ -136,11 +145,9 @@ class Tours extends React.Component {
             ) : (
                 <h3 className="text-white">No Results to Display</h3>
               )}
-
+              
+            
           </Col>
-          {/* <Col size="lg-4 md-4 sm-12">
-            <PresentGoogleMaps />
-          </Col> */}
         </Row>
         
       </Container>

@@ -224,7 +224,7 @@ class Operator extends React.Component {
                     name="description"
                     placeholder="Tour Description"
                   />
-                  <label>Upload any waivers, releases or other documents the customer will need.
+                  <label>Upload any waivers, releases or documents the customer may need.
                   <Input type="file" />
                   <Input type="file" />
                   <Input type="file" />

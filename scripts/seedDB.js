@@ -44,14 +44,3 @@ db.Purchase
     console.error(err);
     process.exit(1);
   });
-
-  // const userSeed = [
-  //   {
-  //     username: "andrewmflak",
-  //     password: "12345"
-  //   },
-  //   {
-  //     username: "TheDonaldTrump",
-  //     password: "GoldenShowers"
-  //   }
-  // ];

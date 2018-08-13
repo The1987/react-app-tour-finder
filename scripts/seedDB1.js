@@ -13,8 +13,8 @@ mongoose.connect(
 
 const bookSeed = [
   {
-    name: "Andrew Hatfield's Food Tour Of Jersey City",
-    address: "70 Sip Ave, Jersey City, NJ 07306",
+    name: "Chris Hantis Food Tour Of Morristown",
+    address: "218 Glen Drive, Cedar Knolls, NJ 07927",
     price: 10,
     qty: 20,
     date: "11/12/18",
