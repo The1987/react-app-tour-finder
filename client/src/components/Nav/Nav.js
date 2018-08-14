@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MainLogo from '../../assets/images/main-logo.png';

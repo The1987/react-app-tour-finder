@@ -2,18 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-  name: { type: String, required: true },
-  address: { type: String, required: true },
-  price: { type: Number, required: true },
-  qty: { type: Number, required: false },
-  date: {type: String, required: false },
-  time: {type: String, required: false },
-  description: {type: String, required: false}
-
-
-  // selectedFile: { type: FormData},
-  // date: { type: Date, default: Date.now }
-
+  tourName: { type: String, required: true },
+  tourDescription: { type: String, required: false },
+  tourPlace: { type: String, required: false },
+  tourAddress1: { type: String, required: true },
+  tourAddress2: {type: String, required: false },
+  tourCity: {type: String, required: false },
+  tourState: {type: String, required: false },
+  tourZipcode: {type: String, required: false },
+  tourDays: {type: String, required: false },
+  tourTimes: {type: String, required: false },
+  admissionType: {type: String, required: false },
+  admissionPrice: {type: Number, required: false },
+  admissionTickets: {type: Number, required: false },
 });
 
 const Book = mongoose.model("Book", bookSchema);

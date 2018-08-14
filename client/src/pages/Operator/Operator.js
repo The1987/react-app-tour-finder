@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn, Select } from "../../components/Form";
-// import { Input, PhotoInput, TextArea, FormBtn } from "../../components/Form";
 import "./Operator.css";
 import InboxLogo from '../../assets/images/inbox.png';
 import TourLogo from '../../assets/images/tour-logo.png';
@@ -15,32 +14,25 @@ class Operator extends React.Component {
     super(props);
     this.state = {
       books: [],
-      name: "",
-      address: "",
-      price: "",
-      qty: "",
-      date: "",
-      time: "",
-      description: "",
-      // selectedFile: ""
-      // isUpdate: false
+      tourName: "",
+      tourDescription: "",
+      tourPlace: "",
+      tourAddress1: "",
+      tourAddress2: "",
+      tourCity: "",
+      tourState: "",
+      tourZipcode: "",
+      tourDays: "",
+      tourTimes: "",
+      admissionType: "",
+      admissionPrice: "",
+      admissionTickets: "",
     };
   }
 
   fileChangedHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] })
   }
-
-  // uploadHandler = () => {
-  //   console.log(this.state.selectedFile)
-  // }
-
-  // uploadHandler = () => {
-  //   axios.post('my-domain.com/file-upload', this.state.selectedFile)
-  // }
-
-
-
 
   // When the component mounts, load all books and save them to this.state.books
   componentDidMount() {
@@ -51,7 +43,7 @@ class Operator extends React.Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, name: "", address: "", price: "", qty: "", date: "", time: "", description: "" })
+        this.setState({ books: res.data, tourName: "", tourDescription: "", tourPlace: "", tourAddress1: "", tourAddress2: "", tourCity: "", tourState: "", tourZipcode: "", tourDays: "", tourTimes: "", admissionType: "", admissionPrice: "", admissionTickets: "" })
       )
       .catch(err => console.log(err));
   };
@@ -79,15 +71,21 @@ class Operator extends React.Component {
   // Then reload books from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name && this.state.address) {
+    if (this.state.tourName && this.state.tourAddress1) {
       API.saveBook({
-        name: this.state.name,
-        address: this.state.address,
-        price: this.state.price,
-        qty: this.state.qty,
-        date: this.state.date,
-        time: this.state.time,
-        description: this.state.description
+      tourName: this.state.tourName,
+      tourDescription: this.state.tourDescription,
+      tourPlace: this.state.tourPlace,
+      tourAddress1: this.state.tourAddress1,
+      tourAddress2: this.state.tourAddress2,
+      tourCity: this.state.tourCity,
+      tourState: this.state.value,
+      tourZipcode: this.state.tourZipcode,
+      tourDays: this.state.tourDays,
+      tourTimes: this.state.tourTimes,
+      admissionType: this.state.admissionType,
+      admissionPrice: this.state.admissionPrice,
+      admissionTickets: this.state.admissionTickets,
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -99,7 +97,7 @@ class Operator extends React.Component {
   render() {
     return (
       <div className="dashboard-div">
-        <h1 className="dashboard-h1"> Welcome back, Thomas Anderson!</h1>
+        <h1 className="dashboard-h1"> Welcome back, Thomas Anderson! </h1>
         {/* <h2 className="dashboard-h2"> Plan your next adventure.</h2> */}
         <Container fluid>
           <Row>
@@ -204,66 +202,69 @@ class Operator extends React.Component {
             </Col>
           </Row>
 
-
           <Row>
             <Col size="md-6 sm-12">
               <div className="add-tour">
                 <h2 className="dashboard-h2">Add Tour</h2>
                 <form>
-                  <h3>1. </h3>
+                  <h3>1. Tour Details </h3>
                   <Input
-                    value={this.state.name}
+                    value={this.state.tourName}
                     onChange={this.handleInputChange}
-                    name="name"
+                    name="tourName"
                     placeholder="Tour Name (required)"
                   />
                   <TextArea
                     className="tour-description-form-dashboard"
-                    value={this.state.description}
+                    value={this.state.tourDescription}
                     onChange={this.handleInputChange}
-                    name="description"
+                    name="tourDescription"
                     placeholder="Tour Description"
                   />
-                  <label>Upload any waivers, releases or documents the customer may need.
+                  {/* <label>Upload any waivers, releases or documents the customer may need.
                   <Input type="file" />
                   <Input type="file" />
                   <Input type="file" />
-                  </label>
+                  </label> */}
 
 
                   <hr />
                   <br />
-                  <h3>2. </h3>
+                  <h3>2. Tour Location</h3>
                   <Input
-                    value={this.state.location}
+                    value={this.state.tourPlace}
                     onChange={this.handleInputChange}
-                    name="location"
-                    placeholder="Tour Location (Place, Monument, etc)"
+                    name="tourPlace"
+                    placeholder="Meeting Place (Restaurant, Hotel, Monument, etc)"
                   />
                   <Input
-                    value={this.state.address1}
+                    value={this.state.tourAddress1}
                     onChange={this.handleInputChange}
-                    name="address1"
+                    name="tourAddress1"
                     placeholder="Address 1"
                   />
                   <Input
-                    value={this.state.address2}
+                    value={this.state.tourAddress2}
                     onChange={this.handleInputChange}
-                    name="address2"
+                    name="tourAddress2"
                     placeholder="Address 2"
                   />
 
                   <Row>
                     <Col size="md-4">
                       <Input
-                        value={this.state.city}
+                        value={this.state.tourCity}
                         onChange={this.handleInputChange}
-                        name="city"
+                        name="tourCity"
                         placeholder="City"
                       />
                     </Col>
                     <Col size="md-4">
-                      <Select value={this.state.value} onChange={this.handleChange} >
+                      <Select 
+                      value={this.state.value} 
+                      onChange={this.handleChange} 
+                      name="tourState"
+                      >
                         <option value="" disabled selected>State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -320,9 +321,9 @@ class Operator extends React.Component {
                     </Col>
                     <Col size="md-4">
                       <Input
-                        value={this.state.zipcode}
+                        value={this.state.tourZipcode}
                         onChange={this.handleInputChange}
-                        name="zipcode"
+                        name="tourZipcode"
                         placeholder="Zipcode"
                       />
                     </Col>
@@ -330,13 +331,58 @@ class Operator extends React.Component {
                   <hr />
                   <br />
 
-                  <h3>3. </h3>
-                  Days of the week
+                  <h3>3. Hours Of Operation</h3>
                   <Row>
-                    <Col size="md-12">
-
-                      Start Time
+                    <Col size="lg-12">
                       <Row>
+                        <Col size="md-12">
+                        <Input 
+                        value={this.state.tourDays}
+                        onChange={this.handleInputChange}
+                        name="tourDays"
+                        placeholder="Days We're Open (Mon, Tue - Fri, etc)"
+                        />
+                          {/* <Select value={this.state.value} onChange={this.handleChange}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                          </Select> */}
+                        </Col>
+
+                        <Col size="md-12">
+                        <Input 
+                        value={this.state.tourTimes}
+                        onChange={this.handleInputChange}
+                        name="tourTimes"
+                        placeholder="Times We're Open (8AM - 9PM)"
+                        />
+                          {/* <Select value={this.state.value} onChange={this.handleChange}>
+                            <option value="0">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                          </Select> */}
+                        </Col>
+
+                        {/* <Col size="lg-4">
+                          <Select value={this.state.value} onChange={this.handleChange}>
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                          </Select>
+                        </Col> */}
+                      </Row>
+
+                     
+                        {/* <Row>
                         <Col size="lg-4">
                           <Select value={this.state.value} onChange={this.handleChange}>
                             <option value="1">1</option>
@@ -353,42 +399,6 @@ class Operator extends React.Component {
                             <option value="12">12</option>
                           </Select>
                         </Col>
-
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="0">00</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                            <option value="45">45</option>
-                          </Select>
-                        </Col>
-
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                          </Select>
-                        </Col>
-                      </Row>
-
-                      End Time
-                        <Row>
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                          </Select>
-                        </Col>
                         <Col size="lg-4">
                           <Select value={this.state.value} onChange={this.handleChange}>
                             <option value="0">00</option>
@@ -403,23 +413,47 @@ class Operator extends React.Component {
                             <option value="PM">PM</option>
                           </Select>
                         </Col>
-                      </Row>
-                    </Col>
-                  </Row>
+                      </Row> */}
+                    </Col> 
+                  </Row> 
 
                    <hr />
                   <br />
 
-                  <h3>4. </h3>
+                  <h3>4. Admission</h3>
                   <Row>
                     <Col size="md-12">
-                  Add Admission
+                        <Input 
+                        value={this.state.admissionType}
+                        onChange={this.handleInputChange}
+                        name="admissionType"
+                        placeholder="Admission Type (General, Adult, Kid, etc)"
+                        />
                     </Col>
+                    <Col size="md-12">
+                        <Input 
+                        value={this.state.admissionPrice}
+                        onChange={this.handleInputChange}
+                        name="admissionPrice"
+                        placeholder="Admission Price ($) - Price Per Person"
+                        />
+                    </Col>
+                    <Col size="md-12">
+                        <Input 
+                        value={this.state.admissionTickets}
+                        onChange={this.handleInputChange}
+                        name="admissionTickets"
+                        placeholder="Tickets - Number of tickets available every time the tour runs"
+                        />
+                    </Col>
+
+
+
                     </Row>
 
                   <FormBtn
                     className="save-tour-btn"
-                    disabled={!(this.state.name && this.state.address)}
+                    disabled={!(this.state.tourName && this.state.tourAddress1)}
                     onClick={this.handleFormSubmit}
                   >
                     Save & Publish Tour
@@ -438,16 +472,24 @@ class Operator extends React.Component {
                       return (
                         <ListItem key={book._id}>
                           <Row>
-                            <Col size="sm-2 md-2" >
+                            {/* <Col size="sm-2 md-2" >
                               <div className="dashboard-preview-image">
                                 {book.pictures}
                                 <h3 className="dash-image-preview-h3">IMAGE</h3>
                               </div>
-                            </Col>
+                            </Col> */}
                             <Col size="sm-7 md-7">
                               <div className="dashboard-preview-tour-info-div">
-                                <strong className="dashboard-preview-label">Tour Name:</strong> <br /> <span className="dashboard-preview-info">{book.name}</span> <br />
-                                <strong className="dashboard-preview-label"> Starting Location:</strong> <br />  <span className="dashboard-preview-info">{book.address}</span> <br />
+                                {/* <strong className="dashboard-preview-label">Tour Name:</strong> <br />  */}
+                                <span className="dashboard-preview-info">{book.tourName}</span> <br />
+                                {/* <strong className="dashboard-preview-label"> Meetup Location:</strong> 
+                                <br />   */}
+                                <span className="dashboard-preview-info">
+                                {book.tourPlace}<br />
+                                {book.tourAddress1}<br />
+                                {book.tourAddress2}<br />
+                                {book.tourCity},{book.tourState},{book.tourZipcode}</span> 
+                                <br />
                                 <a href={"/tours/" + book._id}>More Details</a>
                               </div>
                             </Col>
@@ -456,7 +498,7 @@ class Operator extends React.Component {
                                 <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                                 <div className="price">
                                   <span className="ad-price">
-                                    <strong> $ {book.price} </strong>
+                                    <strong> $ {book.admissionPrice} </strong>
                                   </span>
                                   <br />
                                   <span className="per-price"> per person </span>
