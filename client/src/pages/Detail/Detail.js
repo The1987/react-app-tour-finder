@@ -4,14 +4,11 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API"
+import API from "../../utils/API";
 import { Image } from 'react-bootstrap';
-
 import image from "../../assets/images/new-york-bike-tour.jpg";
 import calendar from "../../assets/images/calendar.png";
-// import GoogleMaps from "../../components/GoogleMaps";
 import PresentGoogleMap from "../../components/PresentGoogleMap";
-// import CreateGoogleMap from "../../components/CreateGoogleMap";
 
 class Detail extends React.Component {
   constructor(props) {
@@ -51,7 +48,7 @@ class Detail extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.books.name && this.state.books.address) {
+    if (this.state.books.tourName && this.state.books.tourAddress1) {
       API.patchBook(this.props.match.params.id, this.state.books)
         .then(res => this.setState({ isUpdate: false }))
         .catch(err => console.log(err));
@@ -66,13 +63,13 @@ class Detail extends React.Component {
             <div className="header2">
               <div className="price float-right">
                 <span className="ad-price mr-2">
-                  <strong> <span className="details-dollar-sign">$</span> {this.state.books.price} </strong>
+                  <strong> <span className="details-dollar-sign">$</span> {this.state.books.tourAdmission} </strong>
                 </span>
                 <br />
                 <span className="details-per-person per-price mr-2"> per person </span>
               </div>
               <h2 className="details-tour-title ml-2">
-                {this.state.books.name} <br />
+                {this.state.books.tourName} <br />
               </h2>
               <span className="operated-by ml-2">Operated by:    <a className="operator-name-link" href=""> ACME Company</a></span>
             </div>
@@ -95,7 +92,7 @@ class Detail extends React.Component {
 
                 <Col size="md-12 sm-12">
                 <p className="tour-details tour-details-p">
-                  <strong className="about-this-tour-detail">About this Tour:</strong> <span className="about-this-tour-detail-description"> {this.state.books.description} </span> <br />
+                  <strong className="about-this-tour-detail">About this Tour:</strong> <span className="about-this-tour-detail-description"> {this.state.books.tourDescription} </span> <br />
                   {/* Tour Name: {this.state.books.name} <br /> */}
                   {/* Starting Location: {this.state.books.address} <br /> */}
                 </p>
@@ -143,32 +140,32 @@ class Detail extends React.Component {
         <Col size="md-10 md-offset-1">
           <form>
             <Input
-              value={this.state.books.name}
+              value={this.state.books.tourName}
               onChange={this.handleInputChange}
-              name="name"
+              name="tourName"
               placeholder="Tour Name (required)"
             />
             <Input
-              value={this.state.books.address}
+              value={this.state.books.tourAddress1}
               onChange={this.handleInputChange}
-              name="address"
+              name="tourAddress1"
               placeholder="Meet Up Location (required)"
             />
             <Input
-              value={this.state.books.price}
+              value={this.state.books.tourAdmission}
               onChange={this.handleInputChange}
-              name="price"
+              name="tourAdmission"
               placeholder="Price ($)"
             />
             <TextArea
-              value={this.state.books.description}
+              value={this.state.books.tourDescription}
               onChange={this.handleInputChange}
-              name="description"
+              name="tourDescription"
               placeholder="Tour Description"
             />
             <button onClick={() => this.handleUpdate(false)}>Cancel</button>
             <FormBtn
-              disabled={!(this.state.books.name && this.state.books.address)}
+              disabled={!(this.state.books.tourName && this.state.books.tourAddress1)}
               onClick={this.handleFormSubmit}
             >
               Save Tour

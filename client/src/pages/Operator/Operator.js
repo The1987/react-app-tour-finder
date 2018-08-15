@@ -24,9 +24,20 @@ class Operator extends React.Component {
       tourZipcode: "",
       tourDays: "",
       tourTimes: "",
+      tourAdmission: "",
       admissionType: "",
-      admissionPrice: "",
       admissionTickets: "",
+
+      purchases: [],
+      purchaseName: "",
+      purchaseAddress1: "",
+      purchaseAddress2: "",
+      purchaseCity: "",
+      purchaseState: "",
+      purchaseZipcode: "",
+      purchaseTickets: "",
+      purchaseEmail: "",
+      purchasePhone: ""
     };
   }
 
@@ -39,11 +50,15 @@ class Operator extends React.Component {
     this.loadBooks();
   }
 
+  componentWillMount() {
+    this.loadPurchases();
+  }
+
   // Loads all books  and sets them to this.state.books
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, tourName: "", tourDescription: "", tourPlace: "", tourAddress1: "", tourAddress2: "", tourCity: "", tourState: "", tourZipcode: "", tourDays: "", tourTimes: "", admissionType: "", admissionPrice: "", admissionTickets: "" })
+        this.setState({ books: res.data, tourName: "", tourDescription: "", tourPlace: "", tourAddress1: "", tourAddress2: "", tourCity: "", tourState: "", tourZipcode: "", tourDays: "", tourTimes: "", admissionType: "", tourAdmission: "", admissionTickets: "" })
       )
       .catch(err => console.log(err));
   };
@@ -54,6 +69,18 @@ class Operator extends React.Component {
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
+
+  loadPurchases = () => {
+    API.getPurchases()
+      .then(res =>
+        this.setState({ books: res.data, purchaseName: "", purchaseAddress1: "", purchaseAddress2: "", purchaseCity: "", purchaseState: "", purchaseZipcode: "", purchaseTickets: "", purchaseEmail: "", purchasePhone: "", checkouttotal: "" })
+      )
+      .catch(err => console.log('I have an error',err));
+  };
+
+
+
+
 
   // handleUpdate(isUpdate) {
   //   this.setState({ isUpdate: isUpdate })
@@ -73,25 +100,23 @@ class Operator extends React.Component {
     event.preventDefault();
     if (this.state.tourName && this.state.tourAddress1) {
       API.saveBook({
-      tourName: this.state.tourName,
-      tourDescription: this.state.tourDescription,
-      tourPlace: this.state.tourPlace,
-      tourAddress1: this.state.tourAddress1,
-      tourAddress2: this.state.tourAddress2,
-      tourCity: this.state.tourCity,
-      tourState: this.state.value,
-      tourZipcode: this.state.tourZipcode,
-      tourDays: this.state.tourDays,
-      tourTimes: this.state.tourTimes,
-      admissionType: this.state.admissionType,
-      admissionPrice: this.state.admissionPrice,
-      admissionTickets: this.state.admissionTickets,
+        tourName: this.state.tourName,
+        tourDescription: this.state.tourDescription,
+        tourPlace: this.state.tourPlace,
+        tourAddress1: this.state.tourAddress1,
+        tourAddress2: this.state.tourAddress2,
+        tourCity: this.state.tourCity,
+        tourState: this.state.value,
+        tourZipcode: this.state.tourZipcode,
+        tourDays: this.state.tourDays,
+        tourTimes: this.state.tourTimes,
+        admissionType: this.state.admissionType,
+        tourAdmission: this.state.tourAdmission,
+        admissionTickets: this.state.admissionTickets,
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
     }
-    // API.patchBook(this.props.match.params.id, this.state.book)
-    //     .then(res => this.setState({ isUpdate: false }))
   };
 
   render() {
@@ -128,7 +153,33 @@ class Operator extends React.Component {
             <Col size="md-12 sm-12">
               <div className="booked-tours">
                 <h2 className="dashboard-h2">Bookings</h2>
-                {/* <hr /> */}
+                {this.state.books.purchaseName}
+              </div>
+              {/* {this.state.books.length ? (
+                  <List>
+                    {this.state.books.map(book => {
+                      return (
+                        <ListItem key={book._id}>
+                          <Row>
+                            <Col size="lg-12">
+                              <div>
+                                <span>{book.tourName}</span> <br />
+                                <span>
+                                {book.purchaseName}<br />
+                                {book.purchaseAddress1}<br />
+                                {book.purchaseAddress2}<br />
+                                </span> 
+                              </div>
+                            </Col>
+                          </Row>
+                        </ListItem>
+                      )
+                    })}
+                  </List>
+                )} */}
+
+              {/* <Col size="md-12"> */}
+              <div>
                 <table className="booked-tours-table">
                   <tbody>
                     <tr>
@@ -260,12 +311,12 @@ class Operator extends React.Component {
                       />
                     </Col>
                     <Col size="md-4">
-                      <Select 
-                      value={this.state.value} 
-                      onChange={this.handleChange} 
-                      name="tourState"
+                      <Select
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        name="tourState"
                       >
-                        <option value="" disabled selected>State</option>
+                        <option value="">State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -336,12 +387,12 @@ class Operator extends React.Component {
                     <Col size="lg-12">
                       <Row>
                         <Col size="md-12">
-                        <Input 
-                        value={this.state.tourDays}
-                        onChange={this.handleInputChange}
-                        name="tourDays"
-                        placeholder="Days We're Open (Mon, Tue - Fri, etc)"
-                        />
+                          <Input
+                            value={this.state.tourDays}
+                            onChange={this.handleInputChange}
+                            name="tourDays"
+                            placeholder="Days We're Open (Mon, Tue - Fri, etc)"
+                          />
                           {/* <Select value={this.state.value} onChange={this.handleChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -359,97 +410,47 @@ class Operator extends React.Component {
                         </Col>
 
                         <Col size="md-12">
-                        <Input 
-                        value={this.state.tourTimes}
-                        onChange={this.handleInputChange}
-                        name="tourTimes"
-                        placeholder="Times We're Open (8AM - 9PM)"
-                        />
-                          {/* <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="0">00</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                            <option value="45">45</option>
-                          </Select> */}
+                          <Input
+                            value={this.state.tourTimes}
+                            onChange={this.handleInputChange}
+                            name="tourTimes"
+                            placeholder="Times We're Open (8AM - 9PM)"
+                          />
                         </Col>
-
-                        {/* <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                          </Select>
-                        </Col> */}
                       </Row>
+                    </Col>
+                  </Row>
 
-                     
-                        {/* <Row>
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                          </Select>
-                        </Col>
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="0">00</option>
-                            <option value="15">15</option>
-                            <option value="30">30</option>
-                            <option value="45">45</option>
-                          </Select>
-                        </Col>
-                        <Col size="lg-4">
-                          <Select value={this.state.value} onChange={this.handleChange}>
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                          </Select>
-                        </Col>
-                      </Row> */}
-                    </Col> 
-                  </Row> 
-
-                   <hr />
+                  <hr />
                   <br />
 
                   <h3>4. Admission</h3>
                   <Row>
                     <Col size="md-12">
-                        <Input 
+                      <Input
                         value={this.state.admissionType}
                         onChange={this.handleInputChange}
                         name="admissionType"
                         placeholder="Admission Type (General, Adult, Kid, etc)"
-                        />
+                      />
                     </Col>
                     <Col size="md-12">
-                        <Input 
-                        value={this.state.admissionPrice}
+                      <Input
+                        value={this.state.tourAdmission}
                         onChange={this.handleInputChange}
-                        name="admissionPrice"
+                        name="tourAdmission"
                         placeholder="Admission Price ($) - Price Per Person"
-                        />
+                      />
                     </Col>
                     <Col size="md-12">
-                        <Input 
+                      <Input
                         value={this.state.admissionTickets}
                         onChange={this.handleInputChange}
                         name="admissionTickets"
                         placeholder="Tickets - Number of tickets available every time the tour runs"
-                        />
+                      />
                     </Col>
-
-
-
-                    </Row>
+                  </Row>
 
                   <FormBtn
                     className="save-tour-btn"
@@ -472,23 +473,14 @@ class Operator extends React.Component {
                       return (
                         <ListItem key={book._id}>
                           <Row>
-                            {/* <Col size="sm-2 md-2" >
-                              <div className="dashboard-preview-image">
-                                {book.pictures}
-                                <h3 className="dash-image-preview-h3">IMAGE</h3>
-                              </div>
-                            </Col> */}
                             <Col size="sm-7 md-7">
                               <div className="dashboard-preview-tour-info-div">
-                                {/* <strong className="dashboard-preview-label">Tour Name:</strong> <br />  */}
                                 <span className="dashboard-preview-info">{book.tourName}</span> <br />
-                                {/* <strong className="dashboard-preview-label"> Meetup Location:</strong> 
-                                <br />   */}
                                 <span className="dashboard-preview-info">
-                                {book.tourPlace}<br />
-                                {book.tourAddress1}<br />
-                                {book.tourAddress2}<br />
-                                {book.tourCity},{book.tourState},{book.tourZipcode}</span> 
+                                  {book.tourPlace}<br />
+                                  {book.tourAddress1}<br />
+                                  {book.tourAddress2}<br />
+                                  {book.tourCity},{book.tourState},{book.tourZipcode}</span>
                                 <br />
                                 <a href={"/tours/" + book._id}>More Details</a>
                               </div>
@@ -498,7 +490,7 @@ class Operator extends React.Component {
                                 <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                                 <div className="price">
                                   <span className="ad-price">
-                                    <strong> $ {book.admissionPrice} </strong>
+                                    <strong> $ {book.tourAdmission} </strong>
                                   </span>
                                   <br />
                                   <span className="per-price"> per person </span>

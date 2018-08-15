@@ -12,32 +12,47 @@ mongoose.connect(
 );
 
 // purchase seeds for mongo
-
 const purchaseSeed = [
   {
-    user: "AndrewMFlak",
-    name: "Andrew Hatfield's Food Tour Of Jersey City",
-    address: "70 Sip Ave, Jersey City, NJ 07306",
-    price: 10,
-    quantity: 15,
+    orderNumber: 001,
+    purchaseName: "Chris Simpson",
+    purchaseAddress1: "31 MAin Street",
+    purchaseAddress2: "Apt 12",
+    purchaseCity: "Rockaway",
+    purchaseState: "NJ",
+    purchaseZipcode: "07866",
+    tourName: "Morristown Cycling Tour",
+    purchaseTickets: 10,
+    tourAdmission: 25,
+    purchaseEmail: "mrchrishantis@gmail.com",
+    purchasePhone: "5553330908",
+    checkouttotal: 250,
     isConfirmed: false,
-    isPurchaseed: false
+    isPurchaseed: false,
   },
   {
-    user: "KFergRocks",
-    name: "Andrew Hatfield's Food Tour Of Jersey City",
-    address: "70 Sip Ave, Jersey City, NJ 07306",
-    price: 10,
-    quantity: 1,
+    orderNumber: 002,
+    purchaseName: "Jack Charles",
+    purchaseAddress1: "70 Sip Ave",
+    purchaseAddress2: "",
+    purchaseCity: "Jersey City",
+    purchaseState: "NJ",
+    purchaseZipcode: "07306",
+    tourName: "Morristown Cycling Tour",
+    tourAdmission: 4,
+    tourAdmission: 10,
+    purchaseEmail: "developer.act@gmail.com",
+    purchasePhone: "5551114345",
+    checkouttotal: 40,
     isConfirmed: false,
-    isPurchaseed: false
+    isPurchaseed: false,
   }
 ];
 db.Purchase
   .remove({})
   .then(() => db.Purchase.collection.insertMany(purchaseSeed))
   .then(data => {
-    console.log(data.insertedIds.length + " records inserted!");
+    console.log(data.insertedIds.length + " Purchased records inserted!");
     process.exit(0);
   })
   .catch(err => {

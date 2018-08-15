@@ -20,14 +20,13 @@ export default {
   patchBook: function (id, bookData) {
     return axios.patch("/api/books/" + id, bookData);
   },
-  
   purchaseBook: function(id,bookData)  {
     return axios.get("/api/books/" + id, bookData);
   },
 
   // PURCHASE API paths
   getPurchases: function() {
-    return axios.get("/api/books/purchase")
+    return axios.get("/api/books/purchase");
   },
   getPurchase: function(id) {
     return axios.get("/api/books/purchase/" + id);

@@ -13,7 +13,7 @@ const bookSchema = new Schema({
   tourDays: {type: String, required: false },
   tourTimes: {type: String, required: false },
   admissionType: {type: String, required: false },
-  admissionPrice: {type: Number, required: false },
+  tourAdmission: {type: Number, required: false },
   admissionTickets: {type: Number, required: false },
 });
 

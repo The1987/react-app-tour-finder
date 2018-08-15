@@ -24,8 +24,8 @@ const bookSeed = [
   tourDays: "Mon - Thu",
   tourTimes: "9AM - 7PM",
   admissionType: "Adult",
-  admissionPrice: 25,
-  admissionTickets: 100,
+  tourAdmission: 25,
+  admissionTickets: 100
   // date: new Date(Date.now())
   }
 ];

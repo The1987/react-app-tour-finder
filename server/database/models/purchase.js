@@ -2,14 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const purchaseSchema = new Schema({
-  user: {type: String, required: false },
-  name: {type: String, required: true },
-  address: { type: String, required: true },
-  price: {type: Number, required: true},
-  qty: {type: Number, required: false},
-  checkouttotal: {type: Number, required: false},
-  isConfirmed: {type: Boolean, required: false},
-  isPurchased: {type: Boolean, required: false},
+  orderNumber: { type: Number, required: false },
+  purchaseName: { type: String, required: false },
+  purchaseAddress1: { type: String, required: false },
+  purchaseAddress2: { type: String, required: false },
+  purchaseCity: { type: String, required: false },
+  purchaseState: { type: String, required: false },
+  purchaseZipcode: { type: String, required: false },
+  purchaseTickets: { type: Number, required: false },
+  tourAdmission: { type: Number, required: false },
+  purchaseEmail: { type: String, required: false },
+  purchasePhone: { type: String, required: false },
+  checkouttotal: { type: Number, required: false },
+  isConfirmed: { type: Boolean, required: false },
+  isPurchaseed: { type: Boolean, required: false },
 });
 
 const Purchase = mongoose.model("Purchase", purchaseSchema);
